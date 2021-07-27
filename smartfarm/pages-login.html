@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="dist/images/logo/logo_bar.png">
+    <title>Smart Green House by AI 5.0 AGRICULTURE INNOVATION</title>
+
+    <!-- page css -->
+    <link href="dist/css/pages/login-register-lock.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+
+    <style>
+        .material-half-bg {
+            height: 100vh;
+            background-color: #e7e7e7;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+        
+        .material-half-bg .cover {
+            background-color: #0c2c47;
+            height: 50vh;
+        }
+        
+        .login-register .logo {
+            margin-bottom: 40px;
+            font-family: "Niconne";
+            color: #fff;
+        }
+        
+        .login-register .logo h1 {
+            font-size: 52px;
+            font-weight: 400;
+        }
+        /*  */
+        
+        .chack_error {
+            border: 2px solid red;
+            border-radius: 4px;
+        }
+    </style>
+
+</head>
+
+<body class="skin-blue card-no-border">
+    <section class="material-half-bg">
+        <div class="cover"></div>
+    </section>
+
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <section id="wrapper">
+        <div class="login-register">
+            <div class="logo text-center">
+                <img src="dist/images/logo/icon.png" alt="" width="40%">
+                <!-- <img src="dist/images/logo/logo-light-text2.png" alt="" width="190px"> -->
+                <!-- width="190px" -->
+            </div>
+
+            <div class="login-box card">
+                <div class="card-body">
+                    <!-- Login -->
+                    <div id="loginform">
+                        <h1 class="text-center box-title m-b-20"><b><i class="fa fa-user"></i> Sign In</b></h1>
+                        <div class="form-group" id="form_err_1">
+                            <input class="form-control" id="Username" type="text" placeholder="Username / E-mail">
+                            <div class="form-control-feedback feedback_1"></div>
+                        </div>
+                        <div class="form-group" id="form_err_2">
+                            <input class="form-control" id="Password" type="password" required="" placeholder="Password">
+                            <div class="form-control-feedback feedback_2"></div>
+                        </div>
+                        <div class="form-group text-center">
+                            <div class="col-xs-12">
+                                <button class="btn btn-block btn-lg btn-info btn-rounded" id="login_submit"><i class="fa fa-sign-in fa-lg fa-fw"></i> Log In</button>
+                            </div>
+                        </div>
+                        <div class="text-center"> <a href="javascript:void(0)" id="to-recover" class="text-dark"><i class="fa fa-lock m-r-5"></i> Forgot password?</a></div>
+                    </div>
+
+                    <!-- Re-Password -->
+                    <form class="form-horizontal" id="recoverform">
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <h3>Recover Password</h3>
+                                <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" required="" placeholder="Email"> </div>
+                        </div>
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
+                            </div>
+                        </div>
+                        <div class="text-center"> <a href="javascript:void(0)" id="to-logincover" class="text-dark"><i class="fa fa-reply-all m-r-5"></i> Back to Sign in</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Wrapper -->
+
+    <!-- All Jquery -->
+    <script src="dist/plugin/jquery/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="dist/plugin/popper/popper.min.js"></script>
+    <script src="dist/plugin/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- sweetalert2 -->
+    <script src="dist/plugin/sweetalert2-7.28.12/dist/sweetalert2.all.min.js"></script>
+    <!--Custom JavaScript -->
+    <script type="text/javascript">
+        $.getJSON('config_db/login.php', function(msg) {
+            console.log(msg);
+            // console.log(msg.username);
+            if (msg.status_login === "login") {
+                if (msg.z_time > 3) {
+                    $.ajax({
+                        url: 'config_db/login.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            logout: "logout"
+                        },
+                        success: function(ress) {
+                            // if (ress === "logout_succress") {
+                            // window.location = '../pages-login.html';
+                            return false;
+                            // }
+                        }
+                    });
+                }
+                if (msg.pages === "v.1.2") {
+                    window.location.href = "v.1.2/index.php";
+                    return false;
+                } else if (msg.pages === "1") {
+                    window.location.href = "v.1.3/index.html";
+                    return false;
+                } else if (msg.pages === "2") {
+                    window.location.href = "v.1.4/index.php";
+                    return false;
+                }
+            }
+        });
+        // Login and Recover Password
+        $('#to-recover').on("click", function() {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+
+        // Recover Password and Login
+        $('#to-logincover').on("click", function() {
+            $("#recoverform").slideUp();
+            $("#loginform").fadeIn();
+        });
+
+        // Login
+        $("#login_submit").on("click", function() {
+            $("#form_err_1").removeClass("has-danger");
+            $("#Username").removeClass("form-control-danger");
+            $(".feedback_1").html("");
+            $("#form_err_2").removeClass("has-danger");
+            $("#Password").removeClass("form-control-danger");
+            $(".feedback_2").html("");
+
+            var Username = $("#Username").val();
+            var Password = $("#Password").val();
+
+            if (Username === "") {
+                $("#form_err_1").addClass("has-danger");
+                $("#Username").addClass("form-control-danger");
+                $(".feedback_1").html("กรุณาระบุ Username หรือ E-mail");
+                return (false);
+            }
+            if (Password === "") {
+                $("#form_err_2").addClass("has-danger");
+                $("#Password").addClass("form-control-danger");
+                $(".feedback_2").html("กรุณาระบุ Password");
+                return (false);
+            }
+            // mail
+            var re = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+            var is_email = re.test(Username);
+            if (is_email) { // email_mode
+                // $("#form_err_1").addClass("has-danger");
+                // $("#Username").addClass("form-control-danger");
+                // $(".feedback_1").html("รูปแบบอีเมลล์ไม่ถูกต้อง");
+                Login(mode_user = "email");
+                // console.log(Username);
+                // console.log(Password);
+
+            } else { // user_mode
+                // console.log(is_email);
+                Login(mode_user = "username");
+            }
+
+            function Login(mode_user) {
+                swal({
+                    text: "Loading ... ",
+                    allowOutsideClick: false,
+                    onOpen: () => {
+                        swal.showLoading()
+                        timerInterval = setInterval(() => {
+
+                        }, 100)
+                    }
+                });
+                $.ajax({
+                    url: 'config_db/login.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        mode_user: mode_user,
+                        Username: Username,
+                        Password: Password
+                    },
+                    success: function(res, status) {
+                        console.log(res);
+                        // return false;
+                        if (mode_user === "username") {
+                            if (res === "ไม่มีชื่อผู้ใช้นี้") {
+                                Swal.fire({
+                                        type: 'error',
+                                        title: 'Error...!!!',
+                                        text: 'Username หรือ Password ไม่ถูกต้อง',
+                                        allowOutsideClick: false,
+                                        // footer: '<a href>Why do I have this issue?</a>'
+                                    })
+                                    // swal.close();
+                                $("#form_err_1").addClass("has-danger");
+                                $("#Username").addClass("form-control-danger");
+                                $("#form_err_2").addClass("has-danger");
+                                $("#Password").addClass("form-control-danger");
+                                // $(".feedback_1").html("Username ไม่ถูกต้อง");
+                            } else {
+                                // if (res.user_id === "14") {
+                                //     window.location.href = "demo/v.1.3/index.html";
+                                //     return false;
+                                // } else {
+                                //     if (res.pages === "v.1.2") {
+                                //         window.location.href = "v.1.2/index.php";
+                                //         return false;
+                                //     } else 
+                                if (res.pages === "1") {
+                                    window.location.href = "index.html";
+                                    return false;
+                                } else if (res.pages === "2") {
+                                    window.location.href = "v.1.4/index.php";
+                                    return false;
+                                }
+                                // }
+                            }
+                        } else if (mode_user === "email") {
+                            if (res === "ไม่มีอีเมลล์นี้") {
+                                Swal.fire({
+                                        type: 'error',
+                                        title: 'Error...!!!',
+                                        text: 'E-Mail หรือ Password ไม่ถูกต้อง',
+                                        allowOutsideClick: false,
+                                        // footer: '<a href>Why do I have this issue?</a>'
+                                    })
+                                    // swal.close();
+                                $("#form_err_1").addClass("has-danger");
+                                $("#Username").addClass("form-control-danger");
+                                $("#form_err_2").addClass("has-danger");
+                                $("#Password").addClass("form-control-danger");
+                                // $(".feedback_1").html("Username ไม่ถูกต้อง");
+                            } else {
+                                window.location.href = "index.php";
+                                return false;
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        // Location("config_php/login.php");
+        // });
+    </script>
+</body>
+
+</html>
