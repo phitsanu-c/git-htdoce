@@ -4102,7 +4102,7 @@
     <!-- End Main wrapper -->
     <!-- footer -->
     <footer class="footer">
-        © 2020 Smart Green House.V1.3.1
+        <button class="aaa">zzzzzzzzzzzzzz</button> © 2020 Smart Green House.V1.3.1
     </footer>
     <!-- End footer -->
     <!-- All Jquery -->
@@ -4212,6 +4212,22 @@
             },
             closeOnContentClick: false,
             midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        });
+
+        $('.aaa').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                data: {
+                    'city': 'pune',
+                    'country': 'India',
+                },
+                // contentType: 'application/json',
+                url: 'http://localhost:3001/ajax/',
+                success: function(data) {
+                    alert(data);
+                }
+            });
         });
     </script>
 </body>

@@ -1,0 +1,396 @@
+<%- include('header'); -%>
+
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Components</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Cards</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Settings</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item" href="javascript:;">Action</a>
+                        <a class="dropdown-item" href="javascript:;">Another action</a>
+                        <a class="dropdown-item" href="javascript:;">Something else here</a>
+                        <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <h6 class="mb-0 text-uppercase">Horizontal Card</h6>
+        <hr/>
+
+        <div class=" m-b-20">
+            <div class="card-body">
+                <div class="col-12 table-modal">
+                    <div class="row parent">
+                        <div class="col-12 col-xl-6 child2">
+                            <div class="col-12 text-center">
+                                <div class="row">
+                                    <a class="col-4 nav-link btn-secondary2 active memu_report_sensor" href="javascript:void(0)">Sensor Report</a>
+                                    <!-- <?php if ($count_c > 0) { ?> -->
+                                    <a class="col-4 nav-link btn-secondary2 memu_report_cont" href="javascript:void(0)">Control Report</a>
+                                    <!-- <?php if ($house_master != "KMUMT001") { ?> -->
+                                    <a class="col-4 nav-link btn-secondary2 memu_report_cont_a" href="javascript:void(0)">Control Auto Report</a>
+                                    <!-- <?php } -->
+                                    <!-- } ?> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page_table_sensor m-t-10">
+                    <div class="col-12 table-modal">
+                        <div class="row parent">
+                            <div class="col-12 col-xl-4 child2">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <div class="row">
+                                            <a class="col-4 nav-link btn-secondary2 all_day" href="javascript:void(0)">Day</a>
+                                            <a class="col-4 nav-link btn-secondary2 all_week" href="javascript:void(0)">Week</a>
+                                            <a class="col-4 nav-link btn-secondary2 all_month" href="javascript:void(0)">Month</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-8 child2">
+                                <div class="row">
+                                    <div class="col-12 col-xl-9">
+                                        <div class="row fromto_all_active">
+                                            <input class="col-5 nav-item text-center from_to_df val_start" type="text" placeholder="From" />
+                                            <input class="col-5 nav-item text-center from_to_df val_end" type="text" placeholder="To" />
+
+                                            <a class="col-2 nav-link text-center btn-secondary2 all_from_to" href="javascript:void(0)">
+                                                <span class="d-none d-sm-block">PLOT</span>
+                                                <span class="d-block d-sm-none"><i class="icon-check"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 text-center">
+                                        <div class="row icon_all">
+                                            <a class="col-6 nav-link btn-secondary2 active icon_all_chart_mod" href="javascript:void(0)"><i class="icon-line-chart"></i> Chart</a>
+                                            <a class="col-6 nav-link btn-secondary2 icon_all_table_mod" href="javascript:void(0)"><i class=" icon-table"></i> Table</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page_all_chart">
+                        <div id="all_chart" class="chartdiv"></div>
+                    </div>
+                    <div class="page_all_table">
+                        <div id="all_table"></div>
+                    </div>
+                </div>
+                <div class="page_table_cont">
+                    <div id="report_con_table" class="text-dark"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal_select_sn -->
+    <div class="modal fade" id="Modal_select_sn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog-scrollable modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-dark"><b class="">Select Sensor</b></h4>
+                </div>
+                <div class="modal-body">
+                    <!-- เลือกเซ็นเซอร์ -->
+                    <div class="Collapse_tb_sel">
+                        <h3 class="card-title text-center">
+                            <b>Select Sensor</b>
+                            <input type="hidden" id="status_btn_all">
+                        </h3>
+
+                        <div class="row">
+                            <div class="col-md-6 col-xl-6">
+                                <div class="custom-control custom-checkbox m-l-20">
+                                    <input type="checkbox" class="custom-control-input" id="SelectAll">
+                                    <label class="custom-control-label" for="SelectAll">
+                                        <h3>Selete All</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-6 col-sm-12 row text-center hid_sn">
+                                <label class="form-group col-6 col-sm-6">Data Moment Rope : </label>
+                                <select id="sel_all_every" class="form-group col-6 col-sm-6 btn-secondary2">
+                                    <option value="1">Selected every 1 min.</option>
+                                    <option value="2">Selected every 5 min.</option>
+                                    <option value="3">Selected every 10 min.</option>
+                                    <option value="4">Selected every 15 min.</option>
+                                    <option value="5">Selected every 30 min.</option>
+                                    <option value="6">Selected every 60 min.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row button-group1">
+                            <div class="col-md-3 text-center Td_btn_sn1">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn1"></h4>
+                                    <input class="click_box_select Tbtn_sn1" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn2">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn2"></h4>
+                                    <input class="click_box_select Tbtn_sn2" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn3">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn3"></h4>
+                                    <input class="click_box_select Tbtn_sn3" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn4">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn4"></h4>
+                                    <input class="click_box_select Tbtn_sn4" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn5">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn5"></h4>
+                                    <input class="click_box_select Tbtn_sn5" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn6">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn6"></h4>
+                                    <input class="click_box_select Tbtn_sn6" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn7">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn7"></h4>
+                                    <input class="click_box_select Tbtn_sn7" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn8">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn8"></h4>
+                                    <input class="click_box_select Tbtn_sn8" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn9">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn9"></h4>
+                                    <input class="click_box_select Tbtn_sn9" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn10">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn10"></h4>
+                                    <input class="click_box_select Tbtn_sn10" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn11">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn11"></h4>
+                                    <input class="click_box_select Tbtn_sn11" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn12">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn12"></h4>
+                                    <input class="click_box_select Tbtn_sn12" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn13">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn13"></h4>
+                                    <input class="click_box_select Tbtn_sn13" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn14">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn14"></h4>
+                                    <input class="click_box_select Tbtn_sn14" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn15">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn15"></h4>
+                                    <input class="click_box_select Tbtn_sn15" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn16">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn16"></h4>
+                                    <input class="click_box_select Tbtn_sn16" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn17">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn17"></h4>
+                                    <input class="click_box_select Tbtn_sn17" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn18">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn18"></h4>
+                                    <input class="click_box_select Tbtn_sn18" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn19">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn19"></h4>
+                                    <input class="click_box_select Tbtn_sn19" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn20">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn20"></h4>
+                                    <input class="click_box_select Tbtn_sn20" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn21">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn21"></h4>
+                                    <input class="click_box_select Tbtn_sn21" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn22">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn22"></h4>
+                                    <input class="click_box_select Tbtn_sn22" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn23">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn23"></h4>
+                                    <input class="click_box_select Tbtn_sn23" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn24">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn24"></h4>
+                                    <input class="click_box_select Tbtn_sn24" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn25">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn25"></h4>
+                                    <input class="click_box_select Tbtn_sn25" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn26">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn26"></h4>
+                                    <input class="click_box_select Tbtn_sn26" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn27">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn27"></h4>
+                                    <input class="click_box_select Tbtn_sn27" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn28">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn28"></h4>
+                                    <input class="click_box_select Tbtn_sn28" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn29">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn29"></h4>
+                                    <input class="click_box_select Tbtn_sn29" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn30">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn30"></h4>
+                                    <input class="click_box_select Tbtn_sn30" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn31">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn31"></h4>
+                                    <input class="click_box_select Tbtn_sn31" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn32">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn32"></h4>
+                                    <input class="click_box_select Tbtn_sn32" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn33">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn33"></h4>
+                                    <input class="click_box_select Tbtn_sn33" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn34">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn34"></h4>
+                                    <input class="click_box_select Tbtn_sn34" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn35">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn35"></h4>
+                                    <input class="click_box_select Tbtn_sn35" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn36">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn36"></h4>
+                                    <input class="click_box_select Tbtn_sn36" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn37">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn37"></h4>
+                                    <input class="click_box_select Tbtn_sn37" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn38">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn38"></h4>
+                                    <input class="click_box_select Tbtn_sn38" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn39">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn39"></h4>
+                                    <input class="click_box_select Tbtn_sn39" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center Td_btn_sn40">
+                                <div class="card-body">
+                                    <h4 class="Tshow_namesn40"></h4>
+                                    <input class="click_box_select Tbtn_sn40" data-size="sm" data-width="100" type="checkbox" data-toggle="toggle" data-on="Select" data-off="Unselect" data-onstyle="success" data-offstyle="secondary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-right">
+                    <button type="button" id="submit_select_sn_Modal" class="btn btn-success waves-light">
+                        <i class="fa fa-fw fa-lg fa-check-circle"></i> &nbsp; Sumbit
+                    </button>
+                    <button type="button" class="btn btn-danger waves-effect close_select_sn_Modal">
+                        <i class="fa fa-fw fa-lg fa-times-circle"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- exit Modal_select_sn -->
+    <%- include('footer'); -%>

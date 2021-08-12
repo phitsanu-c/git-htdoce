@@ -1,0 +1,221 @@
+</div>
+<!--end page wrapper -->
+<!--start overlay-->
+<div class="overlay toggle-icon"></div>
+<!--end overlay-->
+<!--Start Back To Top Button--><a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+<!--End Back To Top Button-->
+<footer class="page-footer">
+    <p class="mb-0">© 2021 Smart Green House.V1.4.1</p>
+</footer>
+</div>
+<!--end wrapper-->
+<!--start switcher-->
+<div class="switcher-wrapper">
+    <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+    </div>
+    <div class="switcher-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+            <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+        </div>
+        <hr/>
+        <h6 class="mb-0">Theme Styles</h6>
+        <hr/>
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode">
+                <label class="form-check-label" for="lightmode">Light</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode" checked>
+                <label class="form-check-label" for="darkmode">Dark</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
+                <label class="form-check-label" for="semidark">Semi Dark</label>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
+            <label class="form-check-label" for="minimaltheme">Minimal Theme</label>
+        </div>
+        <hr/>
+        <h6 class="mb-0">Header Colors</h6>
+        <hr/>
+        <div class="header-colors-indigators">
+            <div class="row row-cols-auto g-3">
+                <div class="col">
+                    <div class="indigator headercolor1" id="headercolor1"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor2" id="headercolor2"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor3" id="headercolor3"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor4" id="headercolor4"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor5" id="headercolor5"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor6" id="headercolor6"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor7" id="headercolor7"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator headercolor8" id="headercolor8"></div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <h6 class="mb-0">Sidebar Colors</h6>
+        <hr/>
+        <div class="header-colors-indigators">
+            <div class="row row-cols-auto g-3">
+                <div class="col">
+                    <div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
+                </div>
+                <div class="col">
+                    <div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end switcher-->
+<!-- Bootstrap JS -->
+<script src="/javascripts/bootstrap.bundle.min.js"></script>
+
+<script src="/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<!--app JS-->
+<script src="/javascripts/app.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script> -->
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/frozen.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<% if (page==='index' ) { %>
+    <script>
+        // $('.aaa').click(function() {
+        $.ajax({
+            url: "/get_dash/dash",
+            method: "post",
+            data: {
+                house_master: 'KO7MT001',
+                field2: 2
+            },
+            dataType: "json",
+            success: function(res) {
+                // alert(res.dashImg);
+                for (var i = 1; i <= 40; i++) {
+                    if (res.dashStatus[i] == 1) {
+                        $('.dash_status_' + i).show();
+                    } else {
+                        $('.dash_status_' + i).hide();
+                    }
+                    $('.dash_img_' + i).attr('src', '/images/Sensor/' + res.dashImg[i]);
+                    $('.dash_title_' + i).html(res.dashName[i]);
+                }
+                console.log(res.dashImg);
+                $.ajax({
+                    url: '/get_chart_realtimr/chart_realtimr',
+                    method: "post",
+                    data: {
+                        house_master: 'KO7MT001'
+                    },
+                    dataType: "json",
+                    success: function(res_chart) {
+                        console.log(res_chart);
+                        am4core.ready(function() {
+                            am4core.useTheme(am4themes_dark);
+                            am4core.useTheme(am4themes_animated);
+                            if (res_chart !== "null") {
+                                var chart = [];
+                                var dateAxis = [];
+                                var valueAxis = [];
+                                var series = [];
+                                var chartUnit = [];
+                                for (var i = 1; i <= 40; i++) {
+                                    // console.log("chart_" + i);
+                                    if (res.dashStatus[i] == 1) {
+                                        //     if (res.dashMode[i] === "7" || res.dashMode[i] === "6") {
+                                        //         chartUnit[i] = "µmol m[baseline-shift: super; font-size: 10;]-2[baseline-shift: baseline;]s[baseline-shift: super; font-size: 10;]-1[baseline-shift: baseline;]";
+                                        //     } else if (res.dashMode[i] === "5" || res.dashMode[i] === "4") {
+                                        //         chartUnit[i] = "kLux";
+                                        //     } else {
+                                        //         if (res.dashUnit[i] == 1) {
+                                        //             chartUnit[i] = res.dashUnit[i];
+                                        //         } else {
+                                        //             chartUnit[i] = '℃';
+                                        //         }
+                                        //     }
+
+                                        chart[i] = am4core.create("chart_" + i, am4charts.XYChart);
+                                        chart[i].dateFormatter.inputDateFormat = "yyyy/MM/dd - HH:mm";
+
+                                        chart[i].data = res_chart;
+
+                                        dateAxis[i] = chart[i].xAxes.push(new am4charts.DateAxis());
+                                        dateAxis[i].periodChangeDateFormats.setKey("hour", "[bold]dd MMM ");
+                                        dateAxis[i].tooltipDateFormat = "HH:mm, d MMM yyyy";
+
+                                        valueAxis[i] = chart[i].yAxes.push(new am4charts.ValueAxis());
+
+                                        series[i] = chart[i].series.push(new am4charts.LineSeries());
+                                        series[i].dataFields.valueY = "new_" + i;
+                                        series[i].dataFields.dateX = "data_timestamp";
+                                        series[i].tooltipText = "{new_" + i + "} ()";
+                                        series[i].strokeWidth = 2;
+
+                                        chart[i].cursor = new am4charts.XYCursor();
+                                        chart[i].cursor.snapToSeries = series[i];
+                                        chart[i].cursor.xAxis = dateAxis[i];
+                                    }
+                                }
+
+                            }
+                        });
+
+                    }
+                });
+            }
+        });
+
+
+        // let strdate = new Date();
+        // var date = moment(new Date()).add(-10, 'minutes').format('YYYY/MM/DD - HH:mm:ss');
+        // console.log(date);
+    </script>
+    <% } %>
+
+        </body>
+
+        </html>

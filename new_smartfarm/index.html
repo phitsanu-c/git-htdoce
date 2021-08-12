@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="en">
+<!-- class="dark-theme" -->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="public/images/logo/logo_bar.png" type="image/png" />
+    <!--plugins-->
+    <link rel="stylesheet" href="public/plugins/simplebar/css/simplebar.css" />
+    <link rel="stylesheet" href="public/plugins/perfect-scrollbar/css/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="public/plugins/metismenu/css/metisMenu.min.css" />
+    <!-- loader-->
+    <link rel="stylesheet" href="public/stylesheets/pace.min.css" />
+    <script src="public/javascripts/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="public/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="public/stylesheets/app.css">
+    <link rel="stylesheet" href="public/stylesheets/icons.css">
+    <!-- Theme Style CSS -->
+    <link rel="stylesheet" href="public/stylesheets/dark-theme.css" />
+    <link rel="stylesheet" href="public/stylesheets/semi-dark.css" />
+    <link rel="stylesheet" href="public/stylesheets/header-colors.css" />
+    <!-- Bootstrap Toggle -->
+    <!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> -->
+    <title>Smart Green House by AI 5.0 AGRICULTURE INNOVATION</title>
+</head>
+
+<body>
+    <!--wrapper-->
+    <div class="wrapper">
+        <!--sidebar wrapper -->
+        <div class="sidebar-wrapper" data-simplebar="true">
+            <div class="sidebar-header">
+                <div>
+                    <img src="public/images/logo/logo3.png" class="logo-icon" alt="logo icon">
+                </div>
+                <div>
+                    <h4 class="logo-text">Smart Green House</h4>
+                </div>
+                <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
+                </div>
+            </div>
+            <!--navigation-->
+            <ul class="metismenu" id="menu">
+                <!-- <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                        </div>
+                        <div class="menu-title">Dashboard</div>
+                    </a>
+                    <ul>
+                        <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a>
+                        </li>
+                        <li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Alternate</a>
+                        </li>
+                    </ul>
+                </li> -->
+                <!-- <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class="bx bx-category"></i>
+                        </div>
+                        <div class="menu-title">Application</div>
+                    </a>
+                    <ul>
+                        <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a>
+                        </li>
+                        <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a>
+                        </li>
+                        <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>File Manager</a>
+                        </li>
+                        <li> <a href="app-contact-list.html"><i class="bx bx-right-arrow-alt"></i>Contatcs</a>
+                        </li>
+                        <li> <a href="app-to-do.html"><i class="bx bx-right-arrow-alt"></i>Todo List</a>
+                        </li>
+                        <li> <a href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i>Invoice</a>
+                        </li>
+                        <li> <a href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>Calendar</a>
+                        </li>
+                    </ul>
+                </li> -->
+                <!-- <li class="menu-label">UI Elements</li> -->
+                <li class="memu_sel">
+                    <a href="javascript:;">
+                        <div class="parent-icon"><i class='bx bx-cookie'></i>
+                        </div>
+                        <div class="menu-title">โรงเรือน
+                        </div>
+                    </a>
+                </li>
+                <li class="memu_dash">
+                    <a href="javascript:;">
+                        <div class="parent-icon"><i class='bx bx-cookie'></i>
+                        </div>
+                        <div class="menu-title">หน้าแรก
+                        </div>
+                    </a>
+                </li>
+                <li class="memu_control">
+                    <a href="javascript:;">
+                        <div class="parent-icon"><i class='bx bx-cookie'></i>
+                        </div>
+                        <div class="menu-title">สั่งงานระบบควบคุม
+                        </div>
+                    </a>
+                </li>
+                <li class="memu_report">
+                    <a href="javascript:;">
+                        <div class="parent-icon"><i class='bx bx-cookie'></i>
+                        </div>
+                        <div class="menu-title">รายงาน
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!--end navigation-->
+        </div>
+        <!--end sidebar wrapper -->
+        <!--start header -->
+        <header>
+            <div class="topbar d-flex align-items-center">
+                <nav class="navbar navbar-expand">
+                    <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
+                    </div>
+                    <!-- <div class="search-bar flex-grow-1">
+                        <div class="position-relative search-bar-box">
+                            <input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
+                            <span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
+                        </div>
+                    </div> -->
+                    <div class="top-menu ms-auto">
+                        <ul class="navbar-nav align-items-center">
+
+                        </ul>
+                    </div>
+                    <div class="user-box dropdown">
+                        <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="" class="user-img" alt="user avatar">
+                            <div class="user-info ps-3">
+                                <p class="user-name mb-0 user_name"></p>
+                                <input type="hidden" class="INuser_name">
+                                <!-- <p class="designattion mb-0">Web Designer</p> -->
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
+                            </li>
+                            <!-- <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
+                            </li> -->
+                            <!-- <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
+                            </li> -->
+                            <li>
+                                <div class="dropdown-divider mb-0"></div>
+                            </li>
+                            <li><a class="dropdown-item logout" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!--end header -->
+        <!--start page wrapper -->
+        <div class="page-wrapper">
+            <div id="pills-selectSite"></div>
+            <div id="pills-selectHome">
+                <!-- <ul class="nav nav-pills mb-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="pill" href="#primary-pills-home" role="tab" aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class='bx bx-home font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title">Home</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-profile" role="tab" aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title">Profile</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-contact" role="tab" aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i>
+                                </div>
+                                <div class="tab-title">Contact</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="primary-pills-home" role="tabpanel">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+                            synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi.</p>
+                    </div>
+                    <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
+                            booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente
+                            labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus
+                            tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane fade" id="primary-pills-contact" role="tabpanel">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles
+                            etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester
+                            cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                </div> -->
+            </div>
+            <!--  -->
+        </div>
+        <!--end page wrapper -->
+        <!--start overlay-->
+        <div class="overlay toggle-icon"></div>
+        <!--end overlay-->
+        <!--Start Back To Top Button--><a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+        <!--End Back To Top Button-->
+        <footer class="page-footer">
+            <!-- <button class="aaa">zzzzzzzzzzzzzz</button> -->
+            <p class="mb-0">© 2021 Smart Green House.V1.4.1</p>
+        </footer>
+    </div>
+    <!--end wrapper-->
+    <!--start switcher-->
+    <div class="switcher-wrapper">
+        <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+        </div>
+        <div class="switcher-body">
+            <div class="d-flex align-items-center">
+                <h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+                <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
+            </div>
+            <hr/>
+            <h6 class="mb-0">Theme Styles</h6>
+            <hr/>
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode">
+                    <label class="form-check-label" for="lightmode">Light</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode" checked>
+                    <label class="form-check-label" for="darkmode">Dark</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
+                    <label class="form-check-label" for="semidark">Semi Dark</label>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
+                <label class="form-check-label" for="minimaltheme">Minimal Theme</label>
+            </div>
+            <hr/>
+            <h6 class="mb-0">Header Colors</h6>
+            <hr/>
+            <div class="header-colors-indigators">
+                <div class="row row-cols-auto g-3">
+                    <div class="col">
+                        <div class="indigator headercolor1" id="headercolor1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor2" id="headercolor2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor3" id="headercolor3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor4" id="headercolor4"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor5" id="headercolor5"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor6" id="headercolor6"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor7" id="headercolor7"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator headercolor8" id="headercolor8"></div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <h6 class="mb-0">Sidebar Colors</h6>
+            <hr/>
+            <div class="header-colors-indigators">
+                <div class="row row-cols-auto g-3">
+                    <div class="col">
+                        <div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
+                    </div>
+                    <div class="col">
+                        <div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end switcher-->
+    <!-- Bootstrap JS -->
+    <script src="public/javascripts/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="public/javascripts/jquery.min.js"></script>
+    <script src="public/javascripts/decode.js"></script>
+    <script src="routes/chack_login.js"></script>
+    <script src="public/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="public/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="public/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <!--app JS-->
+    <script src="public/javascripts/app.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script> -->
+    <script src="memu.js"></script>
+    <!-- sweetalert2 -->
+    <script src="public/plugins/sweetalert2-7.28.12/dist/sweetalert2.all.min.js"></script>
+    <!-- Resources -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/frozen.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <!-- mqtt_plugin -->
+    <script src="public/plugins/mqtt_plugin/lib/mqttws31.js"></script>
+
+    <script src="public/plugins/open-weather-master/src/openweather.js"></script>
+    <script>
+        $.ajax({
+            url: "http://localhost:3001/get_dash/dash/",
+            method: "post",
+            data: {
+                house_master: house_master,
+                field2: 2
+            },
+            // contentType: "application/json",
+            success: function(res) {
+                console.log(res);
+                var dashStatus = res.dashStatus;
+                var dashName = res.dashName;
+                var dashSncanel = res.dashSncanel;
+                var dashMode = res.dashMode;
+                var dashImg = res.dashImg;
+                var dashUnit = res.dashUnit;
+                var controlstatus = res.controlstatus;
+                var imgCon = res.imgCon;
+                // alert(login_user);
+                $.ajax({
+                    url: "views/home.php",
+                    method: "post",
+                    data: {
+                        s_master: res.s_master,
+                        dashStatus: res.dashStatus,
+                        dashName: res.dashName,
+                        controlstatus: res.controlstatus,
+                        conttrolname: res.conttrolname
+                    },
+                    // dataType: "json",
+                    success: function(res_dash) {
+                        $("#pills-selectHome").html(res_dash);
+                    }
+                });
+                // return false;
+                // alert(res.s_master.site_Latitude)
+
+                // ----------------------------------------------------------------------
+                // alert(house_master);
+                if (house_master != '') {
+                    // Global variables
+                    var client = null;
+                    // These are configs
+                    var hostname = "203.150.37.144"; //'103.2.115.15'; // 203.150.37.144   decccloud.com
+                    var port = "8083";
+                    var clientId = "mqtt_js_" + parseInt(Math.random() * 100000, 10);
+                    var count = 0;
+
+                    function connect() {
+                        client = new Paho.MQTT.Client(hostname, Number(port), clientId);
+                        console.info('Connecting to Server: Hostname: ', hostname, '. Port: ', port, '. Client ID: ', clientId);
+
+                        client.onConnectionLost = onConnectionLost;
+                        client.onMessageArrived = onMessageArrived;
+
+                        var options = {
+                            onSuccess: onConnect, // after connected, subscribes
+                            onFailure: onFail // useful for logging / debugging
+                        };
+                        // connect the client
+                        client.connect(options);
+                        console.info('Connecting...');
+                    }
+                    // ---------------------------------------------------------------------------------------
+
+                    function onConnect(context) {
+                        console.log("Client Connected");
+                        // And subscribe to our topics	-- both with the same callback function
+                        options = {
+                            qos: 1,
+                            onSuccess: function(context) {
+                                // console.log("ไม่สามารถเชื่อมต่อกับ เครื่อง ได้ !!!!");
+                                // setInterval(function() {
+                                //     location.reload();
+                                // }, 30000);
+                                console.log("subscribed");
+                            }
+                        }
+                        client.subscribe(house_master + "/1/data_update/data_filter", options);
+                        // if (Contstatus !== 0) {
+
+                        if (house_master !== "KMUMT001") {
+                            client.subscribe(house_master + "/1/control/json_control_filter", options);
+                        } else {
+                            client.subscribe(house_master + "/1/control/mode", options);
+                            client.subscribe(house_master + "/1/control/control_st_1", options);
+                            client.subscribe(house_master + "/1/control/control_st_2", options);
+                            client.subscribe(house_master + "/1/control/control_st_3", options);
+                            client.subscribe(house_master + "/1/control/control_st_4", options);
+                            client.subscribe(house_master + "/1/control/control_st_5", options);
+                        }
+                    }
+
+                    function onFail(context) {
+                        location.reload();
+                    }
+
+                    function onConnectionLost(responseObject) {
+                        if (responseObject.errorCode !== 0) {
+                            console.log("Connection Lost: " + responseObject.errorMessage);
+                            location.reload();
+                            // window.alert("Someone else took my websocket!\nRefresh to take it back.");
+                        }
+                    }
+
+                    function onMessageArrived(message) {
+                        if (message.destinationName == house_master + "/1/data_update/data_filter") {
+                            var result = message.payloadString;
+                            var parseJSON = $.parseJSON(result);
+                            console.log(parseJSON);
+                            if (house_master === "KMUMT001") {
+                                var p_json = parseJSON['data_update']['data'][0];
+                                var data_array = p_json['data'];
+                                // console.log(parseJSON);
+                                console.log(p_json);
+                                // console.log(loading);
+                                // -------------------------------------------------------------
+                                var time_t = p_json['time'];
+                                var ntime = time_t.substring(0, 5);
+                                $(".date").html(p_json['date']);
+                                $(".time").html(ntime);
+                                // --------------------------------------substring(1, 4)
+                                // console.log(Sncanel.sncanel_1_1.substring(7));
+                                // $("#time_stamp").html("Data update : "+time_stmap);
+                                // return false;
+                            } else {
+                                // console.log(loading);
+                                // -------------------------------------------------------------
+                                var time_t = parseJSON['time'];
+                                var ntime = time_t.substring(0, 5);
+                                $(".date").html(parseJSON['date']);
+                                $(".time").html(ntime);
+                                // var data_array = parseJSON['data_update']['data'][0]['data'];
+                                var data_array = parseJSON['data'];
+                            }
+                            // console.log(parseJSON);
+                            console.log(dashImg[1]);
+                            var sn_unit = [];
+                            var data_dash = [];
+                            for (var i = 1; i <= 40; i++) {
+                                if (dashStatus[i] == 1) {
+                                    $(".dash_img_" + i).attr("src", "public/images/Sensor/" + dashImg[i]);
+
+                                    // show_dash(unit = dashUnit[i],snmode = dashMode[i]);
+
+                                    if (dashMode[i] === "7") { // µmol / KLux
+                                        $(".dash_data_1_" + i).html((data_array[dashSncanel[i]] / 54).toFixed(1) + ' µmol m<sup>-2</sup>s<sup>-1</sup>' + '<br>' + (data_array[dashSncanel[i]] / 1000).toFixed(1) + " KLux");
+                                    } else if (dashMode[i] === "6") {
+                                        $(".dash_data_1_" + i).html((data_array[dashSncanel[i]] / 1000).toFixed(1) + " KLux" + '<br>' + (data_array[dashSncanel[i]] / 54).toFixed(1) + ' µmol m<sup>-2</sup>s<sup>-1</sup>');
+                                    } else if (dashMode[i] === "5") {
+                                        $(".dash_data_1_" + i).html((data_array[dashSncanel[i]] / 54).toFixed(1) + ' µmol m<sup>-2</sup>s<sup>-1</sup>');
+                                    } else {
+                                        if (data_array[dashSncanel[i]] >= 1000) {
+                                            data_dash[i] = (data_array[dashSncanel[i]] / 1000).toFixed(1);
+                                            sn_unit[i] = 'K' + dashUnit[i];
+                                        } else if (data_array[dashSncanel[i]] >= 1000000) {
+                                            data_dash[i] = (data_array[dashSncanel[i]] / 1000).toFixed(1);
+                                            sn_unit[i] = 'M' + dashUnit[i];
+                                        } else {
+                                            data_dash[i] = (data_array[dashSncanel[i]] * 1).toFixed(1);
+                                            if (dashUnit[i] === "1") {
+                                                sn_unit[i] = "℃";
+                                            } else {
+                                                sn_unit[i] = dashUnit[i];
+                                            }
+                                            $(".dash_data_1_" + i).html(data_dash[i] + " " + sn_unit[i]);
+                                        }
+                                    }
+                                }
+                            }
+                            $('.weather-temperature').openWeather({
+                                key: 'c9d49310f8023ee2617a7634de23c2aa',
+                                lat: res.s_master.site_Latitude, //site_Longitude
+                                lng: res.s_master.site_Longitude,
+                                // city: 'Los Angeles',
+                                descriptionTarget: '.weather-description',
+                                windSpeedTarget: '.weather-wind-speed',
+                                minTemperatureTarget: '.weather-min-temperature',
+                                maxTemperatureTarget: '.weather-max-temperature',
+                                humidityTarget: '.weather-humidity',
+                                sunriseTarget: '.weather-sunrise',
+                                sunsetTarget: '.weather-sunset',
+                                placeTarget: '.weather-place',
+                                iconTarget: '.weather-icon',
+                                customIcons: 'public/plugins/open-weather-master/src/img/icons/weather/',
+                                success: function(data) {
+                                    // show weather
+                                    $('.weather-wrapper').show();
+                                    console.log(data);
+                                },
+                                error: function(data) {
+                                    console.log(data.error);
+                                    $('.weather-wrapper').remove();
+                                }
+                            });
+                        }
+                        if (message.destinationName == house_master + "/1/control/json_control_filter") {
+                            var count_stcont = controlstatus.reduce(function(acc, e) {
+                                acc[e] = (e in acc ? acc[e] + 1 : 1);
+                                return acc
+                            }, {});
+                            // alert(groups['1'])
+                            // return false;
+                            if (count_stcont['1'] !== 0) {
+                                var result = message.payloadString;
+                                var parseJSON = $.parseJSON(result);
+                                var data_array = parseJSON.control_status;
+                                console.log(parseJSON);
+
+                                if (data_array.Mode === "Auto") { //Auto
+                                    $(".sw_mode_Manual").removeClass("active");
+                                    $(".sw_mode_Auto").addClass("active");
+                                } else if (data_array.Mode === "Manual") {
+                                    $(".sw_mode_Auto").removeClass("active");
+                                    $(".sw_mode_Manual").addClass("active");
+                                }
+                                // alert(imgCon['drip_1'][1])
+                                // dripper_1
+                                if (controlstatus[1] == 1) {
+                                    if (data_array.dripper_1 === "OFF") {
+                                        $(".dash_img_con_1").attr("src", "public/images/control/" + imgCon['drip_1'][1]);
+                                        $(".sw_manual_1").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_1").attr("src", "public/images/control/" + imgCon['drip_1'][0]);
+                                        $(".sw_manual_1").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_1", c_dash = data_array.dripper_1, c_img_off = imgCon['drip_1'][1], c_img_on = imgCon['drip_1'][0], ch = '1');
+                                }
+
+                                // dripper_2
+                                if (controlstatus[2] == 1) {
+                                    if (data_array.dripper_2 === "OFF") {
+                                        $(".dash_img_con_2").attr("src", "public/images/control/" + imgCon['drip_2'][1]);
+                                        $(".sw_manual_2").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_2").attr("src", "public/images/control/" + imgCon['drip_2'][0]);
+                                        $(".sw_manual_2").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_2", c_dash = data_array.dripper_2, c_img_off = imgCon['drip_2'][1], c_img_on = imgCon['drip_2'][0], ch = '2');
+                                }
+                                // dripper_3
+                                if (controlstatus[3] == 1) {
+                                    if (data_array.dripper_3 === "OFF") {
+                                        $(".dash_img_con_3").attr("src", "public/images/control/" + imgCon['drip_3'][1]);
+                                        $(".sw_manual_3").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_3").attr("src", "public/images/control/" + imgCon['drip_3'][0]);
+                                        $(".sw_manual_3").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_3", c_dash = data_array.dripper_3, c_img_off = imgCon['drip_3'][1], c_img_on = imgCon['drip_3'][0], ch = '3');
+                                }
+                                // dripper_4
+                                if (controlstatus[4] == 1) {
+                                    if (data_array.dripper_4 === "OFF") {
+                                        $(".dash_img_con_4").attr("src", "public/images/control/" + imgCon['drip_4'][1]);
+                                        $(".sw_manual_4").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_4").attr("src", "public/images/control/" + imgCon['drip_4'][0]);
+                                        $(".sw_manual_4").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_4", c_dash = data_array.dripper_4, c_img_off = imgCon['drip_4'][1], c_img_on = imgCon['drip_4'][0], ch = '4');
+                                }
+                                // dripper_5
+                                if (controlstatus[5] == 1) {
+                                    if (data_array.dripper_5 === "OFF") {
+                                        $(".dash_img_con_5").attr("src", "public/images/control/" + imgCon['drip_5'][1]);
+                                        $(".sw_manual_5").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_5").attr("src", "public/images/control/" + imgCon['drip_5'][0]);
+                                        $(".sw_manual_5").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_5", c_dash = data_array.dripper_5, c_img_off = imgCon['drip_5'][1], c_img_on = imgCon['drip_5'][0], ch = '5');
+                                }
+                                // dripper_6
+                                if (controlstatus[6] == 1) {
+                                    if (data_array.dripper_6 === "OFF") {
+                                        $(".dash_img_con_6").attr("src", "public/images/control/" + imgCon['drip_6'][1]);
+                                        $(".sw_manual_6").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_6").attr("src", "public/images/control/" + imgCon['drip_6'][0]);
+                                        $(".sw_manual_6").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_6", c_dash = data_array.dripper_6, c_img_off = imgCon['drip_6'][1], c_img_on = imgCon['drip_6'][0], ch = '6');
+                                }
+                                // dripper_7
+                                if (controlstatus[7] == 1) {
+                                    if (data_array.dripper_7 === "OFF") {
+                                        $(".dash_img_con_7").attr("src", "public/images/control/" + imgCon['drip_7'][1]);
+                                        $(".sw_manual_7").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_7").attr("src", "public/images/control/" + imgCon['drip_7'][0]);
+                                        $(".sw_manual_7").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_7", c_dash = data_array.dripper_7, c_img_off = imgCon['drip_7'][1], c_img_on = imgCon['drip_7'][0], ch = '7');
+                                }
+                                // dripper_8
+                                if (controlstatus[8] == 1) {
+                                    if (data_array.dripper_8 === "OFF") {
+                                        $(".dash_img_con_8").attr("src", "public/images/control/" + imgCon['drip_8'][1]);
+                                        $(".sw_manual_8").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_8").attr("src", "public/images/control/" + imgCon['drip_8'][0]);
+                                        $(".sw_manual_8").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_8", c_dash = data_array.dripper_8, c_img_off = imgCon['drip_8'][1], c_img_on = imgCon['drip_8'][0], ch = '8');
+                                }
+                                // foggy
+                                if (controlstatus[9] == 1) {
+                                    if (data_array.foggy === "OFF") {
+                                        $(".dash_img_con_9").attr("src", "public/images/control/" + imgCon['foggy'][1]);
+                                        $(".sw_manual_9").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_9").attr("src", "public/images/control/" + imgCon['foggy'][0]);
+                                        $(".sw_manual_9").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_9", c_dash = data_array.foggy, c_img_off = imgCon['foggy'][1], c_img_on = imgCon['foggy'][0], ch = '9');
+                                }
+                                // fan
+                                if (controlstatus[10] == 1) {
+                                    if (data_array.fan === "OFF") {
+                                        $(".dash_img_con_10").attr("src", "public/images/control/" + imgCon['fan'][1]);
+                                        $(".sw_manual_10").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_10").attr("src", "public/images/control/" + imgCon['fan'][0]);
+                                        $(".sw_manual_10").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_10", c_dash = data_array.fan, c_img_off = imgCon['fan'][1], c_img_on = imgCon['fan'][1], ch = '10');
+                                }
+
+                                //Slan
+                                if (controlstatus[11] == 1) {
+                                    if (data_array.shader === "0") {
+                                        $(".dash_img_con_11").attr("src", "public/images/control/" + imgCon['shader'][0], ch = '11');
+                                    } else if (data_array.shader === "1") {
+                                        $(".dash_img_con_11").attr("src", "public/images/control/" + imgCon['shader'][1], ch = '11');
+                                    } else if (data_array.shader === "2") {
+                                        $(".dash_img_con_11").attr("src", "public/images/control/" + imgCon['shader'][2], ch = '11');
+                                    } else if (data_array.shader === "3") {
+                                        $(".dash_img_con_11").attr("src", "public/images/control/" + imgCon['shader'][3], ch = '11');
+                                    } else if (data_array.shader === "4") {
+                                        $(".dash_img_con_11").attr("src", "public/images/control/" + imgCon['shader'][4], ch = '11');
+                                    }
+
+                                    // modal_manual
+                                    if (data_array["shader"] == 0) {
+                                        var shader_slw = "0 : ปิด 100%";
+                                        $(".sw_shader0").addClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 1) {
+                                        var shader_slw = "1 : เปิด 25%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").addClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 2) {
+                                        var shader_slw = "2 : เปิด 50%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").addClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 3) {
+                                        var shader_slw = "3 : เปิด 75%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").addClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 4) {
+                                        var shader_slw = "4 : เปิด 100%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").addClass("active");
+                                    }
+                                    $(".shader_slw").html(shader_slw);
+                                } else {
+                                    $(".dash_c11").hide();
+                                }
+
+                                // fertilizer
+                                if (controlstatus[12] == 1) {
+                                    if (data_array.fertilizer === "OFF") {
+                                        $(".dash_img_con_12").attr("src", "public/images/control/" + imgCon['fertilizer'][1]);
+                                        $(".sw_manual_12").bootstrapToggle('off');
+                                    } else {
+                                        $(".dash_img_con_12").attr("src", "public/images/control/" + imgCon['fertilizer'][0]);
+                                        $(".sw_manual_12").bootstrapToggle('on');
+                                    }
+                                    // cont_dash_show(img_c = "dash_img_con_12", c_dash = data_array.fertilizer, c_img_off = imgCon['fertilizer'][1], c_img_on = imgCon['fertilizer'][0], ch = '12');
+                                }
+
+                                function cont_dash_show(img_c, c_dash, c_img_off, c_img_on, ch) {
+                                    console.log(c_dash)
+                                    if (c_dash === "OFF") {
+                                        $("." + img_c).attr("src", "public/images/control/" + c_img_off);
+                                        $(".sw_manual_" + ch).bootstrapToggle('on');
+                                    } else if (c_dash === "ON") {
+                                        $("." + img_c).attr("src", "public/images/control/" + c_img_on);
+                                        $(".sw_manual_1").bootstrapToggle('on');
+                                    }
+                                }
+                                return false;
+                                // dripper_3
+                                if (Contstatus.controlstatus_3 === "1") {
+                                    $(".dash_c3").show();
+                                    $(".title_c3").html(Contname.conttrolname_3);
+                                    cont_dash_show(img_c = "img_c3", c_dash = data_array.dripper_3, c_img_off = Controlimg.drip_3_off, c_img_on = Controlimg.drip_3_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.dripper_3, sw_1 = "sw_drip3_on", sw_2 = "sw_drip3_off");
+                                } else {
+                                    $(".dash_c3").hide();
+                                }
+
+                                // dripper_4
+                                if (Contstatus.controlstatus_4 === "1") {
+                                    $(".dash_c4").show();
+                                    $(".title_c4").html(Contname.conttrolname_4);
+                                    cont_dash_show(img_c = "img_c4", c_dash = data_array.dripper_4, c_img_off = Controlimg.drip_4_off, c_img_on = Controlimg.drip_4_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.dripper_4, sw_1 = "sw_drip4_on", sw_2 = "sw_drip4_off");
+                                } else {
+                                    $(".dash_c4").hide();
+                                }
+
+                                // dripper_5
+                                if (Contstatus.controlstatus_5 === "1") {
+                                    $(".dash_c5").show();
+                                    $(".title_c5").html(Contname.conttrolname_5);
+                                    cont_dash_show(img_c = "img_c5", c_dash = data_array.dripper_5, c_img_off = Controlimg.drip_5_off, c_img_on = Controlimg.drip_5_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.dripper_5, sw_1 = "sw_drip5_on", sw_2 = "sw_drip5_off");
+                                } else {
+                                    $(".dash_c5").hide();
+                                }
+
+                                // dripper_6
+                                if (Contstatus.controlstatus_6 === "1") {
+                                    $(".dash_c6").show();
+                                    $(".title_c6").html(Contname.conttrolname_6);
+                                    cont_dash_show(img_c = "img_c6", c_dash = data_array.dripper_6, c_img_off = Controlimg.drip_6_off, c_img_on = Controlimg.drip_6_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.dripper_6, sw_1 = "sw_drip6_on", sw_2 = "sw_drip6_off");
+                                } else {
+                                    $(".dash_c6").hide();
+                                }
+
+                                // dripper_7
+                                if (Contstatus.controlstatus_7 === "1") {
+                                    $(".dash_c7").show();
+                                    $(".title_c7").html(Contname.conttrolname_7);
+                                    cont_dash_show(img_c = "img_c7", c_dash = data_array.dripper_7, c_img_off = Controlimg.drip_7_off, c_img_on = Controlimg.drip_7_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.dripper_7, sw_1 = "sw_drip7_on", sw_2 = "sw_drip7_off");
+                                } else {
+                                    $(".dash_c7").hide();
+                                }
+
+                                // dripper_8
+                                if (Contstatus.controlstatus_8 === "1") {
+                                    $(".dash_c8").show();
+                                    $(".title_c8").html(Contname.conttrolname_8);
+                                    cont_dash_show(img_c = "img_c8", c_dash = data_array.dripper_8, c_img_off = Controlimg.drip_8_off, c_img_on = Controlimg.drip_8_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.dripper_8, sw_1 = "sw_drip8_on", sw_2 = "sw_drip8_off");
+                                } else {
+                                    $(".dash_c8").hide();
+                                }
+
+                                // foggy
+                                if (Contstatus.controlstatus_9 === "1") {
+                                    $(".dash_c9").show();
+                                    $(".title_c9").html(Contname.conttrolname_9);
+                                    cont_dash_show(img_c = "img_c9", c_dash = data_array.foggy, c_img_off = Controlimg.foggy_off, c_img_on = Controlimg.foggy_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.foggy, sw_1 = "sw_foggy_on", sw_2 = "sw_foggy_off");
+                                } else {
+                                    $(".dash_c9").hide();
+                                }
+
+                                // fan
+                                if (Contstatus.controlstatus_10 === "1") {
+                                    $(".dash_c10").show();
+                                    $(".title_c10").html(Contname.conttrolname_10);
+                                    cont_dash_show(img_c = "img_c10", c_dash = data_array.fan, c_img_off = Controlimg.fan_off, c_img_on = Controlimg.fan_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.fan, sw_1 = "sw_fan_on", sw_2 = "sw_fan_off");
+                                } else {
+                                    $(".dash_c10").hide();
+                                }
+
+                                //Slan
+                                if (Contstatus.controlstatus_11 === "1") {
+                                    // console.log("aaa " + data_array.shader);
+                                    $(".dash_c11").show();
+                                    $(".title_c11").html(Contname.conttrolname_11);
+                                    if (data_array.shader === "0") {
+                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_0);
+                                    } else if (data_array.shader === "1") {
+                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_1);
+                                    } else if (data_array.shader === "2") {
+                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_2);
+                                    } else if (data_array.shader === "3") {
+                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_3);
+                                    } else if (data_array.shader === "4") {
+                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_4);
+                                    }
+
+                                    // modal_manual
+                                    if (data_array["shader"] == 0) {
+                                        var shader_slw = "0 : Close 0%";
+                                        $(".sw_shader0").addClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 1) {
+                                        var shader_slw = "1 : Close 25%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").addClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 2) {
+                                        var shader_slw = "2 : Close 50%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").addClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 3) {
+                                        var shader_slw = "3 : Close 75%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").addClass("active");
+                                        $(".sw_shader4").removeClass("active");
+                                    }
+                                    if (data_array["shader"] == 4) {
+                                        var shader_slw = "4 : Close 100%";
+                                        $(".sw_shader0").removeClass("active");
+                                        $(".sw_shader1").removeClass("active");
+                                        $(".sw_shader2").removeClass("active");
+                                        $(".sw_shader3").removeClass("active");
+                                        $(".sw_shader4").addClass("active");
+                                    }
+                                    $(".shader_slw").html(shader_slw);
+                                } else {
+                                    $(".dash_c11").hide();
+                                }
+
+                                // fertilizer
+                                if (Contstatus.controlstatus_12 === "1") {
+                                    $(".dash_c12").show();
+                                    $(".title_c12").html(Contname.conttrolname_12);
+                                    cont_dash_show(img_c = "img_c12", c_dash = data_array.fertilizer, c_img_off = Controlimg.fertilizer_off, c_img_on = Controlimg.fertilizer_on);
+                                    // modal_manual
+                                    SW_Control_SLW(result = data_array.fertilizer, sw_1 = "sw_fertilizer_on", sw_2 = "sw_fertilizer_off");
+                                } else {
+                                    $(".dash_c12").hide();
+                                }
+
+                                function cont_dash_show(img_c, c_dash, c_img_off, c_img_on) {
+                                    if (c_dash === "OFF") {
+                                        $("." + img_c).attr("src", "public/images/control/" + c_img_off);
+                                    } else if (c_dash === "ON") {
+                                        $("." + img_c).attr("src", "public/images/control/" + c_img_on);
+                                    }
+                                }
+
+                                function SW_Control_SLW(result, sw_1, sw_2) {
+                                    if (result === "ON") {
+                                        $("." + sw_2).removeClass("text-white btn-danger").html('<i class="fa fa-square-o"></i> OFF');
+                                        $("." + sw_1).addClass("text-white btn-success active").html('<i class="fa fa-check-square-o"></i> ON');
+                                    } else {
+                                        $("." + sw_1).removeClass("text-white btn-success").html('<i class="fa fa-square-o"></i> ON');
+                                        $("." + sw_2).addClass("text-white btn-danger active").html('<i class="fa fa-check-square-o"></i> OFF');
+                                    }
+                                }
+                                swal.close();
+                            }
+                        }
+
+                    } // exit_message
+                    connect();
+                }
+
+            }
+        });
+    </script>
+
+
+
+
+
+    <script>
+        $(".logout").click(function() {
+            logout()
+        });
+        // $('.aaa').click(function() {
+        $('.aaa').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                data: {
+                    'city': 'ฟฟฟฟฟฟ',
+                    'country': 'India',
+                },
+                // contentType: 'application/json',
+                url: 'http://localhost:3001/ajax/',
+                success: function(data) {
+                    alert(data);
+                }
+            });
+        });
+
+
+
+        // let strdate = new Date();
+        // var date = moment(new Date()).add(-10, 'minutes').format('YYYY/MM/DD - HH:mm:ss');
+        // console.log(date);
+    </script>
+
+    <script>
+    </script>
+</body>
+
+</html>

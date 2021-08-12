@@ -4,7 +4,7 @@ require "../config_db/connectdb.php";
 // $house_siteID = $_SESSION["site_id"];
 // $houseID = $_SESSION["house_id"];
 $house_master = $_POST["house_master"];
-$start_day = date("Y/m/d - H:i:s", strtotime('-6 hour'));
+$start_day = date("Y/m/d - H:i:s", strtotime('-1 day'));//'-6 hour'));
 $stop_day = date("Y/m/d - H:i:ss");
 
 $stmt1 = $dbcon->prepare("SELECT * from tb3_dashstatus WHERE dashstatus_sn = '$house_master' order by dashstatus_id limit 1");
@@ -463,7 +463,7 @@ try {
             FROM tb_data_sensor WHERE data_sn = '$house_master' AND data_timestamp BETWEEN '$start_day' AND '$stop_day' 
                                 ORDER BY data_timestamp "; // AND DataST1_1 > 0 
     }
-    $stmt = $dbcon->prepare($sql);
+    $stmt = $dbcon->query($sql);
     $stmt->execute();
 } catch (Exception $ex) {
     echo $ex->getMessage();
