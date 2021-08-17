@@ -567,9 +567,13 @@
                                 if (data_array.Mode === "Auto") { //Auto
                                     $(".sw_mode_Manual").removeClass("active");
                                     $(".sw_mode_Auto").addClass("active");
+                                    $(".sw_manual").hide();
+                                    $(".sw_auto").show();
                                 } else if (data_array.Mode === "Manual") {
                                     $(".sw_mode_Auto").removeClass("active");
                                     $(".sw_mode_Manual").addClass("active");
+                                    $(".sw_manual").show();
+                                    $(".sw_auto").hide();
                                 }
                                 // alert(imgCon['drip_1'][1])
                                 // dripper_1
