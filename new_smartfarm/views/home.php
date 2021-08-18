@@ -639,7 +639,7 @@
             // if (Contstatus !== 0) {
 
             // if (house_master !== "KMUMT001") {
-                client.subscribe(house_master + "/1/control/json_control_filter", options);
+                client.subscribe(house_master + "/1/control/time_control", options);
             // } else {
             //     client.subscribe(house_master + "/1/control/mode", options);
             //     client.subscribe(house_master + "/1/control/control_st_1", options);
@@ -872,286 +872,7 @@
                 });
             }
             // ------- Switch control --------------
-        } // exit_message
-        connect();
-    }
-
-    $(".sw_auto").click(function () { 
-        $('.input_check').off('change');
-        var channel = $(this).attr("id");
-        // alert(channel);
-        $.ajax({
-            url: "routes/get_auto_control.php",
-            method: "post",
-            data: { 
-                house_master: house_master,
-                channel : channel
-            },
-            dataType: "json",
-            success: function(res) {
-                $(".channel").val(channel);
-                // alert(channel)
-                console.log(res)
-                
-                if(channel != 9){
-                    $(".time_loop").hide();
-                }else{
-                    $(".time_loop").show();
-                    if(res.st_7 == 0){
-                        $("#sw_7").bootstrapToggle('off');
-                        $("#time_s_7").prop('disabled', true).val(res.t_s_7);
-                        $("#time_e_7").prop('disabled', true).val(res.t_e_7);
-                        $("#time_on_7").prop('disabled', true).val(res.t_on_7);
-                        $("#time_off_7").prop('disabled', true).val(res.t_off_7);
-                    }else{
-                        $("#sw_7").bootstrapToggle('on');
-                        $("#time_s_7").prop('disabled', false).val(res.t_s_7);
-                        $("#time_e_7").prop('disabled', false).val(res.t_e_7);
-                        $("#time_on_7").prop('disabled', false).val(res.t_on_7);
-                        $("#time_off_7").prop('disabled', false).val(res.t_off_7);
-                    }
-                }
-                if(channel == 11){
-                    $(".start_7").html("TIME");
-                    $(".end_7").html("LEVEL");
-                    $("#time_se_1").show();
-                    $("#time_se_2").show();
-                    $("#time_se_3").show();
-                    $("#time_se_4").show();
-                    $("#time_se_5").show();
-                    $("#time_se_6").show();
-                    $("#time_e_1").hide();
-                    $("#time_e_2").hide();
-                    $("#time_e_3").hide();
-                    $("#time_e_4").hide();
-                    $("#time_e_5").hide();
-                    $("#time_e_6").hide();
-                    if(res.st_1 == 0){
-                        $("#sw_1").bootstrapToggle('off');
-                        $("#time_s_1").prop('disabled', true).val("");
-                        $("#time_se_1").prop('disabled', true).val("0");
-                        $("#sw_2").bootstrapToggle('disable');
-                        $("#sw_3").bootstrapToggle('disable');
-                        $("#sw_4").bootstrapToggle('disable');
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }else{
-                        $("#sw_1").bootstrapToggle('on');
-                        $("#time_s_1").prop('disabled', false).val(res.t_s_1);
-                        $("#time_se_1").prop('disabled', false).val(res.t_e_1);
-                        $("#sw_2").bootstrapToggle('enable');
-                        $("#sw_3").bootstrapToggle('disable');
-                        $("#sw_4").bootstrapToggle('disable');
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }
-                    if(res.st_2 == 0){
-                        $("#sw_2").bootstrapToggle('off');
-                        $("#time_s_2").prop('disabled', true).val("");
-                        $("#time_se_2").prop('disabled', true).val("0");
-                        $("#sw_3").bootstrapToggle('disable');
-                        $("#sw_4").bootstrapToggle('disable');
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }else{
-                        $("#sw_2").bootstrapToggle('on');
-                        $("#time_s_2").prop('disabled', false).val(res.t_s_2);
-                        $("#time_se_2").prop('disabled', false).val(res.t_e_2);
-                        $("#sw_3").bootstrapToggle('enable');
-                        $("#sw_4").bootstrapToggle('disable');
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }
-                    if(res.st_3 == 0){
-                        $("#sw_3").bootstrapToggle('off');
-                        $("#time_s_3").prop('disabled', true).val("");
-                        $("#time_se_3").prop('disabled', true).val("0");
-                        $("#sw_4").bootstrapToggle('disable');
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }else{
-                        $("#sw_3").bootstrapToggle('on');
-                        $("#time_s_3").prop('disabled', false).val(res.t_s_3);
-                        $("#time_se_3").prop('disabled', false).val(res.t_e_3);
-                        $("#sw_4").bootstrapToggle('enable');
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }
-                    if(res.st_4 == 0){
-                        $("#sw_4").bootstrapToggle('off');
-                        $("#time_s_4").prop('disabled', true).val("");
-                        $("#time_se_4").prop('disabled', true).val("0");
-                        $("#sw_5").bootstrapToggle('disable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }else{
-                        $("#sw_4").bootstrapToggle('on');
-                        $("#time_s_4").prop('disabled', false).val(res.t_s_4);
-                        $("#time_se_4").prop('disabled', false).val(res.t_e_4);
-                        $("#sw_5").bootstrapToggle('enable');
-                        $("#sw_6").bootstrapToggle('disable');
-                    }
-                    if(res.st_5 == 0){
-                        $("#sw_5").bootstrapToggle('off');
-                        $("#time_s_5").prop('disabled', true).val("");
-                        $("#time_se_5").prop('disabled', true).val("0");
-                        $("#sw_6").bootstrapToggle('disable');
-                    }else{
-                        $("#sw_5").bootstrapToggle('on');
-                        $("#time_s_5").prop('disabled', false).val(res.t_s_5);
-                        $("#time_se_5").prop('disabled', false).val(res.t_e_5);
-                        $("#sw_6").bootstrapToggle('enable');
-                    }
-                    if(res.st_6 == 0){
-                        $("#sw_6").bootstrapToggle('off');
-                        $("#time_s_6").prop('disabled', true).val("");
-                        $("#time_se_6").prop('disabled', true).val("0");
-                    }else{
-                        $("#sw_6").bootstrapToggle('on');
-                        $("#time_s_6").prop('disabled', false).val(res.t_s_6);
-                        $("#time_se_6").prop('disabled', false).val(res.t_e_6);
-                    }
-                }else{
-                    $(".start_7").html("START");
-                    $(".end_7").html("END");
-                    $("#sw_1").bootstrapToggle('enable');
-                    $("#sw_2").bootstrapToggle('enable');
-                    $("#sw_3").bootstrapToggle('enable');
-                    $("#sw_4").bootstrapToggle('enable');
-                    $("#sw_5").bootstrapToggle('enable');
-                    $("#sw_6").bootstrapToggle('enable');
-                    $("#time_e_1").show();
-                    $("#time_e_2").show();
-                    $("#time_e_3").show();
-                    $("#time_e_4").show();
-                    $("#time_e_5").show();
-                    $("#time_e_6").show();
-                    $("#time_se_1").hide();
-                    $("#time_se_2").hide();
-                    $("#time_se_3").hide();
-                    $("#time_se_4").hide();
-                    $("#time_se_5").hide();
-                    $("#time_se_6").hide();
-                    
-                    if(res.st_1 == 0){
-                        $("#sw_1").bootstrapToggle('off');
-                        $("#time_s_1").prop('disabled', true).val("");
-                        $("#time_e_1").prop('disabled', true).val("");
-                    }else{
-                        $("#sw_1").bootstrapToggle('on');
-                        $("#time_s_1").prop('disabled', false).val(res.t_s_1);
-                        $("#time_e_1").prop('disabled', false).val(res.t_e_1);
-                    }
-                    if(res.st_2 == 0){
-                        $("#sw_2").bootstrapToggle('off');
-                        $("#time_s_2").prop('disabled', true).val("");
-                        $("#time_e_2").prop('disabled', true).val("");
-                    }else{
-                        $("#sw_2").bootstrapToggle('on');
-                        $("#time_s_2").prop('disabled', false).val(res.t_s_2);
-                        $("#time_e_2").prop('disabled', false).val(res.t_e_2);
-                    }
-                    if(res.st_3 == 0){
-                        $("#sw_3").bootstrapToggle('off');
-                        $("#time_s_3").prop('disabled', true).val("");
-                        $("#time_e_3").prop('disabled', true).val("");
-                    }else{
-                        $("#sw_3").bootstrapToggle('on');
-                        $("#time_s_3").prop('disabled', false).val(res.t_s_3);
-                        $("#time_e_3").prop('disabled', false).val(res.t_e_3);
-                    }
-                    if(res.st_4 == 0){
-                        $("#sw_4").bootstrapToggle('off');
-                        $("#time_s_4").prop('disabled', true).val("");
-                        $("#time_e_4").prop('disabled', true).val("");
-                    }else{
-                        $("#sw_4").bootstrapToggle('on');
-                        $("#time_s_4").prop('disabled', false).val(res.t_s_4);
-                        $("#time_e_4").prop('disabled', false).val(res.t_e_4);
-                    }
-                    if(res.st_5 == 0){
-                        $("#sw_5").bootstrapToggle('off');
-                        $("#time_s_5").prop('disabled', true).val("");
-                        $("#time_e_5").prop('disabled', true).val("");
-                    }else{
-                        $("#sw_5").bootstrapToggle('on');
-                        $("#time_s_5").prop('disabled', false).val(res.t_s_5);
-                        $("#time_e_5").prop('disabled', false).val(res.t_e_5);
-                    }
-                    if(res.st_6 == 0){
-                        $("#sw_6").bootstrapToggle('off');
-                        $("#time_s_6").prop('disabled', true).val("");
-                        $("#time_e_6").prop('disabled', true).val("");
-                    }else{
-                        $("#sw_6").bootstrapToggle('on');
-                        $("#time_s_6").prop('disabled', false).val(res.t_s_6);
-                        $("#time_e_6").prop('disabled', false).val(res.t_e_6);
-                    }
-                }
-                $("#Modal_Auto_control").modal("show");
-                
-                $('.input_check').change(function() {
-                    var input_num = this.id.split("_");
-                    // alert(Number(input_num[1]));
-                    if(channel == 11){ // slan
-                        if ($(this).prop('checked') === true) {
-                            $("#time_s_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
-                            $("#time_se_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_e_" + Number(input_num[1])));
-                            $("#sw_" +(Number(input_num[1]) + 1)).bootstrapToggle('enable');
-                            for (var t = (Number(input_num[1]+1)); t <= 6; t++) {
-                                $("#sw_" +(t+1)).bootstrapToggle('off').bootstrapToggle('disable')
-                            }
-                        }else{
-                            $("#time_s_" + Number(input_num[1])).prop('disabled', true).val("");
-                            $("#time_se_" + Number(input_num[1])).prop('disabled', true).val("0");
-                            for (var t = Number(input_num[1]); t <= 6; t++) {
-                                $("#sw_" +(t + 1)).bootstrapToggle('off').bootstrapToggle('disable');
-                            }
-                        }
-
-                    }else if(channel == 9){ // foggy
-                        if (Number(input_num[1]) == 7) { // sw_7
-                            if ($(this).prop('checked') === true) { // on 7
-                                $("#time_s_7").prop('disabled', false).val(res.t_s_7);
-                                $("#time_e_7").prop('disabled', false).val(res.t_s_7);
-                                $("#time_on_7").prop('disabled', false).val(res.t_on_7);
-                                $("#time_off_7").prop('disabled', false).val(res.t_off_7);
-                                $("#sw_1").bootstrapToggle('off');
-                                $("#sw_2").bootstrapToggle('off');
-                                $("#sw_3").bootstrapToggle('off');
-                                $("#sw_4").bootstrapToggle('off');
-                                $("#sw_5").bootstrapToggle('off');
-                                $("#sw_6").bootstrapToggle('off');
-                            }else{ // off_7
-                                $("#time_s_7").prop('disabled', true).val("");
-                                $("#time_e_7").prop('disabled', true).val("");
-                                $("#time_on_7").prop('disabled', true).val("");
-                                $("#time_off_7").prop('disabled', true).val("");
-                            }
-                        }else{ // sw_!7
-                            if ($(this).prop('checked') === true) { // on
-                                $("#sw_7").bootstrapToggle('off'); 
-                                $("#time_s_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
-                                $("#time_e_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
-                            }else{ // off
-                                $("#time_s_" + Number(input_num[1])).prop('disabled', true).val("");
-                                $("#time_e_" + Number(input_num[1])).prop('disabled', true).val("");
-                            }
-                        }
-                    }else{ // != foggy != slan
-                        if ($(this).prop('checked') === true) {
-                            $("#time_s_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
-                            $("#time_e_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
-                        }else{
-                            $("#time_s_" + Number(input_num[1])).prop('disabled', true).val("");
-                            $("#time_e_" + Number(input_num[1])).prop('disabled', true).val("");
-                        }
-                    }
-                });
-            }// succress
-        });
-    });
-    
-    $("#save_auto_cont").click(function(){
+            $("#save_auto_cont").click(function(){
         var channel = $(".channel").val();
         // alert(channel)
         if(channel == 9){
@@ -1596,6 +1317,11 @@
         if ($("#sw_5").prop('checked') == true) { var sw_5 = 1; } else { var sw_5 = 0; }
         if ($("#sw_6").prop('checked') == true) { var sw_6 = 1; } else { var sw_6 = 0; }
         if ($("#sw_7").prop('checked') == true) { var sw_7 = 1; } else { var sw_7 = 0; }
+        if (message.destinationName == house_master + "/1/control/time_control") {
+            var result = message.payloadString;
+            var parseJSON = $.parseJSON(result);
+            // console.log(parseJSON);
+            // return false;
         $.ajax({
             type: "POST",
             url: "routes/save_autoControl.php",
@@ -1624,11 +1350,19 @@
                 e_6 : $("#time_e_6").val(),
                 e_7 : $("#time_e_7").val(),
                 on_7 : $("#time_on_7").val(),
-                off_7 : $("#time_off_7").val()
+                off_7 : $("#time_off_7").val(),
+                se_1 : $("#time_se_1").val(),
+                se_2 : $("#time_se_2").val(),
+                se_3 : $("#time_se_3").val(),
+                se_4 : $("#time_se_4").val(),
+                se_5 : $("#time_se_5").val(),
+                se_6 : $("#time_se_6").val(),
+                json : parseJSON
             },
             dataType: 'json',
             success: function(res) {
-                console.log(res)
+                console.log(res.data)
+                // var parseJSON = $.parseJSON(res.data);
                 // if (res.status_login === 'No user') {
                 //     $('.l_err').show();
                 // } else if (res.status_login != '') {
@@ -1636,5 +1370,423 @@
                 // }
             }
         });
+    }
     });
+        } // exit_message
+        connect();
+    }
+
+    $(".sw_auto").click(function () { 
+        $("#save_auto_cont").hide();
+        $('.input_check').off('change');
+        var channel = $(this).attr("id");
+        // alert(channel);
+        $.ajax({
+            url: "routes/get_auto_control.php",
+            method: "post",
+            data: { 
+                house_master: house_master,
+                channel : channel
+            },
+            dataType: "json",
+            success: function(res) {
+                $(".channel").val(channel);
+                // alert(channel)
+                console.log(res)
+                
+                if(channel != 9){
+                    $(".time_loop").hide();
+                }else{
+                    $(".time_loop").show();
+                    if(res.st_7 == 0){
+                        $("#sw_7").bootstrapToggle('off');
+                        $("#time_s_7").prop('disabled', true).val(res.t_s_7);
+                        $("#time_e_7").prop('disabled', true).val(res.t_e_7);
+                        $("#time_on_7").prop('disabled', true).val(res.t_on_7);
+                        $("#time_off_7").prop('disabled', true).val(res.t_off_7);
+                    }else{
+                        $("#sw_7").bootstrapToggle('on');
+                        $("#time_s_7").prop('disabled', false).val(res.t_s_7);
+                        $("#time_e_7").prop('disabled', false).val(res.t_e_7);
+                        $("#time_on_7").prop('disabled', false).val(res.t_on_7);
+                        $("#time_off_7").prop('disabled', false).val(res.t_off_7);
+                    }
+                }
+                if(channel == 11){
+                    $(".start_7").html("TIME");
+                    $(".end_7").html("LEVEL");
+                    $("#time_se_1").show();
+                    $("#time_se_2").show();
+                    $("#time_se_3").show();
+                    $("#time_se_4").show();
+                    $("#time_se_5").show();
+                    $("#time_se_6").show();
+                    $("#time_e_1").hide();
+                    $("#time_e_2").hide();
+                    $("#time_e_3").hide();
+                    $("#time_e_4").hide();
+                    $("#time_e_5").hide();
+                    $("#time_e_6").hide();
+                    if(res.st_1 == 0){
+                        $("#sw_1").bootstrapToggle('off');
+                        $("#time_s_1").prop('disabled', true).val("");
+                        $("#time_se_1").prop('disabled', true).val("0");
+                        $("#sw_2").bootstrapToggle('disable');
+                        $("#sw_3").bootstrapToggle('disable');
+                        $("#sw_4").bootstrapToggle('disable');
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }else{
+                        $("#sw_1").bootstrapToggle('on');
+                        $("#time_s_1").prop('disabled', false).val(res.t_s_1);
+                        $("#time_se_1").prop('disabled', false).val(res.t_e_1);
+                        $("#sw_2").bootstrapToggle('enable');
+                        $("#sw_3").bootstrapToggle('disable');
+                        $("#sw_4").bootstrapToggle('disable');
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }
+                    if(res.st_2 == 0){
+                        $("#sw_2").bootstrapToggle('off');
+                        $("#time_s_2").prop('disabled', true).val("");
+                        $("#time_se_2").prop('disabled', true).val("0");
+                        $("#sw_3").bootstrapToggle('disable');
+                        $("#sw_4").bootstrapToggle('disable');
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }else{
+                        $("#sw_2").bootstrapToggle('on');
+                        $("#time_s_2").prop('disabled', false).val(res.t_s_2);
+                        $("#time_se_2").prop('disabled', false).val(res.t_e_2);
+                        $("#sw_3").bootstrapToggle('enable');
+                        $("#sw_4").bootstrapToggle('disable');
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }
+                    if(res.st_3 == 0){
+                        $("#sw_3").bootstrapToggle('off');
+                        $("#time_s_3").prop('disabled', true).val("");
+                        $("#time_se_3").prop('disabled', true).val("0");
+                        $("#sw_4").bootstrapToggle('disable');
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }else{
+                        $("#sw_3").bootstrapToggle('on');
+                        $("#time_s_3").prop('disabled', false).val(res.t_s_3);
+                        $("#time_se_3").prop('disabled', false).val(res.t_e_3);
+                        $("#sw_4").bootstrapToggle('enable');
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }
+                    if(res.st_4 == 0){
+                        $("#sw_4").bootstrapToggle('off');
+                        $("#time_s_4").prop('disabled', true).val("");
+                        $("#time_se_4").prop('disabled', true).val("0");
+                        $("#sw_5").bootstrapToggle('disable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }else{
+                        $("#sw_4").bootstrapToggle('on');
+                        $("#time_s_4").prop('disabled', false).val(res.t_s_4);
+                        $("#time_se_4").prop('disabled', false).val(res.t_e_4);
+                        $("#sw_5").bootstrapToggle('enable');
+                        $("#sw_6").bootstrapToggle('disable');
+                    }
+                    if(res.st_5 == 0){
+                        $("#sw_5").bootstrapToggle('off');
+                        $("#time_s_5").prop('disabled', true).val("");
+                        $("#time_se_5").prop('disabled', true).val("0");
+                        $("#sw_6").bootstrapToggle('disable');
+                    }else{
+                        $("#sw_5").bootstrapToggle('on');
+                        $("#time_s_5").prop('disabled', false).val(res.t_s_5);
+                        $("#time_se_5").prop('disabled', false).val(res.t_e_5);
+                        $("#sw_6").bootstrapToggle('enable');
+                    }
+                    if(res.st_6 == 0){
+                        $("#sw_6").bootstrapToggle('off');
+                        $("#time_s_6").prop('disabled', true).val("");
+                        $("#time_se_6").prop('disabled', true).val("0");
+                    }else{
+                        $("#sw_6").bootstrapToggle('on');
+                        $("#time_s_6").prop('disabled', false).val(res.t_s_6);
+                        $("#time_se_6").prop('disabled', false).val(res.t_e_6);
+                    }
+                }else{
+                    $(".start_7").html("START");
+                    $(".end_7").html("END");
+                    $("#sw_1").bootstrapToggle('enable');
+                    $("#sw_2").bootstrapToggle('enable');
+                    $("#sw_3").bootstrapToggle('enable');
+                    $("#sw_4").bootstrapToggle('enable');
+                    $("#sw_5").bootstrapToggle('enable');
+                    $("#sw_6").bootstrapToggle('enable');
+                    $("#time_e_1").show();
+                    $("#time_e_2").show();
+                    $("#time_e_3").show();
+                    $("#time_e_4").show();
+                    $("#time_e_5").show();
+                    $("#time_e_6").show();
+                    $("#time_se_1").hide();
+                    $("#time_se_2").hide();
+                    $("#time_se_3").hide();
+                    $("#time_se_4").hide();
+                    $("#time_se_5").hide();
+                    $("#time_se_6").hide();
+                    
+                    if(res.st_1 == 0){
+                        $("#sw_1").bootstrapToggle('off');
+                        $("#time_s_1").prop('disabled', true).val("");
+                        $("#time_e_1").prop('disabled', true).val("");
+                    }else{
+                        $("#sw_1").bootstrapToggle('on');
+                        $("#time_s_1").prop('disabled', false).val(res.t_s_1);
+                        $("#time_e_1").prop('disabled', false).val(res.t_e_1);
+                    }
+                    if(res.st_2 == 0){
+                        $("#sw_2").bootstrapToggle('off');
+                        $("#time_s_2").prop('disabled', true).val("");
+                        $("#time_e_2").prop('disabled', true).val("");
+                    }else{
+                        $("#sw_2").bootstrapToggle('on');
+                        $("#time_s_2").prop('disabled', false).val(res.t_s_2);
+                        $("#time_e_2").prop('disabled', false).val(res.t_e_2);
+                    }
+                    if(res.st_3 == 0){
+                        $("#sw_3").bootstrapToggle('off');
+                        $("#time_s_3").prop('disabled', true).val("");
+                        $("#time_e_3").prop('disabled', true).val("");
+                    }else{
+                        $("#sw_3").bootstrapToggle('on');
+                        $("#time_s_3").prop('disabled', false).val(res.t_s_3);
+                        $("#time_e_3").prop('disabled', false).val(res.t_e_3);
+                    }
+                    if(res.st_4 == 0){
+                        $("#sw_4").bootstrapToggle('off');
+                        $("#time_s_4").prop('disabled', true).val("");
+                        $("#time_e_4").prop('disabled', true).val("");
+                    }else{
+                        $("#sw_4").bootstrapToggle('on');
+                        $("#time_s_4").prop('disabled', false).val(res.t_s_4);
+                        $("#time_e_4").prop('disabled', false).val(res.t_e_4);
+                    }
+                    if(res.st_5 == 0){
+                        $("#sw_5").bootstrapToggle('off');
+                        $("#time_s_5").prop('disabled', true).val("");
+                        $("#time_e_5").prop('disabled', true).val("");
+                    }else{
+                        $("#sw_5").bootstrapToggle('on');
+                        $("#time_s_5").prop('disabled', false).val(res.t_s_5);
+                        $("#time_e_5").prop('disabled', false).val(res.t_e_5);
+                    }
+                    if(res.st_6 == 0){
+                        $("#sw_6").bootstrapToggle('off');
+                        $("#time_s_6").prop('disabled', true).val("");
+                        $("#time_e_6").prop('disabled', true).val("");
+                    }else{
+                        $("#sw_6").bootstrapToggle('on');
+                        $("#time_s_6").prop('disabled', false).val(res.t_s_6);
+                        $("#time_e_6").prop('disabled', false).val(res.t_e_6);
+                    }
+                }
+                $("#Modal_Auto_control").modal("show");
+                
+                $('.input_check').change(function() {
+                    var input_num = this.id.split("_");
+                    // alert(Number(input_num[1]));
+                    if(channel == 11){ // slan
+                        if ($(this).prop('checked') === true) {
+                            $("#time_s_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
+                            $("#time_se_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_e_" + Number(input_num[1])));
+                            $("#sw_" +(Number(input_num[1]) + 1)).bootstrapToggle('enable');
+                            for (var t = (Number(input_num[1]+1)); t <= 6; t++) {
+                                $("#sw_" +(t+1)).bootstrapToggle('off').bootstrapToggle('disable')
+                            }
+                        }else{
+                            $("#time_s_" + Number(input_num[1])).prop('disabled', true).val("");
+                            $("#time_se_" + Number(input_num[1])).prop('disabled', true).val("0");
+                            for (var t = Number(input_num[1]); t <= 6; t++) {
+                                $("#sw_" +(t + 1)).bootstrapToggle('off').bootstrapToggle('disable');
+                            }
+                        }
+
+                    }else if(channel == 9){ // foggy
+                        if (Number(input_num[1]) == 7) { // sw_7
+                            if ($(this).prop('checked') === true) { // on 7
+                                $("#time_s_7").prop('disabled', false).val(res.t_s_7);
+                                $("#time_e_7").prop('disabled', false).val(res.t_s_7);
+                                $("#time_on_7").prop('disabled', false).val(res.t_on_7);
+                                $("#time_off_7").prop('disabled', false).val(res.t_off_7);
+                                $("#sw_1").bootstrapToggle('off');
+                                $("#sw_2").bootstrapToggle('off');
+                                $("#sw_3").bootstrapToggle('off');
+                                $("#sw_4").bootstrapToggle('off');
+                                $("#sw_5").bootstrapToggle('off');
+                                $("#sw_6").bootstrapToggle('off');
+                            }else{ // off_7
+                                $("#time_s_7").prop('disabled', true).val("");
+                                $("#time_e_7").prop('disabled', true).val("");
+                                $("#time_on_7").prop('disabled', true).val("");
+                                $("#time_off_7").prop('disabled', true).val("");
+                            }
+                        }else{ // sw_!7
+                            if ($(this).prop('checked') === true) { // on
+                                $("#sw_7").bootstrapToggle('off'); 
+                                $("#time_s_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
+                                $("#time_e_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
+                            }else{ // off
+                                $("#time_s_" + Number(input_num[1])).prop('disabled', true).val("");
+                                $("#time_e_" + Number(input_num[1])).prop('disabled', true).val("");
+                            }
+                        }
+                    }else{ // != foggy != slan
+                        if ($(this).prop('checked') === true) {
+                            $("#time_s_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
+                            $("#time_e_" + Number(input_num[1])).prop('disabled', false).val(eval("res.t_s_" + Number(input_num[1])));
+                        }else{
+                            $("#time_s_" + Number(input_num[1])).prop('disabled', true).val("");
+                            $("#time_e_" + Number(input_num[1])).prop('disabled', true).val("");
+                        }
+                    }
+                    btn_save_show();
+                });
+                $(".input_time").change(function() {
+                    btn_save_show();
+                });
+
+                function btn_save_show(){
+                    if(channel == 9){
+                        var df_data = {
+                            sw_1 : res.st_1,
+                            sw_2 : res.st_2,
+                            sw_3 : res.st_3,
+                            sw_4 : res.st_4,
+                            sw_5 : res.st_5,
+                            sw_6 : res.st_6,
+                            sw_7 : res.st_7,
+                            s_1  : res.t_s_1,
+                            s_2  : res.t_s_2,
+                            s_3  : res.t_s_3,
+                            s_4  : res.t_s_4,
+                            s_5  : res.t_s_5,
+                            s_6  : res.t_s_6,
+                            s_7  : res.t_s_7,
+                            e_1  : res.t_e_1,
+                            e_2  : res.t_e_2,
+                            e_3  : res.t_e_3,
+                            e_4  : res.t_e_4,
+                            e_5  : res.t_e_5,
+                            e_6  : res.t_e_6,
+                            e_7  : res.t_e_7,
+                            on_7  : res.t_on_7,
+                            off_7  : res.t_off_7
+                        };
+                    }else{
+                        var df_data = {
+                            sw_1 : res.st_1,
+                            sw_2 : res.st_2,
+                            sw_3 : res.st_3,
+                            sw_4 : res.st_4,
+                            sw_5 : res.st_5,
+                            sw_6 : res.st_6,
+                            s_1  : res.t_s_1,
+                            s_2  : res.t_s_2,
+                            s_3  : res.t_s_3,
+                            s_4  : res.t_s_4,
+                            s_5  : res.t_s_5,
+                            s_6  : res.t_s_6,
+                            e_1  : res.t_e_1,
+                            e_2  : res.t_e_2,
+                            e_3  : res.t_e_3,
+                            e_4  : res.t_e_4,
+                            e_5  : res.t_e_5,
+                            e_6  : res.t_e_6
+                        };
+                    }
+                    if ($("#sw_1").prop('checked') == true) { var sw_1 = "1"; } else { var sw_1 = "0"; }
+                    if ($("#sw_2").prop('checked') == true) { var sw_2 = "1"; } else { var sw_2 = "0"; }
+                    if ($("#sw_3").prop('checked') == true) { var sw_3 = "1"; } else { var sw_3 = "0"; }
+                    if ($("#sw_4").prop('checked') == true) { var sw_4 = "1"; } else { var sw_4 = "0"; }
+                    if ($("#sw_5").prop('checked') == true) { var sw_5 = "1"; } else { var sw_5 = "0"; }
+                    if ($("#sw_6").prop('checked') == true) { var sw_6 = "1"; } else { var sw_6 = "0"; }
+                    if ($("#sw_7").prop('checked') == true) { var sw_7 = "1"; } else { var sw_7 = "0"; }
+                    if(channel == 9){
+                        var date_chack = {
+                            sw_1 : sw_1,
+                            sw_2 : sw_2,
+                            sw_3 : sw_3,
+                            sw_4 : sw_4,
+                            sw_5 : sw_5,
+                            sw_6 : sw_6,
+                            sw_7 : sw_7,
+                            s_1 : $("#time_s_1").val(),
+                            s_2 : $("#time_s_2").val(),
+                            s_3 : $("#time_s_3").val(),
+                            s_4 : $("#time_s_4").val(),
+                            s_5 : $("#time_s_5").val(),
+                            s_6 : $("#time_s_6").val(),
+                            s_7 : $("#time_s_7").val(),
+                            e_1 : $("#time_e_1").val(),
+                            e_2 : $("#time_e_2").val(),
+                            e_3 : $("#time_e_3").val(),
+                            e_4 : $("#time_e_4").val(),
+                            e_5 : $("#time_e_5").val(),
+                            e_6 : $("#time_e_6").val(),
+                            e_7 : $("#time_e_7").val(),
+                            on_7 : $("#time_on_7").val(),
+                            off_7 : $("#time_off_7").val()
+                        };
+                    }else if(channel == 11){
+                        var date_chack = {
+                            sw_1 : sw_1,
+                            sw_2 : sw_2,
+                            sw_3 : sw_3,
+                            sw_4 : sw_4,
+                            sw_5 : sw_5,
+                            sw_6 : sw_6,
+                            s_1 : $("#time_s_1").val(),
+                            s_2 : $("#time_s_2").val(),
+                            s_3 : $("#time_s_3").val(),
+                            s_4 : $("#time_s_4").val(),
+                            s_5 : $("#time_s_5").val(),
+                            s_6 : $("#time_s_6").val(),
+                            e_1 : $("#time_se_1").val(),
+                            e_2 : $("#time_se_2").val(),
+                            e_3 : $("#time_se_3").val(),
+                            e_4 : $("#time_se_4").val(),
+                            e_5 : $("#time_se_5").val(),
+                            e_6 : $("#time_se_6").val()
+                        };
+                    }else{
+                        var date_chack = {
+                            sw_1 : sw_1,
+                            sw_2 : sw_2,
+                            sw_3 : sw_3,
+                            sw_4 : sw_4,
+                            sw_5 : sw_5,
+                            sw_6 : sw_6,
+                            s_1 : $("#time_s_1").val(),
+                            s_2 : $("#time_s_2").val(),
+                            s_3 : $("#time_s_3").val(),
+                            s_4 : $("#time_s_4").val(),
+                            s_5 : $("#time_s_5").val(),
+                            s_6 : $("#time_s_6").val(),
+                            e_1 : $("#time_e_1").val(),
+                            e_2 : $("#time_e_2").val(),
+                            e_3 : $("#time_e_3").val(),
+                            e_4 : $("#time_e_4").val(),
+                            e_5 : $("#time_e_5").val(),
+                            e_6 : $("#time_e_6").val()
+                        };
+                    }
+                    if(JSON.stringify(df_data) == JSON.stringify(date_chack)){
+                        $("#save_auto_cont").hide();
+                    }else{
+                        $("#save_auto_cont").show();
+                    }
+                }
+            }// succress
+        });
+    });
+    
+    
 </script>
