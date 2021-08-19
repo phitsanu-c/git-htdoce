@@ -49,25 +49,6 @@ $select = 'load_'.$channel.'_st_1 AS st_1,
             load_'.$channel.'_time_on_7 AS t_on_7,
             load_'.$channel.'_time_off_7 AS t_off_7';
 }
-$row = $dbcon->query("SELECT $select from $tb_name WHERE $ch_sn = '$house_master' limit 1 ")->fetch();
-        // $load_1 = [
-        //     'load_1_st_1'       => $row1["load_1_st_1"],
-        //     'load_1_time_s_1'   => $row1["load_1_time_s_1"],
-        //     'load_1_time_e_1'   => $row1["load_1_time_e_1"],
-        //     'load_1_st_2'       => $row1["load_1_st_2"],
-        //     'load_1_time_s_2'   => $row1["load_1_time_s_2"],
-        //     'load_1_time_e_2'   => $row1["load_1_time_e_2"],
-        //     'load_1_st_3'       => $row1["load_1_st_3"],
-        //     'load_1_time_s_3'   => $row1["load_1_time_s_3"],
-        //     'load_1_time_e_3'   => $row1["load_1_time_e_3"],
-        //     'load_1_st_4'       => $row1["load_1_st_4"],
-        //     'load_1_time_s_4'   => $row1["load_1_time_s_4"],
-        //     'load_1_time_e_4'   => $row1["load_1_time_e_4"],
-        //     'load_1_st_5'       => $row1["load_1_st_5"],
-        //     'load_1_time_s_5'   => $row1["load_1_time_s_5"],
-        //     'load_1_time_e_5'   => $row1["load_1_time_e_5"],
-        //     'load_1_st_6'       => $row1["load_1_st_6"],
-        //     'load_1_time_s_6'   => $row1["load_1_time_s_6"],
-        //     'load_1_time_e_6'   => $row1["load_1_time_e_6"]
-        // ];
-        echo json_encode($row);
+$order_by = 'load_'.$channel.'_id';
+$row = $dbcon->query("SELECT $select from $tb_name WHERE $ch_sn = '$house_master' ORDER BY $order_by DESC limit 1 ")->fetch();
+echo json_encode($row);

@@ -873,512 +873,574 @@
             }
             // ------- Switch control --------------
             $("#save_auto_cont").click(function(){
-        var channel = $(".channel").val();
-        // alert(channel)
-        if(channel == 9){
-            if($("#sw_7").prop('checked') == true){
-                if($("#time_s_7").val() === ""){
-                    $('#time_s_7').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_7').removeClass('is-invalid')
-                }
-                if($("#time_e_7").val() === ""){
-                    $('#time_e_7').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_7').removeClass('is-invalid')
-                }
-                if($("#time_s_7").val() >= $("#time_e_7").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER LOOP : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_7').addClass('is-invalid')
-                    $('#time_e_7').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_7').removeClass('is-invalid')
-                    $('#time_e_7').removeClass('is-invalid')
-                }
-                if($("#time_on_7").val() === ""){
-                    $('#time_on_7').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_on_7').removeClass('is-invalid')
-                }
-                if($("#time_off_7").val() === ""){
-                    $('#time_off_7').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_off_7').removeClass('is-invalid')
-                }
-            }else{
-                if($("#sw_1").prop('checked') == true){
-                    if($("#time_s_1").val() === ""){
-                        $('#time_s_1').addClass('is-invalid')
-                        return false;
+                var channel = $(".channel").val();
+                // alert(channel)
+                if(channel == 9){
+                    if($("#sw_7").prop('checked') == true){
+                        if($("#time_s_7").val() === ""){
+                            $('#time_s_7').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_7').removeClass('is-invalid')
+                        }
+                        if($("#time_e_7").val() === ""){
+                            $('#time_e_7').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_7').removeClass('is-invalid')
+                        }
+                        if($("#time_s_7").val() >= $("#time_e_7").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER LOOP : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_7').addClass('is-invalid')
+                            $('#time_e_7').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_7').removeClass('is-invalid')
+                            $('#time_e_7').removeClass('is-invalid')
+                        }
+                        if($("#time_on_7").val() === ""){
+                            $('#time_on_7').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_on_7').removeClass('is-invalid')
+                        }
+                        if($("#time_off_7").val() === ""){
+                            $('#time_off_7').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_off_7').removeClass('is-invalid')
+                        }
                     }else{
-                        $('#time_s_1').removeClass('is-invalid')
+                        if($("#sw_1").prop('checked') == true){
+                            if($("#time_s_1").val() === ""){
+                                $('#time_s_1').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_1').removeClass('is-invalid')
+                            }
+                            if($("#time_e_1").val() === ""){
+                                $('#time_e_1').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_e_1').removeClass('is-invalid')
+                            }
+                            if($("#time_s_1").val() >= $("#time_e_1").val()){
+                                swal_c(type = 'error', title = 'Error...', text = 'TIMMER 1 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                                $('#time_s_1').addClass('is-invalid')
+                                $('#time_e_1').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_1').removeClass('is-invalid')
+                                $('#time_e_1').removeClass('is-invalid')
+                            }
+                        }
+                        if($("#sw_2").prop('checked') == true){
+                            if($("#time_s_2").val() === ""){
+                                $('#time_s_2').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_2').removeClass('is-invalid')
+                            }
+                            if($("#time_e_2").val() === ""){
+                                $('#time_e_2').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_e_2').removeClass('is-invalid')
+                            }
+                            if($("#time_s_2").val() >= $("#time_e_2").val()){
+                                swal_c(type = 'error', title = 'Error...', text = 'TIMMER 2 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                                $('#time_s_2').addClass('is-invalid')
+                                $('#time_e_2').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_2').removeClass('is-invalid')
+                                $('#time_e_2').removeClass('is-invalid')
+                            }
+                        }
+                        if($("#sw_3").prop('checked') == true){
+                            if($("#time_s_3").val() === ""){
+                                $('#time_s_3').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_3').removeClass('is-invalid')
+                            }
+                            if($("#time_e_3").val() === ""){
+                                $('#time_e_3').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_e_3').removeClass('is-invalid')
+                            }
+                            if($("#time_s_3").val() >= $("#time_e_3").val()){
+                                swal_c(type = 'error', title = 'Error...', text = 'TIMMER 3 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                                $('#time_s_3').addClass('is-invalid')
+                                $('#time_e_3').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_3').removeClass('is-invalid')
+                                $('#time_e_3').removeClass('is-invalid')
+                            }
+                        }
+                        if($("#sw_4").prop('checked') == true){
+                            if($("#time_s_4").val() === ""){
+                                $('#time_s_4').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_4').removeClass('is-invalid')
+                            }
+                            if($("#time_e_4").val() === ""){
+                                $('#time_e_4').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_e_4').removeClass('is-invalid')
+                            }
+                            if($("#time_s_4").val() >= $("#time_e_4").val()){
+                                swal_c(type = 'error', title = 'Error...', text = 'TIMMER 4 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                                $('#time_s_4').addClass('is-invalid')
+                                $('#time_e_4').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_4').removeClass('is-invalid')
+                                $('#time_e_4').removeClass('is-invalid')
+                            }
+                        }
+                        if($("#sw_5").prop('checked') == true){
+                            if($("#time_s_5").val() === ""){
+                                $('#time_s_5').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_5').removeClass('is-invalid')
+                            }
+                            if($("#time_e_5").val() === ""){
+                                $('#time_e_5').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_e_5').removeClass('is-invalid')
+                            }
+                            if($("#time_s_5").val() >= $("#time_e_5").val()){
+                                swal_c(type = 'error', title = 'Error...', text = 'TIMMER 5 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                                $('#time_s_5').addClass('is-invalid')
+                                $('#time_e_5').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_5').removeClass('is-invalid')
+                                $('#time_e_5').removeClass('is-invalid')
+                            }
+                        }
+                        if($("#sw_6").prop('checked') == true){
+                            if($("#time_s_6").val() === ""){
+                                $('#time_s_6').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_6').removeClass('is-invalid')
+                            }
+                            if($("#time_e_6").val() === ""){
+                                $('#time_e_6').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_e_6').removeClass('is-invalid')
+                            }
+                            if($("#time_s_6").val() >= $("#time_e_6").val()){
+                                swal_c(type = 'error', title = 'Error...', text = 'TIMMER 6 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                                $('#time_s_6').addClass('is-invalid')
+                                $('#time_e_6').addClass('is-invalid')
+                                return false;
+                            }else{
+                                $('#time_s_6').removeClass('is-invalid')
+                                $('#time_e_6').removeClass('is-invalid')
+                            }
+                        }
                     }
-                    if($("#time_e_1").val() === ""){
-                        $('#time_e_1').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_e_1').removeClass('is-invalid')
+                }else if(channel == 11){
+                    var minsToAdd = 15;
+                    var newTime_d2 = new Date(new Date("1970/01/01 " + $("#time_s_1").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
+                    var newTime_d3 = new Date(new Date("1970/01/01 " + $("#time_s_2").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
+                    var newTime_d4 = new Date(new Date("1970/01/01 " + $("#time_s_3").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
+                    var newTime_d5 = new Date(new Date("1970/01/01 " + $("#time_s_4").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
+                    var newTime_d6 = new Date(new Date("1970/01/01 " + $("#time_s_5").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
+                    
+                        // ----------
+                    if($("#sw_1").prop('checked') == true){
+                        if($("#time_s_1").val() === ""){
+                            $('#time_s_1').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_1').removeClass('is-invalid')
+                        }
                     }
-                    if($("#time_s_1").val() >= $("#time_e_1").val()){
-                        swal_c(type = 'error', title = 'Error...', text = 'TIMMER 1 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                        $('#time_s_1').addClass('is-invalid')
-                        $('#time_e_1').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_1').removeClass('is-invalid')
-                        $('#time_e_1').removeClass('is-invalid')
+                    if($("#sw_2").prop('checked') == true){
+                        if($("#time_s_2").val() === ""){
+                            $('#time_s_2').addClass('is-invalid')
+                            return false;
+                        }else if($("#time_s_2").val() <= newTime_d2){
+                            swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 2 : TIME </b> ต้องมากกว่า <b>' + newTime_d2 + '</b> !');
+                            $("#time_s_2").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $('#time_s_2').removeClass('is-invalid')
+                        }
+                        if($("#time_se_1").val() == $("#time_se_2").val()){
+                            swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 2 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 1 </b> !');
+                            $("#time_se_2").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $("#time_se_2").removeClass("is-invalid");
+                        }
+                    }
+                    if($("#sw_3").prop('checked') == true){
+                        if($("#time_s_3").val() === ""){
+                            $('#time_s_3').addClass('is-invalid')
+                            return false;
+                        }else if($("#time_s_3").val() <= newTime_d3){
+                            swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 3 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d3 + '</b> !');
+                            $("#time_s_3").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $('#time_s_3').removeClass('is-invalid')
+                        }
+                        if($("#time_se_2").val() == $("#time_se_3").val()){
+                            swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 3 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 2 </b> !');
+                            $("#time_se_3").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $("#time_se_3").removeClass("is-invalid");
+                        }
+                    }
+                    if($("#sw_4").prop('checked') == true){
+                        if($("#time_s_4").val() === ""){
+                            $('#time_s_4').addClass('is-invalid')
+                            return false;
+                        }else if($("#time_s_4").val() <= newTime_d4){
+                            swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 4 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d4 + '</b> !');
+                            $("#time_s_4").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $('#time_s_4').removeClass('is-invalid')
+                        }
+                        if($("#time_se_3").val() == $("#time_se_4").val()){
+                            swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 4 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 3 </b> !');
+                            $("#time_se_4").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $("#time_se_4").removeClass("is-invalid");
+                        }
+                    }
+                    if($("#sw_5").prop('checked') == true){
+                        if($("#time_s_5").val() === ""){
+                            $('#time_s_5').addClass('is-invalid')
+                            return false;
+                        }else if($("#time_s_5").val() <= newTime_d5){
+                            swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 5 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d5 + '</b> !');
+                            $("#time_s_5").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $('#time_s_5').removeClass('is-invalid')
+                        }
+                        if($("#time_se_4").val() == $("#time_se_5").val()){
+                            swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 5 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 4 </b> !');
+                            $("#time_se_5").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $("#time_se_5").removeClass("is-invalid");
+                        }
+                    }
+                    if($("#sw_6").prop('checked') == true){
+                        if($("#time_s_6").val() === ""){
+                            $('#time_s_6').addClass('is-invalid')
+                            return false;
+                        }else if($("#time_s_6").val() <= newTime_d6){
+                            swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 6 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d6 + '</b> !');
+                            $("#time_s_6").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $('#time_s_6').removeClass('is-invalid')
+                        }
+                        if($("#time_se_5").val() == $("#time_se_6").val()){
+                            swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 6 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 5 </b> !');
+                            $("#time_se_6").addClass("is-invalid");
+                            return false;
+                        }else{
+                            $("#time_se_6").removeClass("is-invalid");
+                        }
+                    }
+                }else{
+                    if($("#sw_1").prop('checked') == true){
+                        if($("#time_s_1").val() === ""){
+                            $('#time_s_1').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_1').removeClass('is-invalid')
+                        }
+                        if($("#time_e_1").val() === ""){
+                            $('#time_e_1').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_1').removeClass('is-invalid')
+                        }
+                        if($("#time_s_1").val() >= $("#time_e_1").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER 1 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_1').addClass('is-invalid')
+                            $('#time_e_1').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_1').removeClass('is-invalid')
+                            $('#time_e_1').removeClass('is-invalid')
+                        }
+                    }
+                    if($("#sw_2").prop('checked') == true){
+                        if($("#time_s_2").val() === ""){
+                            $('#time_s_2').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_2').removeClass('is-invalid')
+                        }
+                        if($("#time_e_2").val() === ""){
+                            $('#time_e_2').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_2').removeClass('is-invalid')
+                        }
+                        if($("#time_s_2").val() >= $("#time_e_2").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER 2 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_2').addClass('is-invalid')
+                            $('#time_e_2').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_2').removeClass('is-invalid')
+                            $('#time_e_2').removeClass('is-invalid')
+                        }
+                    }
+                    if($("#sw_3").prop('checked') == true){
+                        if($("#time_s_3").val() === ""){
+                            $('#time_s_3').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_3').removeClass('is-invalid')
+                        }
+                        if($("#time_e_3").val() === ""){
+                            $('#time_e_3').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_3').removeClass('is-invalid')
+                        }
+                        if($("#time_s_3").val() >= $("#time_e_3").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER 3 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_3').addClass('is-invalid')
+                            $('#time_e_3').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_3').removeClass('is-invalid')
+                            $('#time_e_3').removeClass('is-invalid')
+                        }
+                    }
+                    if($("#sw_4").prop('checked') == true){
+                        if($("#time_s_4").val() === ""){
+                            $('#time_s_4').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_4').removeClass('is-invalid')
+                        }
+                        if($("#time_e_4").val() === ""){
+                            $('#time_e_4').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_4').removeClass('is-invalid')
+                        }
+                        if($("#time_s_4").val() >= $("#time_e_4").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER 4 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_4').addClass('is-invalid')
+                            $('#time_e_4').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_4').removeClass('is-invalid')
+                            $('#time_e_4').removeClass('is-invalid')
+                        }
+                    }
+                    if($("#sw_5").prop('checked') == true){
+                        if($("#time_s_5").val() === ""){
+                            $('#time_s_5').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_5').removeClass('is-invalid')
+                        }
+                        if($("#time_e_5").val() === ""){
+                            $('#time_e_5').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_5').removeClass('is-invalid')
+                        }
+                        if($("#time_s_5").val() >= $("#time_e_5").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER 5 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_5').addClass('is-invalid')
+                            $('#time_e_5').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_5').removeClass('is-invalid')
+                            $('#time_e_5').removeClass('is-invalid')
+                        }
+                    }
+                    if($("#sw_6").prop('checked') == true){
+                        if($("#time_s_6").val() === ""){
+                            $('#time_s_6').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_6').removeClass('is-invalid')
+                        }
+                        if($("#time_e_6").val() === ""){
+                            $('#time_e_6').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_e_6').removeClass('is-invalid')
+                        }
+                        if($("#time_s_6").val() >= $("#time_e_6").val()){
+                            swal_c(type = 'error', title = 'Error...', text = 'TIMMER 6 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
+                            $('#time_s_6').addClass('is-invalid')
+                            $('#time_e_6').addClass('is-invalid')
+                            return false;
+                        }else{
+                            $('#time_s_6').removeClass('is-invalid')
+                            $('#time_e_6').removeClass('is-invalid')
+                        }
                     }
                 }
-                if($("#sw_2").prop('checked') == true){
-                    if($("#time_s_2").val() === ""){
-                        $('#time_s_2').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_2').removeClass('is-invalid')
+                function swal_c(type, title, text) {
+                    Swal({
+                        type: type,
+                        title: title,
+                        html: text,
+                        allowOutsideClick: false
+                    });
+                }
+                swal({
+                    title: 'บันทึกการเปลี่ยนแปลง',
+                    text: "คุณต้องการบันทึกการเปลี่ยนแปลง ?",
+                    type: 'warning',
+                    allowOutsideClick: false,
+                    showCancelButton: true,
+                    confirmButtonColor: '#32CD32',
+                    cancelButtonColor: '#FF3333',
+                    confirmButtonText: 'ไช่',
+                    cancelButtonText: 'ยกเลิก'
+                }).then((result) => {
+                    if (result.value) {
+                        if ($("#sw_1").prop('checked') == true) { var sw_1 = 1; } else { var sw_1 = 0; }
+                        if ($("#sw_2").prop('checked') == true) { var sw_2 = 1; } else { var sw_2 = 0; }
+                        if ($("#sw_3").prop('checked') == true) { var sw_3 = 1; } else { var sw_3 = 0; }
+                        if ($("#sw_4").prop('checked') == true) { var sw_4 = 1; } else { var sw_4 = 0; }
+                        if ($("#sw_5").prop('checked') == true) { var sw_5 = 1; } else { var sw_5 = 0; }
+                        if ($("#sw_6").prop('checked') == true) { var sw_6 = 1; } else { var sw_6 = 0; }
+                        if ($("#sw_7").prop('checked') == true) { var sw_7 = 1; } else { var sw_7 = 0; }
+                        if (message.destinationName == house_master + "/1/control/time_control") {
+                            var result = message.payloadString;
+                            var parseJSON = $.parseJSON(result);
+                            // console.log(parseJSON);
+                            // return false;
+                            $.ajax({
+                                type: "POST",
+                                url: "routes/save_autoControl.php",
+                                data: {
+                                    house_master: house_master,
+                                    channel     : $("#channel").val(),
+                                    sw_1 : sw_1,
+                                    sw_2 : sw_2,
+                                    sw_3 : sw_3,
+                                    sw_4 : sw_4,
+                                    sw_5 : sw_5,
+                                    sw_6 : sw_6,
+                                    sw_7 : sw_7,
+                                    s_1 : $("#time_s_1").val(),
+                                    s_2 : $("#time_s_2").val(),
+                                    s_3 : $("#time_s_3").val(),
+                                    s_4 : $("#time_s_4").val(),
+                                    s_5 : $("#time_s_5").val(),
+                                    s_6 : $("#time_s_6").val(),
+                                    s_7 : $("#time_s_7").val(),
+                                    e_1 : $("#time_e_1").val(),
+                                    e_2 : $("#time_e_2").val(),
+                                    e_3 : $("#time_e_3").val(),
+                                    e_4 : $("#time_e_4").val(),
+                                    e_5 : $("#time_e_5").val(),
+                                    e_6 : $("#time_e_6").val(),
+                                    e_7 : $("#time_e_7").val(),
+                                    on_7 : $("#time_on_7").val(),
+                                    off_7 : $("#time_off_7").val(),
+                                    se_1 : $("#time_se_1").val(),
+                                    se_2 : $("#time_se_2").val(),
+                                    se_3 : $("#time_se_3").val(),
+                                    se_4 : $("#time_se_4").val(),
+                                    se_5 : $("#time_se_5").val(),
+                                    se_6 : $("#time_se_6").val()
+                                },
+                                dataType: 'json',
+                                success: function(res) {
+                                    // console.log(res.data)
+                                    if(res.status === "Insert_Success"){
+                                        $("#Modal_Auto_control").modal("hide");
+                                        $.extend(parseJSON, res.data);
+                                        var json_msg = JSON.stringify(parseJSON);
+                                        // console.log(parseJSON)
+                                        message = new Paho.MQTT.Message(json_msg);
+                                        message.destinationName = house_master + "/1/control/time_control";
+                                        message.qos = 1;
+                                        message.retained = true;
+                                        client.send(message);
+                                    
+                                        swal({
+                                            title: 'บันทึกข้อมูลสำเร็จ',
+                                            type: 'success',
+                                            allowOutsideClick: false,
+                                            confirmButtonColor: '#32CD32'
+                                        });
+                                    }else{
+                                        swal({
+                                            title: 'Error !',
+                                            text: "เกิดข้อผิดพลาด ?",
+                                            type: 'error',
+                                            allowOutsideClick: false,
+                                            confirmButtonColor: '#32CD32'
+                                        }).then((result) => {
+                                            if (result.value) {
+                                                location.reload();
+                                                return false;
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
                     }
-                    if($("#time_e_2").val() === ""){
-                        $('#time_e_2').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_e_2').removeClass('is-invalid')
-                    }
-                    if($("#time_s_2").val() >= $("#time_e_2").val()){
-                        swal_c(type = 'error', title = 'Error...', text = 'TIMMER 2 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                        $('#time_s_2').addClass('is-invalid')
-                        $('#time_e_2').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_2').removeClass('is-invalid')
-                        $('#time_e_2').removeClass('is-invalid')
-                    }
-                }
-                if($("#sw_3").prop('checked') == true){
-                    if($("#time_s_3").val() === ""){
-                        $('#time_s_3').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_3').removeClass('is-invalid')
-                    }
-                    if($("#time_e_3").val() === ""){
-                        $('#time_e_3').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_e_3').removeClass('is-invalid')
-                    }
-                    if($("#time_s_3").val() >= $("#time_e_3").val()){
-                        swal_c(type = 'error', title = 'Error...', text = 'TIMMER 3 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                        $('#time_s_3').addClass('is-invalid')
-                        $('#time_e_3').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_3').removeClass('is-invalid')
-                        $('#time_e_3').removeClass('is-invalid')
-                    }
-                }
-                if($("#sw_4").prop('checked') == true){
-                    if($("#time_s_4").val() === ""){
-                        $('#time_s_4').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_4').removeClass('is-invalid')
-                    }
-                    if($("#time_e_4").val() === ""){
-                        $('#time_e_4').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_e_4').removeClass('is-invalid')
-                    }
-                    if($("#time_s_4").val() >= $("#time_e_4").val()){
-                        swal_c(type = 'error', title = 'Error...', text = 'TIMMER 4 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                        $('#time_s_4').addClass('is-invalid')
-                        $('#time_e_4').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_4').removeClass('is-invalid')
-                        $('#time_e_4').removeClass('is-invalid')
-                    }
-                }
-                if($("#sw_5").prop('checked') == true){
-                    if($("#time_s_5").val() === ""){
-                        $('#time_s_5').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_5').removeClass('is-invalid')
-                    }
-                    if($("#time_e_5").val() === ""){
-                        $('#time_e_5').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_e_5').removeClass('is-invalid')
-                    }
-                    if($("#time_s_5").val() >= $("#time_e_5").val()){
-                        swal_c(type = 'error', title = 'Error...', text = 'TIMMER 5 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                        $('#time_s_5').addClass('is-invalid')
-                        $('#time_e_5').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_5').removeClass('is-invalid')
-                        $('#time_e_5').removeClass('is-invalid')
-                    }
-                }
-                if($("#sw_6").prop('checked') == true){
-                    if($("#time_s_6").val() === ""){
-                        $('#time_s_6').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_6').removeClass('is-invalid')
-                    }
-                    if($("#time_e_6").val() === ""){
-                        $('#time_e_6').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_e_6').removeClass('is-invalid')
-                    }
-                    if($("#time_s_6").val() >= $("#time_e_6").val()){
-                        swal_c(type = 'error', title = 'Error...', text = 'TIMMER 6 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                        $('#time_s_6').addClass('is-invalid')
-                        $('#time_e_6').addClass('is-invalid')
-                        return false;
-                    }else{
-                        $('#time_s_6').removeClass('is-invalid')
-                        $('#time_e_6').removeClass('is-invalid')
-                    }
-                }
-            }
-        }else if(channel == 11){
-            var minsToAdd = 15;
-            var newTime_d2 = new Date(new Date("1970/01/01 " + $("#time_s_1").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
-            var newTime_d3 = new Date(new Date("1970/01/01 " + $("#time_s_2").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
-            var newTime_d4 = new Date(new Date("1970/01/01 " + $("#time_s_3").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
-            var newTime_d5 = new Date(new Date("1970/01/01 " + $("#time_s_4").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
-            var newTime_d6 = new Date(new Date("1970/01/01 " + $("#time_s_5").val()).getTime() + minsToAdd * 60000).toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit', hour12: false });
-            
-                // ----------
-            if($("#sw_1").prop('checked') == true){
-                if($("#time_s_1").val() === ""){
-                    $('#time_s_1').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_1').removeClass('is-invalid')
-                }
-            }
-            if($("#sw_2").prop('checked') == true){
-                if($("#time_s_2").val() === ""){
-                    $('#time_s_2').addClass('is-invalid')
-                    return false;
-                }else if($("#time_s_2").val() <= newTime_d2){
-                    swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 2 : TIME </b> ต้องมากกว่า <b>' + newTime_d2 + '</b> !');
-                    $("#time_s_2").addClass("is-invalid");
-                    return false;
-                }else{
-                    $('#time_s_2').removeClass('is-invalid')
-                }
-                if($("#time_se_1").val() == $("#time_se_2").val()){
-                    swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 2 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 1 </b> !');
-                    $("#time_se_2").addClass("is-invalid");
-                    return false;
-                }else{
-                    $("#time_se_2").removeClass("is-invalid");
-                }
-            }
-            if($("#sw_3").prop('checked') == true){
-                if($("#time_s_3").val() === ""){
-                    $('#time_s_3').addClass('is-invalid')
-                    return false;
-                }else if($("#time_s_3").val() <= newTime_d3){
-                    swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 3 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d3 + '</b> !');
-                    $("#time_s_3").addClass("is-invalid");
-                    return false;
-                }else{
-                    $('#time_s_3').removeClass('is-invalid')
-                }
-                if($("#time_se_2").val() == $("#time_se_3").val()){
-                    swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 3 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 2 </b> !');
-                    $("#time_se_3").addClass("is-invalid");
-                    return false;
-                }else{
-                    $("#time_se_3").removeClass("is-invalid");
-                }
-            }
-            if($("#sw_4").prop('checked') == true){
-                if($("#time_s_4").val() === ""){
-                    $('#time_s_4').addClass('is-invalid')
-                    return false;
-                }else if($("#time_s_4").val() <= newTime_d4){
-                    swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 4 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d4 + '</b> !');
-                    $("#time_s_4").addClass("is-invalid");
-                    return false;
-                }else{
-                    $('#time_s_4').removeClass('is-invalid')
-                }
-                if($("#time_se_3").val() == $("#time_se_4").val()){
-                    swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 4 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 3 </b> !');
-                    $("#time_se_4").addClass("is-invalid");
-                    return false;
-                }else{
-                    $("#time_se_4").removeClass("is-invalid");
-                }
-            }
-            if($("#sw_5").prop('checked') == true){
-                if($("#time_s_5").val() === ""){
-                    $('#time_s_5').addClass('is-invalid')
-                    return false;
-                }else if($("#time_s_5").val() <= newTime_d5){
-                    swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 5 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d5 + '</b> !');
-                    $("#time_s_5").addClass("is-invalid");
-                    return false;
-                }else{
-                    $('#time_s_5').removeClass('is-invalid')
-                }
-                if($("#time_se_4").val() == $("#time_se_5").val()){
-                    swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 5 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 4 </b> !');
-                    $("#time_se_5").addClass("is-invalid");
-                    return false;
-                }else{
-                    $("#time_se_5").removeClass("is-invalid");
-                }
-            }
-            if($("#sw_6").prop('checked') == true){
-                if($("#time_s_6").val() === ""){
-                    $('#time_s_6').addClass('is-invalid')
-                    return false;
-                }else if($("#time_s_6").val() <= newTime_d6){
-                    swal_c(type = 'error', title = 'Error...', text = '<b>TIMMER 6 : TIME </b> เวลาต้องมากกว่า <b>' + newTime_d6 + '</b> !');
-                    $("#time_s_6").addClass("is-invalid");
-                    return false;
-                }else{
-                    $('#time_s_6').removeClass('is-invalid')
-                }
-                if($("#time_se_5").val() == $("#time_se_6").val()){
-                    swal_c(type = 'error', title = 'Error...', text = '<b> LEVEL : TIMMER 6 </b> ต้องไม่เท่ากับ <b> LEVEL : TIMMER 5 </b> !');
-                    $("#time_se_6").addClass("is-invalid");
-                    return false;
-                }else{
-                    $("#time_se_6").removeClass("is-invalid");
-                }
-            }
-        }else{
-            if($("#sw_1").prop('checked') == true){
-                if($("#time_s_1").val() === ""){
-                    $('#time_s_1').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_1').removeClass('is-invalid')
-                }
-                if($("#time_e_1").val() === ""){
-                    $('#time_e_1').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_1').removeClass('is-invalid')
-                }
-                if($("#time_s_1").val() >= $("#time_e_1").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER 1 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_1').addClass('is-invalid')
-                    $('#time_e_1').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_1').removeClass('is-invalid')
-                    $('#time_e_1').removeClass('is-invalid')
-                }
-            }
-            if($("#sw_2").prop('checked') == true){
-                if($("#time_s_2").val() === ""){
-                    $('#time_s_2').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_2').removeClass('is-invalid')
-                }
-                if($("#time_e_2").val() === ""){
-                    $('#time_e_2').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_2').removeClass('is-invalid')
-                }
-                if($("#time_s_2").val() >= $("#time_e_2").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER 2 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_2').addClass('is-invalid')
-                    $('#time_e_2').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_2').removeClass('is-invalid')
-                    $('#time_e_2').removeClass('is-invalid')
-                }
-            }
-            if($("#sw_3").prop('checked') == true){
-                if($("#time_s_3").val() === ""){
-                    $('#time_s_3').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_3').removeClass('is-invalid')
-                }
-                if($("#time_e_3").val() === ""){
-                    $('#time_e_3').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_3').removeClass('is-invalid')
-                }
-                if($("#time_s_3").val() >= $("#time_e_3").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER 3 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_3').addClass('is-invalid')
-                    $('#time_e_3').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_3').removeClass('is-invalid')
-                    $('#time_e_3').removeClass('is-invalid')
-                }
-            }
-            if($("#sw_4").prop('checked') == true){
-                if($("#time_s_4").val() === ""){
-                    $('#time_s_4').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_4').removeClass('is-invalid')
-                }
-                if($("#time_e_4").val() === ""){
-                    $('#time_e_4').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_4').removeClass('is-invalid')
-                }
-                if($("#time_s_4").val() >= $("#time_e_4").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER 4 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_4').addClass('is-invalid')
-                    $('#time_e_4').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_4').removeClass('is-invalid')
-                    $('#time_e_4').removeClass('is-invalid')
-                }
-            }
-            if($("#sw_5").prop('checked') == true){
-                if($("#time_s_5").val() === ""){
-                    $('#time_s_5').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_5').removeClass('is-invalid')
-                }
-                if($("#time_e_5").val() === ""){
-                    $('#time_e_5').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_5').removeClass('is-invalid')
-                }
-                if($("#time_s_5").val() >= $("#time_e_5").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER 5 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_5').addClass('is-invalid')
-                    $('#time_e_5').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_5').removeClass('is-invalid')
-                    $('#time_e_5').removeClass('is-invalid')
-                }
-            }
-            if($("#sw_6").prop('checked') == true){
-                if($("#time_s_6").val() === ""){
-                    $('#time_s_6').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_6').removeClass('is-invalid')
-                }
-                if($("#time_e_6").val() === ""){
-                    $('#time_e_6').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_e_6').removeClass('is-invalid')
-                }
-                if($("#time_s_6").val() >= $("#time_e_6").val()){
-                    swal_c(type = 'error', title = 'Error...', text = 'TIMMER 6 : <b>เวลาเริ่มต้นต้องน้อยกว่าเวลาสิ้นสุด</b> !');
-                    $('#time_s_6').addClass('is-invalid')
-                    $('#time_e_6').addClass('is-invalid')
-                    return false;
-                }else{
-                    $('#time_s_6').removeClass('is-invalid')
-                    $('#time_e_6').removeClass('is-invalid')
-                }
-            }
-        }
-        function swal_c(type, title, text) {
-            Swal({
-                type: type,
-                title: title,
-                html: text,
-                allowOutsideClick: false
-            });
-        }
-        if ($("#sw_1").prop('checked') == true) { var sw_1 = 1; } else { var sw_1 = 0; }
-        if ($("#sw_2").prop('checked') == true) { var sw_2 = 1; } else { var sw_2 = 0; }
-        if ($("#sw_3").prop('checked') == true) { var sw_3 = 1; } else { var sw_3 = 0; }
-        if ($("#sw_4").prop('checked') == true) { var sw_4 = 1; } else { var sw_4 = 0; }
-        if ($("#sw_5").prop('checked') == true) { var sw_5 = 1; } else { var sw_5 = 0; }
-        if ($("#sw_6").prop('checked') == true) { var sw_6 = 1; } else { var sw_6 = 0; }
-        if ($("#sw_7").prop('checked') == true) { var sw_7 = 1; } else { var sw_7 = 0; }
-        if (message.destinationName == house_master + "/1/control/time_control") {
-            var result = message.payloadString;
-            var parseJSON = $.parseJSON(result);
-            // console.log(parseJSON);
-            // return false;
-        $.ajax({
-            type: "POST",
-            url: "routes/save_autoControl.php",
-            data: {
-                house_master: house_master,
-                channel     : $("#channel").val(),
-                sw_1 : sw_1,
-                sw_2 : sw_2,
-                sw_3 : sw_3,
-                sw_4 : sw_4,
-                sw_5 : sw_5,
-                sw_6 : sw_6,
-                sw_7 : sw_7,
-                s_1 : $("#time_s_1").val(),
-                s_2 : $("#time_s_2").val(),
-                s_3 : $("#time_s_3").val(),
-                s_4 : $("#time_s_4").val(),
-                s_5 : $("#time_s_5").val(),
-                s_6 : $("#time_s_6").val(),
-                s_7 : $("#time_s_7").val(),
-                e_1 : $("#time_e_1").val(),
-                e_2 : $("#time_e_2").val(),
-                e_3 : $("#time_e_3").val(),
-                e_4 : $("#time_e_4").val(),
-                e_5 : $("#time_e_5").val(),
-                e_6 : $("#time_e_6").val(),
-                e_7 : $("#time_e_7").val(),
-                on_7 : $("#time_on_7").val(),
-                off_7 : $("#time_off_7").val(),
-                se_1 : $("#time_se_1").val(),
-                se_2 : $("#time_se_2").val(),
-                se_3 : $("#time_se_3").val(),
-                se_4 : $("#time_se_4").val(),
-                se_5 : $("#time_se_5").val(),
-                se_6 : $("#time_se_6").val(),
-                json : parseJSON
-            },
-            dataType: 'json',
-            success: function(res) {
-                console.log(res.data)
-                // var parseJSON = $.parseJSON(res.data);
-                // if (res.status_login === 'No user') {
-                //     $('.l_err').show();
-                // } else if (res.status_login != '') {
-                //     window.location.href = "index.html";
-                // }
-            }
-        });
-    }
-    });
+                });
+            }); // exit_save_Auto
         } // exit_message
         connect();
     }
 
     $(".sw_auto").click(function () { 
+        $('#time_s_1').removeClass('is-invalid');
+        $('#time_e_1').removeClass('is-invalid');
+        $('#time_s_2').removeClass('is-invalid');
+        $('#time_e_2').removeClass('is-invalid');
+        $('#time_s_3').removeClass('is-invalid');
+        $('#time_e_3').removeClass('is-invalid');
+        $('#time_s_4').removeClass('is-invalid');
+        $('#time_e_4').removeClass('is-invalid');
+        $('#time_s_5').removeClass('is-invalid');
+        $('#time_e_5').removeClass('is-invalid');
+        $('#time_s_6').removeClass('is-invalid');
+        $('#time_e_6').removeClass('is-invalid');
+        $('#time_s_7').removeClass('is-invalid');
+        $('#time_e_7').removeClass('is-invalid');
+        $('#time_on_7').removeClass('is-invalid');
+        $('#time_off_7').removeClass('is-invalid');
+        $("#time_se_1").removeClass("is-invalid");
+        $("#time_se_2").removeClass("is-invalid");
+        $("#time_se_3").removeClass("is-invalid");
+        $("#time_se_4").removeClass("is-invalid");
+        $("#time_se_5").removeClass("is-invalid");
+        $("#time_se_6").removeClass("is-invalid");
+
         $("#save_auto_cont").hide();
         $('.input_check').off('change');
+
         var channel = $(this).attr("id");
         // alert(channel);
         $.ajax({
@@ -1787,6 +1849,4 @@
             }// succress
         });
     });
-    
-    
 </script>
