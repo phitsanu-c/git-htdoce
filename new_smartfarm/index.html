@@ -116,6 +116,21 @@
                         </div>
                     </a>
                 </li>
+                <!-- <li class="">
+                    <a class="has-arrow" href="javascript:;">
+                        <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                        </div>
+                        <div class="menu-title">Components</div>
+                    </a>
+                    <ul>
+                        <li> <a href="javascript:;"><i class="bx bx-right-arrow-alt"></i>Alerts</a>
+                        </li>
+                        <li> <a href="javascript:;"><i class="bx bx-right-arrow-alt"></i>Accordions</a>
+                        </li>
+                        <li> <a href="javascript:;"><i class="bx bx-right-arrow-alt"></i>Badges</a>
+                        </li>
+                    </ul>
+                </li> -->
             </ul>
             <!--end navigation-->
         </div>
@@ -171,53 +186,78 @@
         <!--start page wrapper -->
         <div class="page-wrapper">
             <div id="pills-selectSite"></div>
-            <div id="pills-selectHome">
-                <!-- <ul class="nav nav-pills mb-3" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="pill" href="#primary-pills-home" role="tab" aria-selected="true">
-                            <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-home font-18 me-1'></i>
-                                </div>
-                                <div class="tab-title">Home</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-profile" role="tab" aria-selected="false">
-                            <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
-                                </div>
-                                <div class="tab-title">Profile</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-contact" role="tab" aria-selected="false">
-                            <div class="d-flex align-items-center">
-                                <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i>
-                                </div>
-                                <div class="tab-title">Contact</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="primary-pills-home" role="tabpanel">
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                            synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi.</p>
+            <div id="pills-selectHome"></div>
+            <div id="pills-selectReport">
+                <div class="page-content">
+                    <!--breadcrumb-->
+                    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                        <div class="breadcrumb-title pe-3 te_st"></div>
+                        <div class="ps-3">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-0 p-0">
+                                    <li class="breadcrumb-item"><a href="javascript:;"><i class="-alt"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item te_ht" aria-current="page"></li>
+                                    <li class="breadcrumb-item" aria-current="page"> รายงาน </li>
+                                </ol>
+                            </nav>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
-                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                            booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente
-                            labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus
-                            tattooed echo park.</p>
+                    <hr/>
+                    <div class="col-12 col-lg-12 col-xl-12 d-flex">
+                        <div class="card w-100 radius-10">
+                            <div class="card-body">
+                                <div class="card-body">
+                                    <ul class="nav nav-pills mb-3" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" data-bs-toggle="pill" href="#primary-pills-home" role="tab" aria-selected="true">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="tab-icon"><i class='bx bx-home font-18 me-1'></i>
+                                                    </div>
+                                                    <div class="tab-title">ข้อมูลเซ็นเซอร์</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-profile" role="tab" aria-selected="false">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
+                                                    </div>
+                                                    <div class="tab-title">ประวัติระบบควบคุม</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-contact" role="tab" aria-selected="false">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i>
+                                                    </div>
+                                                    <div class="tab-title">ประวัติการตั้งเวลา</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="primary-pills-home" role="tabpanel">
+                                            <div id="report_sensor"></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
+                                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
+                                                beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica
+                                                VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
+                                                stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                                        </div>
+                                        <div class="tab-pane fade" id="primary-pills-contact" role="tabpanel">
+                                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard
+                                                locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
+                                                etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="primary-pills-contact" role="tabpanel">
-                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles
-                            etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester
-                            cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                    </div>
-                </div> -->
+                </div>
             </div>
             <!--  -->
         </div>
@@ -355,46 +395,49 @@
 
     <script src="public/plugins/open-weather-master/src/openweather.js"></script>
     <script>
-        $.ajax({
-            url: "http://localhost:3001/get_dash/dash/",
-            method: "post",
-            data: {
-                house_master: house_master,
-                field2: 2
-            },
-            // contentType: "application/json",
-            success: function(res) {
-                console.log(res);
-                var dashStatus = res.dashStatus;
-                var dashName = res.dashName;
-                var dashSncanel = res.dashSncanel;
-                var dashMode = res.dashMode;
-                var dashImg = res.dashImg;
-                var dashUnit = res.dashUnit;
-                var controlstatus = res.controlstatus;
-                var imgCon = res.imgCon;
-                // alert(login_user);
-                $.ajax({
-                    url: "views/home.php",
-                    method: "post",
-                    data: {
-                        s_master: res.s_master,
-                        dashStatus: res.dashStatus,
-                        dashName: res.dashName,
-                        controlstatus: res.controlstatus,
-                        conttrolname: res.conttrolname
-                    },
-                    // dataType: "json",
-                    success: function(res_dash) {
-                        $("#pills-selectHome").html(res_dash);
-                    }
-                });
-                // return false;
-                // alert(res.s_master.site_Latitude)
+        // alert(house_master);
+        if (house_master != '') {
+            $.ajax({
+                url: "http://localhost:3001/get_dash/dash/",
+                method: "post",
+                data: {
+                    house_master: house_master,
+                    field2: 2
+                },
+                // contentType: "application/json",
+                success: function(res) {
+                    console.log(res);
+                    var dashStatus = res.dashStatus;
+                    var dashName = res.dashName;
+                    var dashSncanel = res.dashSncanel;
+                    var dashMode = res.dashMode;
+                    var dashImg = res.dashImg;
+                    var dashUnit = res.dashUnit;
+                    var controlstatus = res.controlstatus;
+                    var imgCon = res.imgCon;
+                    $(".te_st").html(res.s_master.site_name);
+                    $(".te_ht").html(res.s_master.house_name);
+                    // alert(login_user);
+                    $.ajax({
+                        url: "views/home.php",
+                        method: "post",
+                        data: {
+                            s_master: res.s_master,
+                            dashStatus: res.dashStatus,
+                            dashName: res.dashName,
+                            controlstatus: res.controlstatus,
+                            conttrolname: res.conttrolname
+                        },
+                        // dataType: "json",
+                        success: function(res_dash) {
+                            $("#pills-selectHome").html(res_dash);
+                        }
+                    });
+                    // return false;
+                    // alert(res.s_master.site_Latitude)
 
-                // ----------------------------------------------------------------------
-                // alert(house_master);
-                if (house_master != '') {
+                    // ----------------------------------------------------------------------
+
                     // Global variables
                     var client = null;
                     // These are configs
@@ -956,12 +999,27 @@
 
                     } // exit_message
                     connect();
+
+                    // Report ------------------
+                    $.ajax({
+                        url: "views/report_sensor.php",
+                        method: "post",
+                        data: {
+                            s_master: res.s_master,
+                            dashStatus: res.dashStatus,
+                            dashName: res.dashName,
+                            dashSncanel: res.dashSncanel,
+                            dashMode: res.dashMode
+                        },
+                        // dataType: "json",
+                        success: function(resp) {
+                            $("#report_sensor").html(resp);
+                        }
+                    });
                 }
-
-            }
-        });
+            });
+        }
     </script>
-
 
 
 
@@ -992,9 +1050,6 @@
         // let strdate = new Date();
         // var date = moment(new Date()).add(-10, 'minutes').format('YYYY/MM/DD - HH:mm:ss');
         // console.log(date);
-    </script>
-
-    <script>
     </script>
 </body>
 

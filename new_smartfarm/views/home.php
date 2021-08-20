@@ -24,7 +24,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $s_master['house_name'] ?></li>
+                    <li class="breadcrumb-item" aria-current="page"><?= $s_master['house_name'] ?></li>
                 </ol>
             </nav>
         </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-7 col-xl-8 d-flex">
+        <div class="col-12 col-lg-8 col-xl-8 d-flex">
             <div class="card w-100 radius-10">
                 <div class="card-body"> 
                     <div class="card radius-10 border shadow-none">
@@ -123,8 +123,9 @@
                 </div>
             </div>
         </div>
-        
-        <?php if(!isset(array_count_values($controlstatus)['0']) || array_count_values($controlstatus)['0'] != 12){?>
+    </div><!--end row-->
+    
+    <?php if(!isset(array_count_values($controlstatus)['0']) || array_count_values($controlstatus)['0'] != 12){?>
         <div class="col-12 col-lg-12 col-xl-12 d-flex">
             <div class="card w-100 radius-10">
                 <div class="card-body">
@@ -176,7 +177,7 @@
                                                             <input type="checkbox" class="sw_manual_'.$i.'" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-size="xs" data-style="ios">
                                                         </div>';
                                                     } 
-                                                    echo '<a class="font-20 sw_auto" href="javascript:;" id="'.$i.'">	<i class="lni lni-cog"></i> </a>';
+                                                    echo '<a class="font-20 sw_auto" href="javascript:;" id="'.$i.'" name="'.$conttrolname[$i].'">	<i class="lni lni-cog"></i> </a>';
                                                 }
                                             ?>
                                         </div>
@@ -204,10 +205,9 @@
 			<div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-4">
-                        <div class="card-title d-flex align-items-center">
                             <!-- <div><i class="bx bxs-user me-1 font-22 text-info"></i></div> -->
-                            <h5 class="mb-0 text-info"></h5>
-                        </div>
+                            <b class="modal_autoText"></b>
+                       
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -586,8 +586,7 @@
             </div>
         </div>
         <!-- exit Modal Control -->
-        <?php } ?>
-    </div><!--end row-->
+    <?php } ?>
 </div>
 <script>
     var house_master = '<?= $s_master["house_master"] ?>';
@@ -1437,10 +1436,9 @@
         $("#time_se_4").removeClass("is-invalid");
         $("#time_se_5").removeClass("is-invalid");
         $("#time_se_6").removeClass("is-invalid");
-
         $("#save_auto_cont").hide();
         $('.input_check').off('change');
-
+        $(".modal_autoText").html('ตั้งค่า '+$(this).attr("name"));
         var channel = $(this).attr("id");
         // alert(channel);
         $.ajax({

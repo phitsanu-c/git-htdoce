@@ -22,6 +22,7 @@ $.getJSON('routes/login.php', function(msg) {
         // console.log(window.location.pathname);
     }
 
+    $("#pills-selectReport").hide();
     if (msg.status === '1') { //besige user
         $("#pills-selectSite").load('views/load_site.php');
         // $("#pills-selectHome").load('views/home.php');
@@ -32,7 +33,6 @@ $.getJSON('routes/login.php', function(msg) {
             $("#pills-selectHome").hide();
             $(".memu_control").hide();
             $(".memu_report").hide();
-            $("#pills-selectReport").hide();
         } else {
             $('.memu_sel').show().removeClass("mm-active");
             $("#pills-selectSite").hide();
