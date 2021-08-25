@@ -85,7 +85,7 @@ $row1 = $stmt1->fetch();
         
         // "scrollY":  "400px",
             "scrollX": true,
-            "scrollCollapse": true,
+            "scrollCollapse": false,
             "paging":         false,
             "searching": false,
 
