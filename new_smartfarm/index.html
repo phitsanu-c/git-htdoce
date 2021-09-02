@@ -30,6 +30,8 @@
 
     <link rel="stylesheet" href="public/plugins/datatables/datatables.net.1.10.25.css">
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> -->
+    <!-- Loading -->
+    <link rel="stylesheet" type="text/css" href="public/plugins/Customizable-Loading-Modal-Plugin/css/modal-loading.css">
     <!-- Bootstrap Toggle -->
     <!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script> -->
@@ -218,26 +220,23 @@
                                         <li class="nav-item" role="presentation">
                                             <a class="nav-link active" data-bs-toggle="pill" href="#primary-pills-home" role="tab" aria-selected="true">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="tab-icon"><i class='bx bx-home font-18 me-1'></i>
-                                                    </div>
+                                                    <!-- <div class="tab-icon"><i class='bx bx-home font-18 me-1'></i></div> -->
                                                     <div class="tab-title">ข้อมูลเซ็นเซอร์</div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-profile" role="tab" aria-selected="false">
+                                            <a class="nav-link r_reControl" data-bs-toggle="pill" href="#primary-pills-profile" role="tab" aria-selected="false">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
-                                                    </div>
+                                                    <!-- <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i></div> -->
                                                     <div class="tab-title">ประวัติระบบควบคุม</div>
                                                 </div>
                                             </a>
                                         </li>
                                         <li class="nav-item" role="presentation">
-                                            <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-contact" role="tab" aria-selected="false">
+                                            <a class="nav-link r_reAutoControl" data-bs-toggle="pill" href="#primary-pills-contact" role="tab" aria-selected="false">
                                                 <div class="d-flex align-items-center">
-                                                    <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i>
-                                                    </div>
+                                                    <!-- <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i></div> -->
                                                     <div class="tab-title">ประวัติการตั้งเวลา</div>
                                                 </div>
                                             </a>
@@ -248,10 +247,7 @@
                                             <div id="report_sensor"></div>
                                         </div>
                                         <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
-                                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft
-                                                beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica
-                                                VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
-                                                stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                                            <div id="report_control"></div>
                                         </div>
                                         <div class="tab-pane fade" id="primary-pills-contact" role="tabpanel">
                                             <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard
@@ -415,6 +411,8 @@
 
     <!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
     <script src="public/plugins/open-weather-master/src/openweather.js"></script>
+    <!-- Loading -->
+    <script type="text/javascript" src="public/plugins/Customizable-Loading-Modal-Plugin/js/modal-loading.js"></script>
     <script>
         // alert(house_master);
         if (house_master != '') {
@@ -1022,29 +1020,60 @@
                     connect();
 
                     // Report ------------------
-                    $.ajax({
-                        url: "views/report_sensor.php",
-                        method: "post",
-                        data: {
-                            house_master: house_master,
-                            dashStatus: res.dashStatus,
-                            dashName: res.dashName,
-                            dashSncanel: res.dashSncanel,
-                            dashMode: res.dashMode
-                        },
-                        // dataType: "json",
-                        success: function(resp) {
-                            $("#report_sensor").html(resp);
+                    $(".memu_report").click(function() {
+                        $.ajax({
+                            url: "views/report_sensor.php",
+                            method: "post",
+                            data: {
+                                house_master: house_master,
+                                dashStatus: res.dashStatus,
+                                dashName: res.dashName,
+                                dashSncanel: res.dashSncanel,
+                                dashMode: res.dashMode
+                            },
+                            // dataType: "json",
+                            success: function(resp) {
+                                $("#report_sensor").html(resp);
+                            }
+                        });
+
+                        var countStatus_con = countElement(1, controlstatus);
+
+                        function countElement(item, array) {
+                            var count = 0;
+                            $.each(array, function(i, v) {
+                                if (v === item) count++;
+                            });
+                            return count;
+                        }
+                        if (countStatus_con == 0) {
+                            $(".r_reControl").hide();
+                            $(".r_reAutoControl").hide();
+                        } else {
+                            $(".r_reControl").show();
+                            $(".r_reAutoControl").show();
+
+                            // $(".r_reControl").click(function() {
+                            $.ajax({
+                                url: "views/report_control.php",
+                                method: "post",
+                                data: {
+                                    house_master: house_master,
+                                    controlstatus: JSON.stringify(res.controlstatus),
+                                    conttrolname: JSON.stringify(res.conttrolname)
+                                },
+                                // dataType: "json",
+                                success: function(resp) {
+                                    $("#report_control").html(resp);
+                                }
+                            });
+                            // });
                         }
                     });
                 }
             });
         }
     </script>
-
-    <script>
-    </script>
-
 
     <script>
         $(".logout").click(function() {

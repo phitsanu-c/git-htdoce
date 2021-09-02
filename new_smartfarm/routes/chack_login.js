@@ -112,3 +112,4 @@ function verticalNoTitle() {
 function loadingOut(loading) {
     setTimeout(() => loading.out(), 1000);
 }
+

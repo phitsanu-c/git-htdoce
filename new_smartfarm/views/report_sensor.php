@@ -10,6 +10,11 @@
 // echo array_count_values($controlstatus)['0'];
 // exit();
 ?>
+<style>
+    .report_chart{
+    height:400px;
+    }
+</style>
 <div class="d-sm-flex">
     <div class="col-lg-6 col-xl-6 col-sm-12">
         <div class="row">
@@ -39,18 +44,18 @@
         </ul>
     </div>
     <ul class="nav nav-pills d-sm-none" role="tablist">
-            <li class="nav-item col-sm-6" role="presentation">
-                <a class="nav-link active text-center re_ch" data-bs-toggle="pill" href="#p-chart" role="tab" aria-selected="true" style="border: 1px solid transparent; border-color: #6c757d;">
-                    <i class="fadeIn animated bx bx-line-chart"></i> กราฟ
-                </a>
-            </li>
-            <li class="nav-item col-sm-6" role="presentation">
-                <a class="nav-link text-center re_tb" data-bs-toggle="pill" href="#p-table" role="tab" aria-selected="false" style="border: 1px solid transparent; border-color: #6c757d;">
-                    <i class="fadeIn animated bx bx-table"></i> ตาราง
-                </a>
-            </li>
-        </ul>
-</div>
+        <li class="nav-item col-sm-6" role="presentation">
+            <a class="nav-link active text-center re_ch" data-bs-toggle="pill" href="#p-chart" role="tab" aria-selected="true" style="border: 1px solid transparent; border-color: #6c757d;">
+                <i class="fadeIn animated bx bx-line-chart"></i> กราฟ
+            </a>
+        </li>
+        <li class="nav-item col-sm-6" role="presentation">
+            <a class="nav-link text-center re_tb" data-bs-toggle="pill" href="#p-table" role="tab" aria-selected="false" style="border: 1px solid transparent; border-color: #6c757d;">
+                <i class="fadeIn animated bx bx-table"></i> ตาราง
+            </a>
+        </li>
+    </ul>
+</div><br>
 <!-- Modal_select_sn -->
 <div class="modal fade" id="Modal_select_sn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog-scrollable modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -62,30 +67,18 @@
             </div>
             <div class="modal-body">
                 <div class="row hide_dwm">
-                    <div class="col-6 m-t-0">
-                        <div class="form-group text-left">
-                            <div class="row">
-                                <div class="col-md-3 align-vertical-center">
-                                    <span class="input-group-text">เวลาเริ่ม</span>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control text-center val_start" placeholder="วันเวลาเริ่มต้น" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <div class="invalid-feedback">กรุณาระบุเวลาเริ่ม</div>
-                                </div>
-                            </div>
+                    <div class="col-lg-6 col-xl-6 col-sm-12">
+                        <div class="input-group mb-3"> 
+                            <span class="input-group-text col-sm-4" id="basic-addon3">เวลาเริ่ม</span>
+                            <input type="text" class="form-control text-center val_start" placeholder="วันเวลาเริ่มต้น" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="invalid-feedback">กรุณาระบุเวลาเริ่ม</div>
                         </div>
                     </div>
-                    <div class="col-6 m-t-0">
-                        <div class="form-group text-left">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <span class="input-group-text">เวลาสิ้นสุด</span>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control text-center val_end" type="text" placeholder="วันเวลาสิ้นสุด" aria-label="วันเวลาสิ้นสุด" aria-describedby="button-addon2">
-                                    <div class="invalid-feedback">กรุณาระบุเวลาสิ้นสุด</div>
-                                </div>
-                            </div>
+                    <div class="col-lg-6 col-xl-6 col-sm-12">
+                        <div class="input-group mb-3"> 
+                            <span class="input-group-text col-sm-4" id="basic-addon3">เวลาสิ้นสุด</span>
+                            <input type="text" class="form-control text-center val_end" type="text" placeholder="วันเวลาสิ้นสุด" aria-label="วันเวลาสิ้นสุด" aria-describedby="button-addon2">
+                            <div class="invalid-feedback">กรุณาระบุเวลาสิ้นสุด</div>
                         </div>
                     </div>
                 </div>
@@ -282,7 +275,7 @@
 <!-- exit Modal_select_sn -->
 <div class="tab-content">
     <div class="tab-pane fade show active" id="p-chart" role="tabpanel">
-        <div id="report_chart" style="height: 500px;"></div>
+        <div id="report_chart" style=""></div>
     </div>
     <div class="tab-pane fade" id="p-table" role="tabpanel">
         
@@ -293,14 +286,6 @@
 </div>
 
 <script>
-    $(".re_ch").click(function () { 
-        $(".re_ch").addClass("active");
-        $(".re_tb").removeClass("active");
-    });
-    $(".re_tb").click(function () { 
-        $(".re_ch").removeClass("active");
-        $(".re_tb").addClass("active");
-    });
     $('.val_start').daterangepicker({
         autoUpdateInput: false,
         singleDatePicker: true,
@@ -358,7 +343,125 @@
         $("#Modal_select_sn").modal("show");
     });
     
+    $("#checkbox_all_sn").change(function () { 
+        if($(this).prop( "checked") == true){
+            $("#radio_temp").attr("disabled", true);
+            $("#radio_hum").attr("disabled", true);
+            $("#radio_light").attr("disabled", true);
+            $("#radio_soil").attr("disabled", true);
+            $("#radio_other").attr("disabled", true);
+            $("input[name='checkbox_temp[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_temp']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_hum[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_hum']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_light[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_light']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_soil[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_soil']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_other[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_other']").attr("disabled", false).prop( "checked", true );   
+        }else{
+            $("#radio_temp").attr("disabled", false);
+            $("#radio_hum").attr("disabled", false);
+            $("#radio_light").attr("disabled", false);
+            $("#radio_soil").attr("disabled", false);
+            $("#radio_other").attr("disabled", false);
+            if ($("#radio_temp").prop('checked') == true) {ch_radio('temp');}
+            if ($("#radio_hum").prop('checked') == true) {ch_radio('hum');}
+            if ($("#radio_light").prop('checked') == true) {ch_radio('light');}
+            if ($("#radio_soil").prop('checked') == true) {ch_radio('soil');}
+            if ($("#radio_other").prop('checked') == true) {ch_radio('other');}
+        }
+    });
+
     $("#submit_select_sn_Modal").click(function() {
+        sumbit_report();
+    });
+    
+    $(".re_ch").click(function () { 
+        $(".re_ch").addClass("active");
+        $(".re_tb").removeClass("active");
+        if($("#p-chart").hasClass("active") == false){
+            if( $(".all_day").hasClass("active") != false || 
+                $(".all_week").hasClass("active") != false ||
+                $(".all_month").hasClass("active") != false ||
+                $(".all_from_to").hasClass("active") != false
+            ){ sumbit_report(); }
+        }
+    });
+    $(".re_tb").click(function () { 
+        $(".re_ch").removeClass("active");
+        $(".re_tb").addClass("active");
+        if($("#p-table").hasClass("active") == false){
+            if( $(".all_day").hasClass("active") != false || 
+                $(".all_week").hasClass("active") != false ||
+                $(".all_month").hasClass("active") != false ||
+                $(".all_from_to").hasClass("active") != false
+            ){sumbit_report();}
+        }
+    });
+    
+    function ch_radio(){
+        if ($("#radio_temp").prop('checked') == true) {
+            $("input[name='checkbox_temp[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_temp']").attr("disabled", false).prop( "checked", true );
+        }else{
+            $("input[name='checkbox_temp[]']").attr("disabled", true).prop( "checked", false );
+            $("input[name='checkbox_all_temp']").attr("disabled", true).prop( "checked", false );
+        }
+        if ($("#radio_hum").prop('checked') == true) {
+            $("input[name='checkbox_hum[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_hum']").attr("disabled", false).prop( "checked", true );
+        }else{
+            $("input[name='checkbox_hum[]']").attr("disabled", true).prop( "checked", false );
+            $("input[name='checkbox_all_hum']").attr("disabled", true).prop( "checked", false );
+        }
+        if ($("#radio_soil").prop('checked') == true) {
+            $("input[name='checkbox_soil[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_soil']").attr("disabled", false).prop( "checked", true );
+        }else{
+            $("input[name='checkbox_soil[]']").attr("disabled", true).prop( "checked", false );
+            $("input[name='checkbox_all_soil']").attr("disabled", true).prop( "checked", false );
+        }
+        if ($("#radio_light").prop('checked') == true) {
+            $("input[name='checkbox_light[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_light']").attr("disabled", false).prop( "checked", true );
+        }else{
+            $("input[name='checkbox_light[]']").attr("disabled", true).prop( "checked", false );
+            $("input[name='checkbox_all_light']").attr("disabled", true).prop( "checked", false );
+        }
+        if ($("#radio_other").prop('checked') == true) {
+            $("input[name='checkbox_other[]']").attr("disabled", false).prop( "checked", true );
+            $("input[name='checkbox_all_other']").attr("disabled", false).prop( "checked", true );
+        }else{
+            $("input[name='checkbox_other[]']").attr("disabled", true).prop( "checked", false );
+            $("input[name='checkbox_all_other']").attr("disabled", true).prop( "checked", false );
+        }
+    }
+    function checkbox_all(val){
+        // $("input[name='checkbox_"+ val.value+"[]']").attr("disabled", false);
+        // alert(val.prop('checked'));
+        
+        if ($("input[name='checkbox_all_"+val+"']").prop('checked') == true) {
+            $("input[name='checkbox_"+ val+"[]']").prop( "checked", true );
+        }else{
+            $("input[name='checkbox_"+ val+"[]']").prop( "checked", false );
+        }
+    }
+    function checkbox_check(count,mode){
+        var count_ch = [];
+        $("input[name='checkbox_"+mode+"[]']:checked").map(function (){
+            count_ch.push($(this).val());
+        });//
+        // alert(mode)
+        if(count_ch.length === count){
+            $("input[name='checkbox_all_"+mode+"']").prop( "checked", true );
+        }else{
+            $("input[name='checkbox_all_"+mode+"']").prop( "checked", false );
+        }
+        // alert("cl "+count_ch.length+" +all "+count)
+    }
+    function sumbit_report(){
         var ch_value = [];
         var checked = [];
         var d_name = [];
@@ -438,7 +541,7 @@
             });
             return false;
         }
-        if($("#mode_dwm").val() === "from_to"){
+        if($(".mode_dwm").val() === "from_to"){
             if ($(".val_start").val() === "") {
                 $(".val_start").addClass('is-invalid');
                 return false;
@@ -466,262 +569,151 @@
                 $(".val_end").removeClass('is-invalid');
             }
         }
+        // alert($("#mode_dwm").val())
         // alert(ch_value)
-        console.log(ch_value)
+        // console.log(ch_value)
         // return false;
-        $.ajax({
-            type: "POST",
-            url: "routes/report_allChart.php",
-            data: {
-                house_master: $(".house_master").val(),
-                mode : $(".mode_dwm").val(),
-                ch_value : ch_value,
-                val_start : $(".val_start").val(),
-                val_end : $(".val_end").val(),
-                sel_all_every : $("#sel_all_every").val()
-            },
-            dataType: 'json',
-            success: function(res) {
-                // console.log(res[1])
-                // alert(ch_value[1][1])
-                var data_chart = [];
-                for(var k =1; k<=ch_value[1].length; k++){
-                    data_chart.push({
-                            name: ch_value[2][(k-1)],
-                            type: 'line',
-                            showSymbol: false,
-                            areaStyle: {},
-                            data: res['data_'+k]
-                    })
-                }
-                if(ch_value[0] === "other"){
-                    var chart_name = 'other';
-                }else{
-                    var chart_name = ch_value[0];
-                }
-                // console.log(data_chart)
-                // return false;
-                var myChart = echarts.init(document.getElementById('report_chart'), 'dark');
-                
-                // specify chart configuration item and data
-                var option = {
-                    title: {
-                        text: chart_name
-                    },
-                    tooltip: {
-                        trigger: 'axis',
-                        axisPointer: {
-                            type: 'cross',
-                            label: {
-                                backgroundColor: '#6a7985'
-                            }
-                        }
-                    },
-                    legend: {
-                        data: ch_value[2]
-                    },
-                    xAxis: {
-                        type: 'category',
-                        data: res.timestamp,
-                        boundaryGap: false
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    toolbox: {
-                        feature: {
-                            saveAsImage: {}
-                        }
-                    },
-                    dataZoom: [{
-                        type: 'inside',
-                        start: 0,
-                        end: 100
-                    }, {
-                        start: 0,
-                        end: 100
-                    }],
-                    grid: {
-                        left: '2%',
-                        right: '1%',
-                        bottom: '2%',
-                        containLabel: true
-                    },
-                    series:data_chart
-                };
-
-                // use configuration item and data specified to show chart
-                myChart.setOption(option);
-                
-                return false;
-                am4core.useTheme(am4themes_animated);
-
-                var chart = am4core.create("report_chart", am4charts.XYChart);
-                chart.dateFormatter.inputDateFormat = "yyyy/MM/dd - HH:mm";
-
-                chart.data = res;
-
-                var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-                dateAxis.periodChangeDateFormats.setKey("hour", "[bold]dd MMM ");
-                dateAxis.tooltipDateFormat = "HH:mm, d MMM yyyy";
-
-                var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
-                var count_ch = ch_value[1].length;
-                // if (snStatus.Tbtn_sn1 === true) {
-                    for(var i=0; i<count_ch; i++){
-                    series[i] = chart.series.push(new am4charts.LineSeries());
-                    series[i].dataFields.valueY = ch_value[1][i];
-                    series[i].dataFields.dateX = "timestamp";
-                    series[i].tooltipText = ch_value[1][i] + " : {"+ch_value[1][i]+"} ()";
-                    series[i].name = ch_value[1][i];
-                    series[i].strokeWidth = 2;
-                }
-                chart.cursor = new am4charts.XYCursor();
-                // chart.cursor.snapToSeries = series;
-                chart.cursor.xAxis = dateAxis;
-
-                chart.scrollbarX = new am4core.Scrollbar();
-                chart.scrollbarX.parent = chart.bottomAxesContainer;
-
-                chart.exporting.menu = new am4core.ExportMenu();
-                chart.exporting.menu.items = [{
-                    "label": "...",
-                    "menu": [{
-                            "type": "png",
-                            "label": "PNG"
-                        }, {
-                            "type": "jpg",
-                            "label": "JPG"
-                        },
-                        //   { "label": "svg", "type": "SVG" }
-                    ]
-                }];
-
-                // Add legend
-                chart.legend = new am4charts.Legend();
-                chart.legend.itemContainers.template.events.on("over", function(event) {
-                    var segments = event.target.dataItem.dataContext.segments;
-                    segments.each(function(segment) {
-                        segment.isHover = true;
-                    })
-                })
-
-                chart.legend.itemContainers.template.events.on("out", function(event) {
-                    var segments = event.target.dataItem.dataContext.segments;
-                    segments.each(function(segment) {
-                        segment.isHover = false;
-                    })
-                })
-            }
-        });
-        $.ajax({
-            type: "POST",
-            url: "routes/report_allTable.php",
-            data: {
-                house_master: $(".house_master").val(),
-                mode : $(".mode_dwm").val(),
-                ch_value : ch_value,
-                val_start : $(".val_start").val(),
-                val_end : $(".val_end").val(),
-                sel_all_every : $("#sel_all_every").val()
-            },
-            // dataType: 'json',
-            success: function(res) {
-                $("#report_table").html(res);
-            }
-        });
-    });
-    function ch_radio(){
-        if ($("#radio_temp").prop('checked') == true) {
-            $("input[name='checkbox_temp[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_temp']").attr("disabled", false).prop( "checked", true );
-        }else{
-            $("input[name='checkbox_temp[]']").attr("disabled", true).prop( "checked", false );
-            $("input[name='checkbox_all_temp']").attr("disabled", true).prop( "checked", false );
-        }
-        if ($("#radio_hum").prop('checked') == true) {
-            $("input[name='checkbox_hum[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_hum']").attr("disabled", false).prop( "checked", true );
-        }else{
-            $("input[name='checkbox_hum[]']").attr("disabled", true).prop( "checked", false );
-            $("input[name='checkbox_all_hum']").attr("disabled", true).prop( "checked", false );
-        }
-        if ($("#radio_soil").prop('checked') == true) {
-            $("input[name='checkbox_soil[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_soil']").attr("disabled", false).prop( "checked", true );
-        }else{
-            $("input[name='checkbox_soil[]']").attr("disabled", true).prop( "checked", false );
-            $("input[name='checkbox_all_soil']").attr("disabled", true).prop( "checked", false );
-        }
-        if ($("#radio_light").prop('checked') == true) {
-            $("input[name='checkbox_light[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_light']").attr("disabled", false).prop( "checked", true );
-        }else{
-            $("input[name='checkbox_light[]']").attr("disabled", true).prop( "checked", false );
-            $("input[name='checkbox_all_light']").attr("disabled", true).prop( "checked", false );
-        }
-        if ($("#radio_other").prop('checked') == true) {
-            $("input[name='checkbox_other[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_other']").attr("disabled", false).prop( "checked", true );
-        }else{
-            $("input[name='checkbox_other[]']").attr("disabled", true).prop( "checked", false );
-            $("input[name='checkbox_all_other']").attr("disabled", true).prop( "checked", false );
-        }
-    }
-    $("#checkbox_all_sn").change(function () { 
-        if($(this).prop( "checked") == true){
-            $("#radio_temp").attr("disabled", true);
-            $("#radio_hum").attr("disabled", true);
-            $("#radio_light").attr("disabled", true);
-            $("#radio_soil").attr("disabled", true);
-            $("#radio_other").attr("disabled", true);
-            $("input[name='checkbox_temp[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_temp']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_hum[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_hum']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_light[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_light']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_soil[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_soil']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_other[]']").attr("disabled", false).prop( "checked", true );
-            $("input[name='checkbox_all_other']").attr("disabled", false).prop( "checked", true );   
-        }else{
-            $("#radio_temp").attr("disabled", false);
-            $("#radio_hum").attr("disabled", false);
-            $("#radio_light").attr("disabled", false);
-            $("#radio_soil").attr("disabled", false);
-            $("#radio_other").attr("disabled", false);
-            if ($("#radio_temp").prop('checked') == true) {ch_radio('temp');}
-            if ($("#radio_hum").prop('checked') == true) {ch_radio('hum');}
-            if ($("#radio_light").prop('checked') == true) {ch_radio('light');}
-            if ($("#radio_soil").prop('checked') == true) {ch_radio('soil');}
-            if ($("#radio_other").prop('checked') == true) {ch_radio('other');}
-        }
-    });
-    function checkbox_all(val){
-        // $("input[name='checkbox_"+ val.value+"[]']").attr("disabled", false);
-        // alert(val.prop('checked'));
         
-        if ($("input[name='checkbox_all_"+val+"']").prop('checked') == true) {
-            $("input[name='checkbox_"+ val+"[]']").prop( "checked", true );
-        }else{
-            $("input[name='checkbox_"+ val+"[]']").prop( "checked", false );
-        }
-    }
-    function checkbox_check(count,mode){
-        var count_ch = [];
-        $("input[name='checkbox_"+mode+"[]']:checked").map(function (){
-            count_ch.push($(this).val());
-        });//
-        // alert(mode)
-        if(count_ch.length === count){
-            $("input[name='checkbox_all_"+mode+"']").prop( "checked", true );
-        }else{
-            $("input[name='checkbox_all_"+mode+"']").prop( "checked", false );
-        }
-        // alert("cl "+count_ch.length+" +all "+count)
-    }
+        var loading = verticalNoTitle();
+        active_btn();
+        function report_chart(){
+            $("#report_chart").addClass("report_chart");
+            $.ajax({
+                type: "POST",
+                url: "routes/report_allChart.php",
+                data: {
+                    house_master: $(".house_master").val(),
+                    mode : $(".mode_dwm").val(),
+                    ch_value : ch_value,
+                    val_start : $(".val_start").val(),
+                    val_end : $(".val_end").val(),
+                    sel_all_every : $("#sel_all_every").val()
+                },
+                dataType: 'json',
+                success: function(res) {
+                    // console.log(res[1])
+                    // alert(ch_value[1][1])
+                    var data_chart = [];
+                    for(var k =1; k<=ch_value[1].length; k++){
+                        data_chart.push({
+                                name: ch_value[2][(k-1)],
+                                type: 'line',
+                                showSymbol: false,
+                                areaStyle: {},
+                                data: res['data_'+k]
+                        })
+                    }
+                    if(ch_value[0] === "other"){
+                        var chart_name = 'other';
+                    }else{
+                        var chart_name = ch_value[0];
+                    }
+                    // console.log(data_chart)
+                    // return false;
+                    var myChart = echarts.init(document.getElementById('report_chart'), 'dark');
+                    
+                    // specify chart configuration item and data
+                    var option = {
+                        title: {
+                            text: chart_name
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                label: {
+                                    backgroundColor: '#6a7985'
+                                }
+                            }
+                        },
+                        legend: {
+                            data: ch_value[2]
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: res.timestamp,
+                            boundaryGap: false
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        dataZoom: [{
+                            type: 'inside',
+                            start: 0,
+                            end: 100
+                        }, {
+                            start: 0,
+                            end: 100
+                        }],
+                        grid: {
+                            left: '2%',
+                            right: '1%',
+                            bottom: '2%',
+                            containLabel: true
+                        },
+                        series:data_chart
+                    };
 
-    
-    </script>
+                    // use configuration item and data specified to show chart
+                    myChart.setOption(option);
+                    loadingOut(loading);
+                }
+            });
+        }
+        function report_table(){
+            $.ajax({
+                type: "POST",
+                url: "routes/report_allTable.php",
+                data: {
+                    house_master: $(".house_master").val(),
+                    mode : $(".mode_dwm").val(),
+                    ch_value : ch_value,
+                    val_start : $(".val_start").val(),
+                    val_end : $(".val_end").val(),
+                    sel_all_every : $("#sel_all_every").val()
+                },
+                // dataType: 'json',
+                success: function(res) {
+                    $("#report_table").html(res);
+                    loadingOut(loading);
+                }
+            });
+        }
+        function active_btn(){
+            if($(".mode_dwm").val() === 'day'){
+                $(".all_day").addClass("active");
+                $(".all_week").removeClass("active");
+                $(".all_month").removeClass("active");
+                $(".all_from_to").removeClass("active");
+            }else if($(".mode_dwm").val() === 'week'){
+                $(".all_day").removeClass("active");
+                $(".all_week").addClass("active");
+                $(".all_month").removeClass("active");
+                $(".all_from_to").removeClass("active");
+            }else if($(".mode_dwm").val() === 'month'){
+                $(".all_day").removeClass("active");
+                $(".all_week").removeClass("active");
+                $(".all_month").addClass("active");
+                $(".all_from_to").removeClass("active");
+            }else{
+                $(".all_day").removeClass("active");
+                $(".all_week").removeClass("active");
+                $(".all_month").removeClass("active");
+                $(".all_from_to").addClass("active");
+            }
+            $("#Modal_select_sn").modal("hide");
+        }
+        // alert($(".re_tb").hasClass("active"))
+        // return false
+        if($(".re_ch").hasClass("active") == true){
+            report_chart();
+        }else if($(".re_tb").hasClass("active") == true){
+            report_table();
+        }
+    }
+</script>

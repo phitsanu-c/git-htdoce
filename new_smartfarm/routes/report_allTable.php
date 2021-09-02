@@ -132,7 +132,7 @@
                     + currentdate.getMinutes(); //+ ":" 
                     // + currentdate.getSeconds();
         $('#example').DataTable( {
-            "scrollY": 200,
+            "scrollY": 330,
             "scrollX": true,
             "scrollCollapse": false,
             "paging":    false,
@@ -151,9 +151,7 @@
                 
             ],
             dom: '<"floatRight"B><"clear">frtip',
-            buttons: [
-                //  'csv',
-                {
+            buttons: [{
                     text: 'Export csv',
                     title: "Smart Farm Data Sensor",
                     charset: 'utf-8',
@@ -161,6 +159,7 @@
                     // exportOptions: {
                     //    columns: [ 0, 2, 5 ]
                     // },
+                    className:'btn btn-outline-success px-5',
                     extend: 'csv',
                     format: 'YYYY/MM/dd',
                     // fieldSeparator: ';',
