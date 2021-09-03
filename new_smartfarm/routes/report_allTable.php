@@ -37,7 +37,7 @@
     // echo $a;
 ?>
 <div class="table-responsive m-t-10">
-    <table id="example" class="cell-border" style="width:100%">
+    <table id="example" class="table table-striped table-bordered dataTable" style="width:100%">
         <thead>
             <tr>
                 <th class="text-center">#</th>

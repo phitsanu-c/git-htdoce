@@ -26,7 +26,7 @@
 
 ?>
 <div class="table-responsive m-t-10">
-    <table id="re_tb_con" class="cell-border" style="width:100%">
+    <table id="re_tb_con" class="table table-striped table-bordered dataTable" style="width:100%">
         <thead>
         <tr>
                 <th class="text-center">#</th>

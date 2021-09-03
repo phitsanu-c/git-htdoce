@@ -5,6 +5,7 @@
     $dashName = $_POST['dashName'];
     $dashSncanel = $_POST["dashSncanel"];
     $dashMode = $_POST["dashMode"];
+    $dashUnit = $_POST["dashUnit"];
     // $count_dash = array_count_values($dashMode)['1'];
     // print_r( array_count_values($dashStatus) );
 // echo array_count_values($controlstatus)['0'];
@@ -162,7 +163,7 @@
                                         if($dashStatus[$i] == 1){
                                             if($dashMode[$i] == 1){ ?>
                                                 <div class="form-check mb-3"> 
-                                                    <input type="checkbox" class="form-check-input" name="checkbox_temp[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i] ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'temp')" checked>
+                                                    <input type="checkbox" class="form-check-input" name="checkbox_temp[]" value="<?= $dashSncanel[$i] ?>" d_name="<?php if ($dashUnit[$i] == 1) {echo $dashName[$i]." (℃)";}else{echo  $dashName[$i]." (".$dashUnit[$i].")";} ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'temp')" checked>
                                                     <label class="form-check-label"><?= $dashName[$i] ?></label>
                                                 </div>
                                     <?php } } } ?>
@@ -532,6 +533,7 @@
                 ch_value.push(d_mode);
             }
         }
+        
         if (checked.length == 0) {
             Swal({
                 type: "warning",
@@ -594,6 +596,7 @@
                     // console.log(res[1])
                     // alert(ch_value[1][1])
                     var data_chart = [];
+                    // var c_unit = [];
                     for(var k =1; k<=ch_value[1].length; k++){
                         data_chart.push({
                                 name: ch_value[2][(k-1)],

@@ -1,4 +1,3 @@
-
 <?php
     // $controlstatus = $_POST['controlstatus'];
     // $conttrolname = $_POST['conttrolname'];
@@ -41,7 +40,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-            <button type="button" id="submit_recont_Modal" class="btn btn-success waves-light">
+            <button type="button" id="submit_recont_Modal" class="btn btn-success waves-light" house_master="<?= $_POST['house_master'] ?>" status="<?= $_POST['controlstatus'] ?>" name='<?= $_POST["conttrolname"] ?>'>
                 <i class="fadeIn animated bx bx-check"></i> ตกลง
                 </button>
                 <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">
@@ -52,9 +51,7 @@
     </div>
 </div>
 <!-- exit Modal -->
-<!-- <div class="tab-content"> -->
-    <div id="rept_control"></div>
-<!-- </div> -->
+<div id="rept_control"></div>
 
 <script>
     $('.r_start').daterangepicker({
@@ -128,6 +125,40 @@
     $(".r_from_to").click(function() {
         $("#modal_fromto").modal("show");
     });
+    $("#submit_recont_Modal").click(function() {
+        if ($(".r_start").val() === "") {
+            $(".r_start").addClass('is-invalid');
+            return false;
+        }else{
+            $(".r_start").removeClass('is-invalid');
+        }
+        if ($(".r_end").val() === "") {
+            $(".r_end").addClass('is-invalid');
+            return false;
+        }else{
+            $(".r_end").removeClass('is-invalid');
+        }
+        if ($(".r_start").val() >= $(".r_end").val()) {
+            $(".r_start").addClass('is-invalid');
+            $(".r_end").addClass('is-invalid');
+            Swal({
+                type: "warning",
+                html: "เวลาเริ่มต้น "+$(".r_start").val()+" <b>ต้องน้อยกว่า</b> เวลาสิ้นสุด "+$(".r_end").val(),
+                // html: text,
+                allowOutsideClick: false
+            });
+            return false;
+        }else{
+            $(".r_start").removeClass('is-invalid');
+            $(".r_end").removeClass('is-invalid');
+        }
+        $("#modal_fromto").modal("hide");
+        report_control_table( $(this).attr("house_master"),
+            $.parseJSON($(this).attr("status")),
+            $.parseJSON($(this).attr("name")),
+            "from_to", $(".r_start").val(), $(".r_end").val()
+        );
+    });
     function report_control_table(key1,key2,key3,key4,key5,key6){
         var loading = verticalNoTitle();
         $.ajax({
@@ -144,6 +175,37 @@
             // dataType: 'json',
             success: function(res) {
                 $("#rept_control").html(res);
+                if (key4 === "all") {
+                    $(".r_all").addClass("active");
+                    $(".r_day").removeClass("active");
+                    $(".r_week").removeClass("active");
+                    $(".r_month").removeClass("active");
+                    $(".r_from_to").removeClass("active");
+                }else if(key4 === "day"){
+                    $(".r_all").removeClass("active");
+                    $(".r_day").addClass("active");
+                    $(".r_week").removeClass("active");
+                    $(".r_month").removeClass("active");
+                    $(".r_from_to").removeClass("active");
+                }else if(key4 === "week"){
+                    $(".r_all").removeClass("active");
+                    $(".r_day").removeClass("active");
+                    $(".r_week").addClass("active");
+                    $(".r_month").removeClass("active");
+                    $(".r_from_to").removeClass("active");
+                }else if(key4 === "month"){
+                    $(".r_all").removeClass("active");
+                    $(".r_day").removeClass("active");
+                    $(".r_week").removeClass("active");
+                    $(".r_month").addClass("active");
+                    $(".r_from_to").removeClass("active");
+                }else if(key4 === "from_to"){
+                    $(".r_all").removeClass("active");
+                    $(".r_day").removeClass("active");
+                    $(".r_week").removeClass("active");
+                    $(".r_month").removeClass("active");
+                    $(".r_from_to").addClass("active");
+                }
                 loadingOut(loading);
             }
         });
