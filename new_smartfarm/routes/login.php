@@ -19,7 +19,8 @@ if (isset($_POST['Username'])) {
             $query->execute();
             $row_count = $query->fetch(PDO::FETCH_BOTH);
             // echo $count_User["login_id"];
-
+            // $_SESSION["login_email"] = $row_count["login_email"];
+            // $_SESSION["login_tel"] = $row_count["login_tel"];
             if ($row_count == false) {
                 echo json_encode(['status_login'  => "No user"], JSON_UNESCAPED_UNICODE);
                 exit();
@@ -38,8 +39,11 @@ if (isset($_POST['Username'])) {
             }
             if($_SESSION["login_status"] != 1){
                 $rowc = $dbcon->query("SELECT COUNT('userST_loginID') FROM `tb3_userst` WHERE `userST_loginID`='$login_userid'")->fetch();
+                $rwcstu = $dbcon->query("SELECT COUNT('userST_id') FROM `tb3_userst` WHERE `userST_loginID`='$login_userid' AND userST_user_status=2")->fetch();
+                $_SESSION['count_statusUser'] = $rwcstu[0];
             }else{
                 $rowc = $dbcon->query("SELECT COUNT(`site_id`) FROM tb2_site ")->fetch();
+                $_SESSION['count_statusUser'] = "1";
             }
             $_SESSION['count_house'] = $rowc[0];
             if($rowc[0] == 1){
@@ -70,7 +74,8 @@ if (isset($_SESSION["Username"])) {
         'image'         => $_SESSION["login_image"],
         'date_start'    => $_SESSION["time"],
         'count_house'   => $_SESSION['count_house'],
-        'master'        => $_SESSION['master']
+        'master'        => $_SESSION['master'],
+        'count_statusUser' => $_SESSION['count_statusUser']
     ], JSON_UNESCAPED_UNICODE);
 } else {
     echo json_encode(['username'  => ""]);

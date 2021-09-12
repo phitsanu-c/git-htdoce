@@ -78,7 +78,7 @@
                     <div class="col-lg-6 col-xl-6 col-sm-12">
                         <div class="input-group mb-3"> 
                             <span class="input-group-text col-sm-4" id="basic-addon3">เวลาสิ้นสุด</span>
-                            <input type="text" class="form-control text-center val_end" type="text" placeholder="วันเวลาสิ้นสุด" aria-label="วันเวลาสิ้นสุด" aria-describedby="button-addon2">
+                            <input type="text" class="form-control text-center val_end" placeholder="วันเวลาสิ้นสุด" aria-label="วันเวลาสิ้นสุด" aria-describedby="button-addon2">
                             <div class="invalid-feedback">กรุณาระบุเวลาสิ้นสุด</div>
                         </div>
                     </div>

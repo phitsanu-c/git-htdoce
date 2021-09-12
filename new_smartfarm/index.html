@@ -96,10 +96,8 @@
                 <!-- <li class="menu-label">UI Elements</li> -->
                 <li class="memu_sel">
                     <a href="javascript:;">
-                        <div class="parent-icon"><i class='bx bx-cookie'></i>
-                        </div>
-                        <div class="menu-title">โรงเรือน
-                        </div>
+                        <div class="parent-icon"><i class='bx bx-cookie'></i></div>
+                        <div class="menu-title">โรงเรือน</div>
                     </a>
                 </li>
                 <li class="memu_dash">
@@ -110,14 +108,14 @@
                         </div>
                     </a>
                 </li>
-                <li class="memu_control">
+                <!-- <li class="memu_control">
                     <a href="javascript:;">
                         <div class="parent-icon"><i class='bx bx-cookie'></i>
                         </div>
                         <div class="menu-title">สั่งงานระบบควบคุม
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <li class="memu_report">
                     <a href="javascript:;">
                         <div class="parent-icon"><i class='bx bx-cookie'></i>
@@ -172,20 +170,14 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
-                            </li>
-                            <!-- <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
-                            </li> -->
-                            <!-- <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
-                            </li> -->
+                            <li><a class="dropdown-item dpd_profile" href="javascript:;"><i class="bx bx-user"></i><span>บัญชี</span></a></li>
+                            <li><a class="dropdown-item dpd_setSite" href="javascript:;"><i class="bx bx-cog"></i><span>ตั้งค่าสถานที่</span></a></li>
+                            <li><a class="dropdown-item dpd_setHoune" href="javascript:;"><i class="bx bx-cog"></i><span>ตั้งค่าโรงเรือน</span></a></li>
+                            <li><a class="dropdown-item dpd_setting" href="javascript:;"><i class="bx bx-cog"></i><span>กำหนดสิทธิ์ผู้ใช้งาน</span></a></li>
                             <li>
                                 <div class="dropdown-divider mb-0"></div>
                             </li>
-                            <li><a class="dropdown-item logout" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                            <li><a class="dropdown-item logout" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>ลงชื่อออก</span></a>
                             </li>
                         </ul>
                     </div>
@@ -260,6 +252,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="pills-profile">
             </div>
             <!--  -->
         </div>
@@ -420,23 +414,45 @@
         // alert(house_master);
         if (house_master != '') {
             $.ajax({
-                url: "http://localhost:3001/get_dash/dash/",
+                url: "routes/get_dash.php",
                 method: "post",
                 data: {
-                    house_master: house_master,
-                    field2: 2
+                    house_master: house_master
                 },
-                // contentType: "application/json",
+                dataType: "json",
                 success: function(res) {
                     console.log(res);
+                    //     }
+                    // });
+                    // $.ajax({
+                    //     url: "http://localhost:3001/get_dash/dash/",
+                    //     method: "post",
+                    //     data: {
+                    //         house_master: house_master,
+                    //         field2: 2
+                    //     },
+                    //     // contentType: "application/json",
+                    //     success: function(res) {
+                    //         console.log(res);
                     var dashStatus = res.dashStatus;
                     var dashName = res.dashName;
                     var dashSncanel = res.dashSncanel;
                     var dashMode = res.dashMode;
                     var dashImg = res.dashImg;
                     var dashUnit = res.dashUnit;
-                    var controlstatus = res.controlstatus;
+                    var controlStatus = res.controlstatus;
                     var imgCon = res.imgCon;
+
+                    function getArraySum(a) {
+                        // count array
+                        var total = 0;
+                        for (var i in a) {
+                            total += a[i];
+                        }
+                        return total;
+                    }
+                    var count_stcont = getArraySum(controlStatus);
+                    // alert(count_stcont)
                     $(".te_st").html(res.s_master.site_name);
                     $(".te_ht").html(res.s_master.house_name);
                     // alert(login_user);
@@ -445,9 +461,9 @@
                         method: "post",
                         data: {
                             s_master: res.s_master,
-                            dashStatus: res.dashStatus,
-                            dashName: res.dashName,
-                            controlstatus: res.controlstatus,
+                            dashStatus: dashStatus,
+                            dashName: dashName,
+                            controlstatus: controlStatus,
                             conttrolname: res.conttrolname
                         },
                         // dataType: "json",
@@ -520,7 +536,7 @@
                     function onConnectionLost(responseObject) {
                         if (responseObject.errorCode !== 0) {
                             console.log("Connection Lost: " + responseObject.errorMessage);
-                            location.reload();
+                            // location.reload();
                             // window.alert("Someone else took my websocket!\nRefresh to take it back.");
                         }
                     }
@@ -617,13 +633,9 @@
                             });
                         }
                         if (message.destinationName == house_master + "/1/control/json_control_filter") {
-                            var count_stcont = controlstatus.reduce(function(acc, e) {
-                                acc[e] = (e in acc ? acc[e] + 1 : 1);
-                                return acc
-                            }, {});
-                            // alert(groups['1'])
+                            // alert(count_stcont)
                             // return false;
-                            if (count_stcont['1'] !== 0) {
+                            if (count_stcont !== 0) {
                                 var result = message.payloadString;
                                 var parseJSON = $.parseJSON(result);
                                 var data_array = parseJSON.control_status;
@@ -642,7 +654,7 @@
                                 }
                                 // alert(imgCon['drip_1'][1])
                                 // dripper_1
-                                if (controlstatus[1] == 1) {
+                                if (controlStatus[1] == 1) {
                                     if (data_array.dripper_1 === "OFF") {
                                         $(".dash_img_con_1").attr("src", "public/images/control/" + imgCon['drip_1'][1]);
                                         $(".sw_manual_1").bootstrapToggle('off');
@@ -654,7 +666,7 @@
                                 }
 
                                 // dripper_2
-                                if (controlstatus[2] == 1) {
+                                if (controlStatus[2] == 1) {
                                     if (data_array.dripper_2 === "OFF") {
                                         $(".dash_img_con_2").attr("src", "public/images/control/" + imgCon['drip_2'][1]);
                                         $(".sw_manual_2").bootstrapToggle('off');
@@ -665,7 +677,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_2", c_dash = data_array.dripper_2, c_img_off = imgCon['drip_2'][1], c_img_on = imgCon['drip_2'][0], ch = '2');
                                 }
                                 // dripper_3
-                                if (controlstatus[3] == 1) {
+                                if (controlStatus[3] == 1) {
                                     if (data_array.dripper_3 === "OFF") {
                                         $(".dash_img_con_3").attr("src", "public/images/control/" + imgCon['drip_3'][1]);
                                         $(".sw_manual_3").bootstrapToggle('off');
@@ -676,7 +688,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_3", c_dash = data_array.dripper_3, c_img_off = imgCon['drip_3'][1], c_img_on = imgCon['drip_3'][0], ch = '3');
                                 }
                                 // dripper_4
-                                if (controlstatus[4] == 1) {
+                                if (controlStatus[4] == 1) {
                                     if (data_array.dripper_4 === "OFF") {
                                         $(".dash_img_con_4").attr("src", "public/images/control/" + imgCon['drip_4'][1]);
                                         $(".sw_manual_4").bootstrapToggle('off');
@@ -687,7 +699,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_4", c_dash = data_array.dripper_4, c_img_off = imgCon['drip_4'][1], c_img_on = imgCon['drip_4'][0], ch = '4');
                                 }
                                 // dripper_5
-                                if (controlstatus[5] == 1) {
+                                if (controlStatus[5] == 1) {
                                     if (data_array.dripper_5 === "OFF") {
                                         $(".dash_img_con_5").attr("src", "public/images/control/" + imgCon['drip_5'][1]);
                                         $(".sw_manual_5").bootstrapToggle('off');
@@ -698,7 +710,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_5", c_dash = data_array.dripper_5, c_img_off = imgCon['drip_5'][1], c_img_on = imgCon['drip_5'][0], ch = '5');
                                 }
                                 // dripper_6
-                                if (controlstatus[6] == 1) {
+                                if (controlStatus[6] == 1) {
                                     if (data_array.dripper_6 === "OFF") {
                                         $(".dash_img_con_6").attr("src", "public/images/control/" + imgCon['drip_6'][1]);
                                         $(".sw_manual_6").bootstrapToggle('off');
@@ -709,7 +721,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_6", c_dash = data_array.dripper_6, c_img_off = imgCon['drip_6'][1], c_img_on = imgCon['drip_6'][0], ch = '6');
                                 }
                                 // dripper_7
-                                if (controlstatus[7] == 1) {
+                                if (controlStatus[7] == 1) {
                                     if (data_array.dripper_7 === "OFF") {
                                         $(".dash_img_con_7").attr("src", "public/images/control/" + imgCon['drip_7'][1]);
                                         $(".sw_manual_7").bootstrapToggle('off');
@@ -720,7 +732,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_7", c_dash = data_array.dripper_7, c_img_off = imgCon['drip_7'][1], c_img_on = imgCon['drip_7'][0], ch = '7');
                                 }
                                 // dripper_8
-                                if (controlstatus[8] == 1) {
+                                if (controlStatus[8] == 1) {
                                     if (data_array.dripper_8 === "OFF") {
                                         $(".dash_img_con_8").attr("src", "public/images/control/" + imgCon['drip_8'][1]);
                                         $(".sw_manual_8").bootstrapToggle('off');
@@ -731,7 +743,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_8", c_dash = data_array.dripper_8, c_img_off = imgCon['drip_8'][1], c_img_on = imgCon['drip_8'][0], ch = '8');
                                 }
                                 // foggy
-                                if (controlstatus[9] == 1) {
+                                if (controlStatus[9] == 1) {
                                     if (data_array.foggy === "OFF") {
                                         $(".dash_img_con_9").attr("src", "public/images/control/" + imgCon['foggy'][1]);
                                         $(".sw_manual_9").bootstrapToggle('off');
@@ -742,7 +754,7 @@
                                     // cont_dash_show(img_c = "dash_img_con_9", c_dash = data_array.foggy, c_img_off = imgCon['foggy'][1], c_img_on = imgCon['foggy'][0], ch = '9');
                                 }
                                 // fan
-                                if (controlstatus[10] == 1) {
+                                if (controlStatus[10] == 1) {
                                     if (data_array.fan === "OFF") {
                                         $(".dash_img_con_10").attr("src", "public/images/control/" + imgCon['fan'][1]);
                                         $(".sw_manual_10").bootstrapToggle('off');
@@ -754,7 +766,7 @@
                                 }
 
                                 //Slan
-                                if (controlstatus[11] == 1) {
+                                if (controlStatus[11] == 1) {
                                     if (data_array.shader === "0") {
                                         $(".dash_img_con_11").attr("src", "public/images/control/" + imgCon['shader'][0], ch = '11');
                                     } else if (data_array.shader === "1") {
@@ -814,7 +826,7 @@
                                 }
 
                                 // fertilizer
-                                if (controlstatus[12] == 1) {
+                                if (controlStatus[12] == 1) {
                                     if (data_array.fertilizer === "OFF") {
                                         $(".dash_img_con_12").attr("src", "public/images/control/" + imgCon['fertilizer'][1]);
                                         $(".sw_manual_12").bootstrapToggle('off');
@@ -835,187 +847,6 @@
                                         $(".sw_manual_1").bootstrapToggle('on');
                                     }
                                 }
-                                return false;
-                                // dripper_3
-                                if (Contstatus.controlstatus_3 === "1") {
-                                    $(".dash_c3").show();
-                                    $(".title_c3").html(Contname.conttrolname_3);
-                                    cont_dash_show(img_c = "img_c3", c_dash = data_array.dripper_3, c_img_off = Controlimg.drip_3_off, c_img_on = Controlimg.drip_3_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.dripper_3, sw_1 = "sw_drip3_on", sw_2 = "sw_drip3_off");
-                                } else {
-                                    $(".dash_c3").hide();
-                                }
-
-                                // dripper_4
-                                if (Contstatus.controlstatus_4 === "1") {
-                                    $(".dash_c4").show();
-                                    $(".title_c4").html(Contname.conttrolname_4);
-                                    cont_dash_show(img_c = "img_c4", c_dash = data_array.dripper_4, c_img_off = Controlimg.drip_4_off, c_img_on = Controlimg.drip_4_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.dripper_4, sw_1 = "sw_drip4_on", sw_2 = "sw_drip4_off");
-                                } else {
-                                    $(".dash_c4").hide();
-                                }
-
-                                // dripper_5
-                                if (Contstatus.controlstatus_5 === "1") {
-                                    $(".dash_c5").show();
-                                    $(".title_c5").html(Contname.conttrolname_5);
-                                    cont_dash_show(img_c = "img_c5", c_dash = data_array.dripper_5, c_img_off = Controlimg.drip_5_off, c_img_on = Controlimg.drip_5_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.dripper_5, sw_1 = "sw_drip5_on", sw_2 = "sw_drip5_off");
-                                } else {
-                                    $(".dash_c5").hide();
-                                }
-
-                                // dripper_6
-                                if (Contstatus.controlstatus_6 === "1") {
-                                    $(".dash_c6").show();
-                                    $(".title_c6").html(Contname.conttrolname_6);
-                                    cont_dash_show(img_c = "img_c6", c_dash = data_array.dripper_6, c_img_off = Controlimg.drip_6_off, c_img_on = Controlimg.drip_6_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.dripper_6, sw_1 = "sw_drip6_on", sw_2 = "sw_drip6_off");
-                                } else {
-                                    $(".dash_c6").hide();
-                                }
-
-                                // dripper_7
-                                if (Contstatus.controlstatus_7 === "1") {
-                                    $(".dash_c7").show();
-                                    $(".title_c7").html(Contname.conttrolname_7);
-                                    cont_dash_show(img_c = "img_c7", c_dash = data_array.dripper_7, c_img_off = Controlimg.drip_7_off, c_img_on = Controlimg.drip_7_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.dripper_7, sw_1 = "sw_drip7_on", sw_2 = "sw_drip7_off");
-                                } else {
-                                    $(".dash_c7").hide();
-                                }
-
-                                // dripper_8
-                                if (Contstatus.controlstatus_8 === "1") {
-                                    $(".dash_c8").show();
-                                    $(".title_c8").html(Contname.conttrolname_8);
-                                    cont_dash_show(img_c = "img_c8", c_dash = data_array.dripper_8, c_img_off = Controlimg.drip_8_off, c_img_on = Controlimg.drip_8_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.dripper_8, sw_1 = "sw_drip8_on", sw_2 = "sw_drip8_off");
-                                } else {
-                                    $(".dash_c8").hide();
-                                }
-
-                                // foggy
-                                if (Contstatus.controlstatus_9 === "1") {
-                                    $(".dash_c9").show();
-                                    $(".title_c9").html(Contname.conttrolname_9);
-                                    cont_dash_show(img_c = "img_c9", c_dash = data_array.foggy, c_img_off = Controlimg.foggy_off, c_img_on = Controlimg.foggy_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.foggy, sw_1 = "sw_foggy_on", sw_2 = "sw_foggy_off");
-                                } else {
-                                    $(".dash_c9").hide();
-                                }
-
-                                // fan
-                                if (Contstatus.controlstatus_10 === "1") {
-                                    $(".dash_c10").show();
-                                    $(".title_c10").html(Contname.conttrolname_10);
-                                    cont_dash_show(img_c = "img_c10", c_dash = data_array.fan, c_img_off = Controlimg.fan_off, c_img_on = Controlimg.fan_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.fan, sw_1 = "sw_fan_on", sw_2 = "sw_fan_off");
-                                } else {
-                                    $(".dash_c10").hide();
-                                }
-
-                                //Slan
-                                if (Contstatus.controlstatus_11 === "1") {
-                                    // console.log("aaa " + data_array.shader);
-                                    $(".dash_c11").show();
-                                    $(".title_c11").html(Contname.conttrolname_11);
-                                    if (data_array.shader === "0") {
-                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_0);
-                                    } else if (data_array.shader === "1") {
-                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_1);
-                                    } else if (data_array.shader === "2") {
-                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_2);
-                                    } else if (data_array.shader === "3") {
-                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_3);
-                                    } else if (data_array.shader === "4") {
-                                        $(".img_c11").attr("src", "dist/images/control/" + Controlimg.shader_4);
-                                    }
-
-                                    // modal_manual
-                                    if (data_array["shader"] == 0) {
-                                        var shader_slw = "0 : Close 0%";
-                                        $(".sw_shader0").addClass("active");
-                                        $(".sw_shader1").removeClass("active");
-                                        $(".sw_shader2").removeClass("active");
-                                        $(".sw_shader3").removeClass("active");
-                                        $(".sw_shader4").removeClass("active");
-                                    }
-                                    if (data_array["shader"] == 1) {
-                                        var shader_slw = "1 : Close 25%";
-                                        $(".sw_shader0").removeClass("active");
-                                        $(".sw_shader1").addClass("active");
-                                        $(".sw_shader2").removeClass("active");
-                                        $(".sw_shader3").removeClass("active");
-                                        $(".sw_shader4").removeClass("active");
-                                    }
-                                    if (data_array["shader"] == 2) {
-                                        var shader_slw = "2 : Close 50%";
-                                        $(".sw_shader0").removeClass("active");
-                                        $(".sw_shader1").removeClass("active");
-                                        $(".sw_shader2").addClass("active");
-                                        $(".sw_shader3").removeClass("active");
-                                        $(".sw_shader4").removeClass("active");
-                                    }
-                                    if (data_array["shader"] == 3) {
-                                        var shader_slw = "3 : Close 75%";
-                                        $(".sw_shader0").removeClass("active");
-                                        $(".sw_shader1").removeClass("active");
-                                        $(".sw_shader2").removeClass("active");
-                                        $(".sw_shader3").addClass("active");
-                                        $(".sw_shader4").removeClass("active");
-                                    }
-                                    if (data_array["shader"] == 4) {
-                                        var shader_slw = "4 : Close 100%";
-                                        $(".sw_shader0").removeClass("active");
-                                        $(".sw_shader1").removeClass("active");
-                                        $(".sw_shader2").removeClass("active");
-                                        $(".sw_shader3").removeClass("active");
-                                        $(".sw_shader4").addClass("active");
-                                    }
-                                    $(".shader_slw").html(shader_slw);
-                                } else {
-                                    $(".dash_c11").hide();
-                                }
-
-                                // fertilizer
-                                if (Contstatus.controlstatus_12 === "1") {
-                                    $(".dash_c12").show();
-                                    $(".title_c12").html(Contname.conttrolname_12);
-                                    cont_dash_show(img_c = "img_c12", c_dash = data_array.fertilizer, c_img_off = Controlimg.fertilizer_off, c_img_on = Controlimg.fertilizer_on);
-                                    // modal_manual
-                                    SW_Control_SLW(result = data_array.fertilizer, sw_1 = "sw_fertilizer_on", sw_2 = "sw_fertilizer_off");
-                                } else {
-                                    $(".dash_c12").hide();
-                                }
-
-                                function cont_dash_show(img_c, c_dash, c_img_off, c_img_on) {
-                                    if (c_dash === "OFF") {
-                                        $("." + img_c).attr("src", "public/images/control/" + c_img_off);
-                                    } else if (c_dash === "ON") {
-                                        $("." + img_c).attr("src", "public/images/control/" + c_img_on);
-                                    }
-                                }
-
-                                function SW_Control_SLW(result, sw_1, sw_2) {
-                                    if (result === "ON") {
-                                        $("." + sw_2).removeClass("text-white btn-danger").html('<i class="fa fa-square-o"></i> OFF');
-                                        $("." + sw_1).addClass("text-white btn-success active").html('<i class="fa fa-check-square-o"></i> ON');
-                                    } else {
-                                        $("." + sw_1).removeClass("text-white btn-success").html('<i class="fa fa-square-o"></i> ON');
-                                        $("." + sw_2).addClass("text-white btn-danger active").html('<i class="fa fa-check-square-o"></i> OFF');
-                                    }
-                                }
-                                swal.close();
                             }
                         }
 
@@ -1041,16 +872,16 @@
                             }
                         });
 
-                        var countStatus_con = countElement(1, controlstatus);
+                        // var countStatus_con = countElement(1, controlstatus);
 
-                        function countElement(item, array) {
-                            var count = 0;
-                            $.each(array, function(i, v) {
-                                if (v === item) count++;
-                            });
-                            return count;
-                        }
-                        if (countStatus_con == 0) {
+                        // function countElement(item, array) {
+                        //     var count = 0;
+                        //     $.each(array, function(i, v) {
+                        //         if (v === item) count++;
+                        //     });
+                        //     return count;
+                        // }
+                        if (count_stcont == 0) {
                             $(".r_reControl").hide();
                             $(".r_reAutoControl").hide();
                         } else {

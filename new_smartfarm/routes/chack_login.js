@@ -64,8 +64,14 @@ $.getJSON('routes/login.php', function(msg) {
                 // $("#pills-selectSite").load('views/home.php');
                 $('.memu_sel').show().removeClass("mm-active");
                 $(".memu_dash").show().addClass("mm-active");
+                $("#pills-selectSite").hide();
             }
         }
+    }
+    if (msg.count_statusUser === "0") {
+        $(".dpd_setSite").hide();
+        $(".dpd_setHoune").hide();
+        $(".dpd_setting").hide();
     }
 });
 
@@ -110,6 +116,5 @@ function verticalNoTitle() {
 }
 
 function loadingOut(loading) {
-    setTimeout(() => loading.out(), 1000);
+    setTimeout(() => loading.out(), 100);
 }
-
