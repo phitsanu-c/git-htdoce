@@ -105,3 +105,35 @@ $(".dpd_setting").click(function() {
         }
     });
 });
+
+// $("#lightmode").click(function(){
+
+// });
+function theme_set(val, key) {
+    if (key == 1 || key == 3) {
+        var new_val = val;
+    } else {
+        if ($("#lightmode").prop('checked') == true) {
+            var new_val = 'light-theme ' + val;
+        } else if ($("#darkmode").prop('checked') == true) {
+            var new_val = 'dark-theme ' + val;
+        } else if ($("#semidark").prop('checked') == true) {
+            var new_val = 'semi-dark ' + val;
+        } else if ($("#minimaltheme").prop('checked') == true) {
+            var new_val = 'minimal-theme ' + val;
+        }
+    }
+    // alert($("#lightmode").prop('checked'))
+    // return false;
+    $.ajax({
+        url: "routes/setting_theme.php",
+        method: "post",
+        data: {
+            theme: new_val
+        },
+        // dataType: "json",
+        success: function(resp) {
+
+        }
+    });
+}

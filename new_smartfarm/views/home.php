@@ -6,14 +6,22 @@
 </style>
 <div class="page-content">
 <?php
+    session_start();
+    $s_master = $_POST["s_master"];
     $s_master = $_POST['s_master'];
     $dashStatus = $_POST['dashStatus'];
     $dashName = $_POST['dashName'];
     $controlstatus = $_POST['controlstatus'];
     $conttrolname = $_POST['conttrolname'];
+    $meter_status = $_POST["meter_status"];
     // print_r( array_count_values($dashStatus) );
 // echo array_count_values($controlstatus)['0'];
 // exit();
+    if($s_master["house_img"] == ""){
+        $house_img = $s_master["site_img"];
+    }else{
+        $house_img = $s_master["house_img"];
+    }
 ?>
 
     <!--breadcrumb-->
@@ -34,14 +42,6 @@
                     <span class="date"></span><br>
                     <span class="time"></span>
                 </span>
-                <!-- <button type="button" class="btn btn-primary">Settings</button> -->
-                <!-- <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item" href="javascript:;">Action</a>
-                    <a class="dropdown-item" href="javascript:;">Another action</a>
-                    <a class="dropdown-item" href="javascript:;">Something else here</a>
-                    <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated link</a>
-                </div> -->
             </div>
         </div>
     </div>
@@ -54,12 +54,65 @@
             <div class="card w-100 radius-10">
                 <div class="card-body"> 
                     <div class="card radius-10 shadow-none">
-                        <img src="public/images/site/<?= $s_master['site_img'] ?>" alt="..." class="card-img">
-                        <!-- <div class="card-body"> -->
-                        <!-- <h4 class="card-title text-muted"><?// $s_master['house_name'] ?></h4> -->
-                        <!-- </div> -->
+                        <img src="public/images/site/<?= $house_img ?>" alt="..." class="card-img">
                     </div>
-                    
+                    <div class="card radius-10 shadow-none">
+                        <div class="card-body border radius-10 shadow-none mb-3">
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>ที่ตั้ง : <b><?= $s_master["site_address"] ?></b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>สถานะโรงเรือน : <b class="text-success">ออนไลน์</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>ขนาดโรงเรือน : <b><?= substr($s_master["house_image"],9,13) ?></b> เมตร</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>ระบบอินเตอร์เน็ต : <b>Internet SIM</b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>หมายเลขอินเตอร์เน็ต : <b><?= $s_master["site_internet"] ?></b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>วันหมดอายุ : <b><?= $s_master["site_internetO"] ?></b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body radius-10 shadow-none">
+                                    <div class="d-flex">
+                                        <h5>จุดติดตั้งเซ็ยเซอร์ : <b class="image-popups">
+                                        <?php if($s_master["house_img_map"] != ""){
+                                                            echo '<a href="public/images/img_map/'.$s_master["house_img_map"].'"><i class="lni lni-map-marker"></i></a>';
+                                                        }else{echo "-";}?>
+                                            </b></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,6 +122,7 @@
                     <div class="card radius-10 border shadow-none">
                         <div class="card-body">
                             <!--  -->
+                            <h5 class="text-center">สภาพอากาศจากกรมอุตุนิยมวิทยา</h5>
                             <div class="row">
                                 <div class="col-lg-4 col-xl-4 col-sm-6 text-center">
                                     <img src="" class="weather-icon" alt="Weather Icon" style="height: 40%; width: 40%;" /><br>
@@ -100,32 +154,169 @@
                             </div>
                             <!--  -->
                         </div>
-                    </div>
-                    <div class="row">
-                        <?php for($i = 1; $i <= array_count_values($dashStatus)['1']; $i++){?>
-                            <div class="col-lg-3 col-xl-3 col-sm-12">
-                                <div class="card-body border radius-10 shadow-none mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-4">
-                                            <img src="" alt="..." class="card-img dash_img_<?= $i ?>" width="5%">
-                                        </div>
-                                        <div class="col-8 text-center">
-                                            <!-- <div class=""> -->
-                                                <h6 class="card-title mt-2"><B><?= $dashName[$i] ?></B></h6>
-                                                <h6 class="card-text dash_data_1_<?= $i ?>"></h6>
-                                            <!-- </div> -->
+                    </div><br/>
+                    <div class="card radius-10 border shadow-none">
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="text-center">ข้อมูลเซ็นเซอร์</h5>
+                                <?php for($i = 1; $i <= array_count_values($dashStatus)['1']; $i++){?>
+                                    <div class="col-lg-3 col-xl-3 col-sm-12">
+                                        <div class="card-body border radius-10 shadow-none mb-3">
+                                            <div class="row g-0">
+                                                <div class="d-flex">
+                                                    <h6 class="card-title mt-2"><B><?= $dashName[$i] ?></B></h6>
+                                                    <div class="ms-auto image-popups">
+                                                        <?php if($_POST["ingMap"][$i] != ""){
+                                                            echo '<a href="public/images/img_map/'.$_POST["ingMap"][$i].'"><i class="lni lni-map-marker"></i></a>';
+                                                        }?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <img src="" alt="..." class="card-img dash_img_<?= $i ?>" width="5%">
+                                                </div>
+                                                <div class="col-8 text-center">
+                                                    <!-- <div class=""> -->
+                                                        <h6 class="card-text dash_data_1_<?= $i ?>"></h6>
+                                                    <!-- </div> -->
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if($_POST["meter_count"] != 0){ ?>
+                        <div class="card radius-10 border shadow-none">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5 class="text-center"><b>พลังงาน</b></h5>
+                                    <?php if($meter_status[1] == 1){ echo '
+                                        <div class="col-lg-3 col-xl-3 col-sm-12">
+                                            <div class="card-body border radius-10 shadow-none mb-3">
+                                                <div class="row g-0">
+                                                    <div class="col-4">
+                                                        <img src="" alt="..." class="card-img dash_img_v" width="5%">
+                                                    </div>
+                                                    <div class="col-8 text-center">
+                                                            <h6 class="card-title mt-2"><B>แรงดันไฟฟ้า</B></h6>
+                                                            <h6 class="card-text dash_data_v"></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                    }
+                                    if($meter_status[2] == 1){ echo '
+                                        <div class="col-lg-3 col-xl-3 col-sm-12">
+                                            <div class="card-body border radius-10 shadow-none mb-3">
+                                                <div class="row g-0">
+                                                    <div class="col-4">
+                                                        <img src="" alt="..." class="card-img dash_img_a" width="5%">
+                                                    </div>
+                                                    <div class="col-8 text-center">
+                                                            <h6 class="card-title mt-2"><B>กระแสไฟฟ้า</B></h6>
+                                                            <h6 class="card-text dash_data_a"></h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                     }
+                                     if($meter_status[3] == 1){ echo '
+                                         <div class="col-lg-3 col-xl-3 col-sm-12">
+                                             <div class="card-body border radius-10 shadow-none mb-3">
+                                                 <div class="row g-0">
+                                                     <div class="col-4">
+                                                         <img src="" alt="..." class="card-img dash_img_p" width="5%">
+                                                     </div>
+                                                     <div class="col-8 text-center">
+                                                             <h6 class="card-title mt-2"><B>กำลังไฟฟ้า</B></h6>
+                                                             <h6 class="card-text dash_data_p"></h6>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>';
+                                      }
+                                      if($meter_status[4] == 1){ echo '
+                                          <div class="col-lg-3 col-xl-3 col-sm-12">
+                                              <div class="card-body border radius-10 shadow-none mb-3">
+                                                  <div class="row g-0">
+                                                      <div class="col-4">
+                                                          <img src="" alt="..." class="card-img dash_img_pf" width="5%">
+                                                      </div>
+                                                      <div class="col-8 text-center">
+                                                              <h6 class="card-title mt-2"><B>Power Factor</B></h6>
+                                                              <h6 class="card-text dash_data_pf"></h6>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>';
+                                       }
+                                       if($meter_status[5] == 1){ echo '
+                                           <div class="col-lg-3 col-xl-3 col-sm-12">
+                                               <div class="card-body border radius-10 shadow-none mb-3">
+                                                   <div class="row g-0">
+                                                       <div class="col-4">
+                                                           <img src="" alt="..." class="card-img dash_img_engy" width="5%">
+                                                       </div>
+                                                       <div class="col-8 text-center">
+                                                               <h6 class="card-title mt-2"><B>พลังงาน</B></h6>
+                                                               <h6 class="card-text dash_data_engy"></h6>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>';
+                                        }
+                                        if($meter_status[6] == 1){ echo '
+                                            <div class="col-lg-3 col-xl-3 col-sm-12">
+                                                <div class="card-body border radius-10 shadow-none mb-3">
+                                                    <div class="row g-0">
+                                                        <div class="col-4">
+                                                            <img src="" alt="..." class="card-img dash_img_wc" width="5%">
+                                                        </div>
+                                                        <div class="col-8 text-center">
+                                                                <h6 class="card-title mt-2"><B>การใช้น้ำ</B></h6>
+                                                                <h6 class="card-text dash_data_wc"></h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                                         }
+                                         if($meter_status[7] == 1){ echo '
+                                             <div class="col-lg-3 col-xl-3 col-sm-12">
+                                                 <div class="card-body border radius-10 shadow-none mb-3">
+                                                     <div class="row g-0">
+                                                         <div class="col-4">
+                                                             <img src="" alt="..." class="card-img dash_img_wp" width="5%">
+                                                         </div>
+                                                         <div class="col-8 text-center">
+                                                                 <h6 class="card-title mt-2"><B>ความเร็วลม</B></h6>
+                                                                 <h6 class="card-text dash_data_wp"></h6>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>';
+                                          }
+                                          if($meter_status[8] == 1){ echo '
+                                            <div class="col-lg-3 col-xl-3 col-sm-12">
+                                                <div class="card-body border radius-10 shadow-none mb-3">
+                                                    <h6 class="card-title text-center mt-2"><B>ทิศทางลมลม</B></h6>
+                                                    <div class="text-center">
+                                                        <img class="dash_img_wd" width="50%">
+                                                    </div>
+                                                    <h6 class="card-text dash_data_wd"></h6>
+                                                </div>
+                                            </div>';
+                                           } ?>
                                 </div>
                             </div>
-                        <?php } ?>
-                    </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </div><!--end row-->
     
-    <?php if(!isset(array_count_values($controlstatus)['0']) || array_count_values($controlstatus)['0'] != 12){?>
+    <?php if($_POST["count_stcont"] != 0){?>
         <div class="col-12 col-lg-12 col-xl-12 d-flex">
             <div class="card w-100 radius-10">
                 <div class="card-body">
@@ -142,56 +333,57 @@
                     </div>
                             <!-- <div class="card-body"> -->
                     <div class="row">
-                        <?php for($i = 1; $i <= 12; $i++){ if($controlstatus[$i] == 1){ //array_count_values($controlstatus)['1'] ?>
-                        <div class="col-lg-3 col-xl-3 col-sm-12">
-                            <div class="card-body border radius-10 shadow-none mb-3">
-                            
-                                <!-- <div class="card-body"> -->
-                                    <div class="d-flex">
-                                        <h5 class="mb-0 mmn"><b><?= $conttrolname[$i] ?></b></h5>
-                                        <div class="ms-auto">
-                                            <?php 
-                                                if($i == 12){
-                                                    echo '<div class="Dsw_manual_'.$i.'">
-                                                            <input type="checkbox" class="sw_manual_'.$i.'" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-size="xs" data-style="ios">
-                                                        </div>';
-                                                } else {
-                                                    if($i == 11){
-                                                        echo '<div class="dropdown sw_manual">
-                                                            <button class="btn btn-outline-secondary dropdown-toggle shader_slw" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item sw_shader0">0 : ปิด 100%</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item sw_shader1">1 : เปิด 25%</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item sw_shader2">2 : เปิด 50%</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item sw_shader3">3 : เปิด 75%</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item sw_shader4">4 : เปิด 100%</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>';
-                                                    }else{
-                                                        echo '<div class="sw_manual Dsw_manual_'.$i.'">
-                                                            <input type="checkbox" class="sw_manual_'.$i.'" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-size="xs" data-style="ios">
-                                                        </div>';
-                                                    } 
-                                                    echo '<a class="font-20 sw_auto" href="javascript:;" id="'.$i.'" name="'.$conttrolname[$i].'">	<i class="lni lni-cog"></i> </a>';
-                                                }
-                                            ?>
+                        <?php for($i = 1; $i <= 12; $i++){ if(
+                            $controlstatus[$i] == 1){ //array_count_values($controlstatus)['1'] ?>
+                            <div class="col-lg-3 col-xl-3 col-sm-12">
+                                <div class="card-body border radius-10 shadow-none mb-3">
+                                
+                                    <!-- <div class="card-body"> -->
+                                        <div class="d-flex">
+                                            <h5 class="mb-0 mmn"><b><?= $conttrolname[$i] ?></b></h5>
+                                            <div class="ms-auto">
+                                                <?php 
+                                                    if($i == 12){
+                                                        echo '<div class="Dsw_manual_'.$i.'">
+                                                                <input type="checkbox" class="sw_manual_'.$i.'" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-size="xs" data-style="ios">
+                                                            </div>';
+                                                    } else {
+                                                        if($i == 11){
+                                                            echo '<div class="dropdown sw_manual">
+                                                                <button class="btn btn-outline-secondary dropdown-toggle shader_slw" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item sw_shader0">0 : ปิด 100%</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item sw_shader1">1 : เปิด 25%</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item sw_shader2">2 : เปิด 50%</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item sw_shader3">3 : เปิด 75%</a>
+                                                                    </li>
+                                                                    <li><a class="dropdown-item sw_shader4">4 : เปิด 100%</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>';
+                                                        }else{
+                                                            echo '<div class="sw_manual Dsw_manual_'.$i.'">
+                                                                <input type="checkbox" class="sw_manual_'.$i.'" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-size="xs" data-style="ios">
+                                                            </div>';
+                                                        } 
+                                                        echo '<a class="font-20 sw_auto" href="javascript:;" id="'.$i.'" name="'.$conttrolname[$i].'">	<i class="lni lni-cog"></i> </a>';
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <!-- <div class="col-4">
-                                                <div class="css-bar m-b-0 css-bar-warning "> -->
-                                        <img class="dash_img_con_<?= $i ?>" width="185">
-                                        <!-- </div>
-                                            </div> -->
-                                    </div>
-                                <!-- </div> -->
+                                        <div class="text-center">
+                                            <!-- <div class="col-4">
+                                                    <div class="css-bar m-b-0 css-bar-warning "> -->
+                                            <img class="dash_img_con_<?= $i ?>" width="185">
+                                            <!-- </div>
+                                                </div> -->
+                                        </div>
+                                    <!-- </div> -->
+                                </div>
                             </div>
-                        </div>
                         <?php }} ?>
                     </div>
                             <!-- </div>
@@ -587,10 +779,103 @@
         </div>
         <!-- exit Modal Control -->
     <?php } ?>
+    <div class="col-12 col-lg-12 col-xl-12 d-flex">
+        <div class="card w-100 radius-10">
+            <div class="card-body">
+                <div class="d-flex">
+                    <ul class="nav nav-pills mb-3" role="tablist">
+                        <?php if($_POST["s_btnT"] > 0){echo '
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active btn_ch_t" data-bs-toggle="pill" href="" role="tab" aria-selected="false">
+                                    <div class="d-flex align-items-center">
+                                        <div class="tab-title">อุณหภูมิ</div>
+                                    </div>
+                                </a>
+                            </li>';
+                        }if($_POST["s_btnH"] > 0){
+                            if($_POST["s_btnT"] == 0 && $_POST["s_btnH"] > 0){echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active btn_ch_h" data-bs-toggle="pill" href="" role="tab" aria-selected="false">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">ความชื้นอากาศ</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }else{echo '
+                                <li class="nav-item li_ch_h" role="presentation">
+                                    <a class="nav-link btn_ch_h" data-bs-toggle="pill" href="" role="tab" aria-selected="false">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">ความชื้นอากาศ</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }
+                        } if($_POST["s_btnS"] > 0){
+                            if($_POST["s_btnT"] == 0 && $_POST["s_btnH"] == 0 && $_POST["s_btnS"] > 0){echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active btn_ch_s" data-bs-toggle="pill" href="" role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">ความชื้นดิน</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }else{echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link btn_ch_s" data-bs-toggle="pill" href="" role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">ความชื้นดิน</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }
+                        }if($_POST["s_btnL"] > 0){
+                            if($_POST["s_btnT"] == 0 && $_POST["s_btnH"] == 0 && $_POST["s_btnS"] == 0 && $_POST["s_btnL"] > 0){echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active btn_ch_l" data-bs-toggle="pill" href="" role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">ความเข้มแสง</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }else{echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link btn_ch_l" data-bs-toggle="pill" href="" role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">ความเข้มแสง</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }
+                        }if($_POST["meter_count"] > 0){
+                            if($_POST["s_btnT"] == 0 && $_POST["s_btnH"] == 0 && $_POST["s_btnS"] == 0 && $_POST["s_btnL"] > 0){echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active btn_ch_p" data-bs-toggle="pill" href="" role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">พลังงาน</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }else{echo '
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link btn_ch_p" data-bs-toggle="pill" href="" role="tab" aria-selected="true">
+                                        <div class="d-flex align-items-center">
+                                            <div class="tab-title">พลังงาน</div>
+                                        </div>
+                                    </a>
+                                </li>';
+                            }
+                        }
+                        ?>
+                    </ul>
+                </div>
+                <div class="chartdiv" id='chart_realtime'></div>
+            </dic>
+        </dic>
+    </dic>
 </div>
 <script>
     var house_master = '<?= $s_master["house_master"] ?>';
-    var login_user = $(".INuser_name").val();
+    var login_user = '<?= $_SESSION["Username"] ?>';
     // alert(house_master)
     // return false;
     // ----------------------------------------------------------------------
@@ -601,7 +886,7 @@
         // These are configs
         var hostname = "203.150.37.144"; //'103.2.115.15'; // 203.150.37.144   decccloud.com
         var port = "8083";
-        var clientId = "mqtt_js_" + parseInt(Math.random() * 100000, 10);
+        var clientId = "mqtt2_js_" + parseInt(Math.random() * 100000, 10);
         var count = 0;
 
         function connect() {
@@ -1846,5 +2131,21 @@
                 }
             }// succress
         });
+    });
+
+    
+    $('.image-popups').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        removalDelay: 500, //delay removal by X to allow out-animation
+        callbacks: {
+            beforeOpen: function() {
+                // just a hack that adds mfp-anim class to markup
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+                this.st.mainClass = this.st.el.attr('data-effect');
+            }
+        },
+        closeOnContentClick: false,
+        midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
     });
 </script>

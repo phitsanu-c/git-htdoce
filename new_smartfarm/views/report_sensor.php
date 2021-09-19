@@ -101,11 +101,11 @@
                         <label class="form-check-label" for="flexSwitchCheckCheckedDanger">แสดงข้อมูล : </label>
                         <select id="sel_all_every" class="form-check-label">
                             <option value="1">ทุก ๆ 1 นาที</option>
-                            <option value="2">ทุก ๆ 5 นาที</option>
-                            <option value="3">ทุก ๆ 10 นาที</option>
-                            <option value="4">ทุก ๆ 15 นาที</option>
-                            <option value="5">ทุก ๆ 30 นาที</option>
-                            <option value="6">ทุก ๆ 1 ชั่วโมง</option>
+                            <option value="5">ทุก ๆ 5 นาที</option>
+                            <option value="10">ทุก ๆ 10 นาที</option>
+                            <option value="15">ทุก ๆ 15 นาที</option>
+                            <option value="30">ทุก ๆ 30 นาที</option>
+                            <option value="60">ทุก ๆ 1 ชั่วโมง</option>
                         </select>
                     </div>
                 </div>
@@ -593,6 +593,11 @@
                 },
                 dataType: 'json',
                 success: function(res) {
+                    if(res.theme === "dark-theme"){
+                        var theme = 'dark';
+                    }else{
+                        var theme = '';
+                    }
                     // console.log(res[1])
                     // alert(ch_value[1][1])
                     var data_chart = [];
@@ -603,7 +608,7 @@
                                 type: 'line',
                                 showSymbol: false,
                                 areaStyle: {},
-                                data: res['data_'+k]
+                                data: res.data['data_'+k]
                         })
                     }
                     if(ch_value[0] === "other"){
@@ -613,7 +618,7 @@
                     }
                     // console.log(data_chart)
                     // return false;
-                    var myChart = echarts.init(document.getElementById('report_chart'), 'dark');
+                    var myChart = echarts.init(document.getElementById('report_chart'), theme);
                     
                     // specify chart configuration item and data
                     var option = {
@@ -634,7 +639,7 @@
                         },
                         xAxis: {
                             type: 'category',
-                            data: res.timestamp,
+                            data: res.data.timestamp,
                             boundaryGap: false
                         },
                         yAxis: {

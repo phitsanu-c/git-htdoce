@@ -376,6 +376,8 @@ $.ajax({
                                                         chart_1: new_data_chart_1
                                                     });
                                                 }
+                                                console.log("chart_1")
+                                                console.log(chart_1)
                                                 if (Status[1] === "1") {
                                                     // if (Sensor_mode[1] === "7") {
                                                     //     var new_data_chart_2 = (data_array["data_st" + Sncanel[1].substring(7)] / 54).toFixed(1);

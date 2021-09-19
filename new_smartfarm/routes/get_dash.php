@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "connectdb.php";
 $house_master = $_POST["house_master"];
 // $channel = $_POST["channel"];
@@ -527,9 +528,11 @@ $ingMap[40] = $row_9["map_ch_40"];
 $meter_status[1] = intval($row_10["meter_status_v"]);
 $meter_status[2] = intval($row_10["meter_status_a"]);
 $meter_status[3] = intval($row_10["meter_status_p"]);
-$meter_status[4] = intval($row_10["meter_status_water"]);
-$meter_status[5] = intval($row_10["meter_status_wind_speed"]);
-$meter_status[6] = intval($row_10["meter_status_wind_direction"]);
+$meter_status[4] = intval($row_10["meter_status_pf"]);
+$meter_status[5] = intval($row_10["meter_status_engy"]);
+$meter_status[6] = intval($row_10["meter_status_water"]);
+$meter_status[7] = intval($row_10["meter_status_wind_speed"]);
+$meter_status[8] = intval($row_10["meter_status_wind_direction"]);
 
 $meter_chenal[1] = $row_11["meter_chenal_1"];
 $meter_chenal[2] = $row_11["meter_chenal_2"];
@@ -537,37 +540,72 @@ $meter_chenal[3] = $row_11["meter_chenal_3"];
 $meter_chenal[4] = $row_11["meter_chenal_4"];
 $meter_chenal[5] = $row_11["meter_chenal_5"];
 $meter_chenal[6] = $row_11["meter_chenal_6"];
+$meter_chenal[7] = $row_11["meter_chenal_7"];
+$meter_chenal[8] = $row_11["meter_chenal_8"];
 
 $meter_mode[1] = $row_11["meter_mode_1"];
 $meter_mode[2] = $row_11["meter_mode_2"];
 $meter_mode[3] = $row_11["meter_mode_3"];
 $meter_mode[4] = $row_11["meter_mode_4"];
 $meter_mode[5] = $row_11["meter_mode_5"];
+$meter_mode[6] = $row_11["meter_mode_6"];
+$meter_mode[7] = $row_11["meter_mode_7"];
 
 if ($meter_status[1] == 1) {
     $resm_1 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[1]' ")->fetch();
     $meterImg['Img_v'] = $resm_1["sensor_imgNor"];
     $meterUnit['Unit_v'] = $resm_1["sensor_unit"];
+}else{
+    $meterImg['Img_v'] = "";
+    $meterUnit['Unit_v'] = "";
 }
 if ($meter_status[2] == 1) {
     $resm_2 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[2]' ")->fetch();
     $meterImg['Img_a'] = $resm_2["sensor_imgNor"];
     $meterUnit['Unit_a'] = $resm_2["sensor_unit"];
+}else{
+    $meterImg['Img_a'] = "";
+    $meterUnit['Unit_a'] = "";
 }
 if ($meter_status[3] == 1) {
     $resm_3 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[3]' ")->fetch();
     $meterImg['Img_p'] = $resm_3["sensor_imgNor"];
     $meterUnit['Unit_p'] = $resm_3["sensor_unit"];
+}else{
+    $meterImg['Img_p'] = "";
+    $meterUnit['Unit_p'] = "";
 }
 if ($meter_status[4] == 1) {
     $resm_4 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[4]' ")->fetch();
-    $meterImg['Img_water'] = $resm_4["sensor_imgNor"];
-    $meterUnit['Unit_water'] = $resm_4["sensor_unit"];
+    $meterImg['Img_pf'] = $resm_4["sensor_imgNor"];
+    $meterUnit['Unit_pf'] = $resm_4["sensor_unit"];
+}else{
+    $meterImg['Img_pf'] = "";
+    $meterUnit['Unit_pf'] = "";
 }
 if ($meter_status[5] == 1) {
     $resm_5 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[5]' ")->fetch();
-    $meterImg['Img_wind_speed'] = $resm_5["sensor_imgNor"];
-    $meterUnit['Unit_wind_speed'] = $resm_5["sensor_unit"];
+    $meterImg['Img_engy'] = $resm_5["sensor_imgNor"];
+    $meterUnit['Unit_engy'] = $resm_5["sensor_unit"];
+}else{
+    $meterImg['Img_engy'] = "";
+    $meterUnit['Unit_engy'] = "";
+}
+if ($meter_status[6] == 1) {
+    $resm_6 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[6]' ")->fetch();
+    $meterImg['Img_water'] = $resm_6["sensor_imgNor"];
+    $meterUnit['Unit_water'] = $resm_6["sensor_unit"];
+}else{
+    $meterImg['Img_water'] = "";
+    $meterUnit['Unit_water'] = "";
+}
+if ($meter_status[7] == 1) {
+    $resm_7 = $dbcon->query("SELECT * from tb_sensor  WHERE sensor_id = '$meter_mode[7]' ")->fetch();
+    $meterImg['Img_wind_speed'] = $resm_7["sensor_imgNor"];
+    $meterUnit['Unit_wind_speed'] = $resm_7["sensor_unit"];
+}else{
+    $meterImg['Img_wind_speed'] = "";
+    $meterUnit['Unit_wind_speed'] = "";
 }
 
 echo json_encode([
@@ -599,6 +637,6 @@ echo json_encode([
     'meter_chenal' => $meter_chenal,
     'meter_mode' => $meter_mode,
     'meterImg' => $meterImg,
-    'meterUnit' => $meterUnit,
-    'ddd'=> 'asss'
+    'meterUnit' => $meterUnit
+    // 'ddd'=> 'asss'
 ]);

@@ -28,6 +28,7 @@ if (isset($_POST['Username'])) {
                 $login_userid = $_SESSION['user_id'] = $row_count["login_id"];
                 $_SESSION["Username"] = $row_count['login_user'];
                 $_SESSION["login_status"] = $row_count["login_status"];
+                $_SESSION["login_theme"] = $row_count["login_theme"];
                 $_SESSION["time"] = date("d");
                 if ($row_count["login_image"] === "") {
                     $_SESSION["login_image"] = "user.png";
@@ -75,7 +76,8 @@ if (isset($_SESSION["Username"])) {
         'date_start'    => $_SESSION["time"],
         'count_house'   => $_SESSION['count_house'],
         'master'        => $_SESSION['master'],
-        'count_statusUser' => $_SESSION['count_statusUser']
+        'count_statusUser' => $_SESSION['count_statusUser'],
+        'theme' => $_SESSION["login_theme"]
     ], JSON_UNESCAPED_UNICODE);
 } else {
     echo json_encode(['username'  => ""]);

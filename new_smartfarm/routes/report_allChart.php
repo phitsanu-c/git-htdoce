@@ -1,7 +1,9 @@
 <?php
+session_start();
 require "connectdb.php";
 $house_master = $_POST["house_master"];
 $ch_value = $_POST["ch_value"];
+$sel_all_every = $_POST["sel_all_every"];
 if ($_POST["mode"] == 'day') {
     $start_day = date("Y/m/d - H:i:s", strtotime('-1 day'));
     $stop_day = date("Y/m/d - H:i:s");
@@ -40,7 +42,7 @@ if ($_POST["mode"] == 'day') {
    // exit();
 // echo $a;
 $sql = "SELECT data_timestamp AS timestamp, $sting_channrl
-FROM tb_data_sensor WHERE data_sn = '$house_master' AND data_timestamp BETWEEN '$start_day' AND '$stop_day' AND mod(minute(`data_time`),5) = 0
+FROM tb_data_sensor WHERE data_sn = '$house_master' AND data_timestamp BETWEEN '$start_day' AND '$stop_day' AND mod(minute(`data_time`),'$sel_all_every') = 0
                ORDER BY data_timestamp ";
    // $stmt = $dbcon->query($sql)->fetch();
    // foreach ($dbcon->query($sql) as $row) {
@@ -98,4 +100,4 @@ while ($row = $stmt->fetch()) {
    // $data0[] = $row;
 }
 
-   echo json_encode($data0);
+   echo json_encode(['data'=>$data0,'theme'=>$_SESSION["login_theme"]]);

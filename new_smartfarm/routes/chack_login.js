@@ -73,6 +73,34 @@ $.getJSON('routes/login.php', function(msg) {
         $(".dpd_setHoune").hide();
         $(".dpd_setting").hide();
     }
+    // var n_theme = msg.theme.split(" ");
+    // if (n_theme[0] === 'color-sidebar') {
+
+    // }
+    // alert(n_theme[0])
+    // theme
+    if (msg.theme === "dark-theme") {
+        $("#lightmode").attr('checked', false);
+        $("#darkmode").attr('checked', true);
+        $("#semidark").attr('checked', false);
+        $("#minimaltheme").attr('checked', false);
+    } else if (msg.theme === "semi-dark") {
+        $("#lightmode").attr('checked', false);
+        $("#darkmode").attr('checked', false);
+        $("#semidark").attr('checked', true);
+        $("#minimaltheme").attr('checked', false);
+    } else if (msg.theme === "minimal-theme") {
+        $("#lightmode").attr('checked', false);
+        $("#darkmode").attr('checked', false);
+        $("#semidark").attr('checked', false);
+        $("#minimaltheme").attr('checked', true);
+    } else {
+        $("#lightmode").attr('checked', true);
+        $("#darkmode").attr('checked', false);
+        $("#semidark").attr('checked', false);
+        $("#minimaltheme").attr('checked', false);
+    }
+    $("#theme").addClass(msg.theme);
 });
 
 // logout

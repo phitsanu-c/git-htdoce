@@ -5,6 +5,8 @@
     require "connectdb.php";
     $house_master = $_POST["house_master"];
     $ch_value = $_POST["ch_value"];
+    $sel_all_every = $_POST["sel_all_every"];
+    
     if ($_POST["mode"] == 'day') {
         $start_day = date("Y/m/d - H:i:s", strtotime('-1 day'));
         $stop_day = date("Y/m/d - H:i:s");
@@ -53,7 +55,7 @@
             <?php
                 $i = 1;
                 $sql = "SELECT data_timestamp, $sting_channrl
-                FROM tb_data_sensor WHERE data_sn = '$house_master' AND data_timestamp BETWEEN '$start_day' AND '$stop_day' AND mod(minute(`data_time`),5) = 0
+                FROM tb_data_sensor WHERE data_sn = '$house_master' AND data_timestamp BETWEEN '$start_day' AND '$stop_day' AND mod(minute(`data_time`),'$sel_all_every') = 0
                             ORDER BY data_timestamp ";
                 $stmt = $dbcon->query($sql);
                 $data0 = [];
