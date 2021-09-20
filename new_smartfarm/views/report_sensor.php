@@ -8,6 +8,7 @@
     $dashUnit = $_POST["dashUnit"];
     // $count_dash = array_count_values($dashMode)['1'];
     // print_r( array_count_values($dashStatus) );
+    // print_r($dashUnit);
 // echo array_count_values($controlstatus)['0'];
 // exit();
 ?>
@@ -139,7 +140,20 @@
                     }
                 }
                 // echo $count_dash);
-                // echo count($data_count1);
+                if(isset($data_count1)){
+                    $c_count1 = 1;
+                }else{$c_count1 = 0;}
+                if(isset($data_count2)){
+                    $c_count2 = 2;
+                }else{$c_count2 = 0;}
+                if(isset($data_count3)){
+                    $c_count3 = 3;
+                }else{$c_count3 = 0;}
+                if(isset($data_count4)){
+                    $c_count4 = 4;
+                }else{$c_count4 = 0;}
+                // echo  $c_count1;
+                
                 // print_r($data_count1);
                 // print_r($data_count2);
                 // print_r($data_count3);
@@ -152,10 +166,10 @@
                         <div class="col-lg-3 col-xl-3 col-sm-12 d-flex">
                             <div class="card-body border radius-10 shadow-none mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="radio_c" id="radio_temp" type="radio" onchange="ch_radio('temp')" checked>
+                                    <input class="form-check-input" name="radio_c" id="radio_temp" type="radio" onchange="ch_radio('temp')" <?php if($c_count1 == 1){echo 'checked';}?>>
                                     <h5>อุณหภูมิ</h5>
                                     <div class="form-check mb-3">
-                                        <input type="checkbox" class="form-check-input" name="checkbox_all_temp" onchange="checkbox_all('temp')" checked>
+                                        <input type="checkbox" class="form-check-input" name="checkbox_all_temp" onchange="checkbox_all('temp')" <?php if($c_count1 == 1){echo 'checked';}?>>
                                         <label class="form-check-label">เลือกทั้งหมด</label>
                                     </div>
                                     <hr/>
@@ -163,7 +177,7 @@
                                         if($dashStatus[$i] == 1){
                                             if($dashMode[$i] == 1){ ?>
                                                 <div class="form-check mb-3"> 
-                                                    <input type="checkbox" class="form-check-input" name="checkbox_temp[]" value="<?= $dashSncanel[$i] ?>" d_name="<?php if ($dashUnit[$i] == 1) {echo $dashName[$i]." (℃)";}else{echo  $dashName[$i]." (".$dashUnit[$i].")";} ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'temp')" checked>
+                                                    <input type="checkbox" class="form-check-input" name="checkbox_temp[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i]." (℃)" ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'temp')" checked>
                                                     <label class="form-check-label"><?= $dashName[$i] ?></label>
                                                 </div>
                                     <?php } } } ?>
@@ -174,10 +188,10 @@
                         <div class="col-lg-3 col-xl-3 col-sm-12 d-flex">
                             <div class="card-body border radius-10 shadow-none mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="radio_c" id="radio_hum" type="radio" onchange="ch_radio('hum')">
+                                    <input class="form-check-input" name="radio_c" id="radio_hum" type="radio" onchange="ch_radio('hum')" <?php if($c_count1 == 0 && $c_count2 == 2){echo 'checked';}?>>
                                     <h5>ความชื้นอากาศ</h5>
                                     <div class="form-check mb-3">
-                                        <input type="checkbox" class="form-check-input" name="checkbox_all_hum" onchange="checkbox_all('hum')">
+                                        <input type="checkbox" class="form-check-input" name="checkbox_all_hum" onchange="checkbox_all('hum')" <?php if($c_count1 == 0 && $c_count2 == 2){echo 'checked';}?>>
                                         <label class="form-check-label">เลือกทั้งหมด</label>
                                     </div>
                                     <hr/>
@@ -185,7 +199,7 @@
                                         if($dashStatus[$i] == 1){
                                             if($dashMode[$i] == 2){ ?>
                                                 <div class="form-check mb-3"> 
-                                                    <input type="checkbox" class="form-check-input" name="checkbox_hum[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i] ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'hum')" checked>
+                                                    <input type="checkbox" class="form-check-input" name="checkbox_hum[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i]." (".$dashUnit[$i].")" ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count2) ?> ,'hum')" <?php if($c_count1 == 0 && $c_count2 == 2){echo 'checked';}?>>
                                                     <label class="form-check-label"><?= $dashName[$i] ?></label>
                                                 </div>
                                     <?php } } } ?>
@@ -196,10 +210,10 @@
                         <div class="col-lg-3 col-xl-3 col-sm-12 d-flex">
                             <div class="card-body border radius-10 shadow-none mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="radio_c" id="radio_soil" type="radio" onchange="ch_radio('soil')">
+                                    <input class="form-check-input" name="radio_c" id="radio_soil" type="radio" onchange="ch_radio('soil')" <?php if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 3){echo 'checked';}?>>
                                     <h5>ความชื้นในดิน</h5>
                                     <div class="form-check mb-3">
-                                        <input type="checkbox" class="form-check-input" name="checkbox_all_soil" onchange="checkbox_all('soil')">
+                                        <input type="checkbox" class="form-check-input" name="checkbox_all_soil" onchange="checkbox_all('soil')" <?php if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 3){echo 'checked';}?>>
                                         <label class="form-check-label">เลือกทั้งหมด</label>
                                     </div>
                                     <hr/>
@@ -207,7 +221,7 @@
                                         if($dashStatus[$i] == 1){
                                             if($dashMode[$i] == 3){ ?>
                                                 <div class="form-check mb-3"> 
-                                                    <input type="checkbox" class="form-check-input" name="checkbox_soil[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i] ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'soil')" checked>
+                                                    <input type="checkbox" class="form-check-input" name="checkbox_soil[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i]." (".$dashUnit[$i].")" ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count3) ?> ,'soil')" <?php if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 3){echo 'checked';}?>>
                                                     <label class="form-check-label"><?= $dashName[$i] ?></label>
                                                 </div>
                                     <?php } } } ?>
@@ -218,21 +232,42 @@
                         <div class="col-lg-3 col-xl-3 col-sm-12 d-flex">
                             <div class="card-body border radius-10 shadow-none mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="radio_c" id="radio_light" type="radio" onchange="ch_radio('light')">
+                                    <input class="form-check-input" name="radio_c" id="radio_light" type="radio" onchange="ch_radio('light')" <?php if($c_count4 == 4){echo 'checked';}?>>
                                     <h5>ความเข้มแสง</h5>
                                     <div class="form-check mb-3">
-                                        <input type="checkbox" class="form-check-input" name="checkbox_all_light" onchange="checkbox_all('light')">
+                                        <input type="checkbox" class="form-check-input" name="checkbox_all_light" onchange="checkbox_all('light')" <?php if($c_count4 == 4){echo 'checked';}?>>
                                         <label class="form-check-label">เลือกทั้งหมด</label>
                                     </div>
                                     <hr/>
                                     <?php for($i=1; $i <= 40; $i++ ){
                                         if($dashStatus[$i] == 1){
-                                            if($dashMode[$i] == 4 || $dashMode[$i] == 5 || $dashMode[$i] == 6 || $dashMode[$i] == 7){ ?>
-                                                <div class="form-check mb-3"> 
-                                                    <input type="checkbox" class="form-check-input" name="checkbox_light[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i] ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'light')" checked>
-                                                    <label class="form-check-label"><?= $dashName[$i] ?></label>
-                                                </div>
-                                    <?php } } } ?>
+                                            if($dashMode[$i] == 4){
+                                                echo '<div class="form-check mb-3"> 
+                                                        <input type="checkbox" class="form-check-input" name="checkbox_light[]" value="'. $dashSncanel[$i] .'" d_name="'. $dashName[$i].' (KLux)" d_mode="'. $dashMode[$i] .'" onchange="checkbox_check('. count($data_count4) .' ,"light")" ';
+                                                        if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 0 && $c_count4 == 4){echo 'checked';} echo '>';
+                                                        echo '<label class="form-check-label">'.$dashName[$i].'</label>
+                                                    </div>';
+                                            }else if($dashMode[$i] == 5){
+                                                echo '<div class="form-check mb-3"> 
+                                                        <input type="checkbox" class="form-check-input" name="checkbox_light[]" value="'. $dashSncanel[$i] .'" d_name="'. $dashName[$i].'" d_mode="'. $dashMode[$i] .'" onchange="checkbox_check('. count($data_count4) .' ,"light")" ';
+                                                        if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 0 && $c_count4 == 4){echo 'checked';} echo '>';
+                                                        echo '<label class="form-check-label">'.$dashName[$i].'</label>
+                                                    </div>';
+                                            }else if($dashMode[$i] == 6){
+                                                echo '<div class="form-check mb-3"> 
+                                                        <input type="checkbox" class="form-check-input" name="checkbox_light[]" value="'. $dashSncanel[$i] .'" d_name="'. $dashName[$i].' (KLux)" d_mode="'. $dashMode[$i] .'" onchange="checkbox_check('. count($data_count4) .' ,"light")" ';
+                                                        if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 0 && $c_count4 == 4){echo 'checked';} echo '>';
+                                                        echo '<label class="form-check-label">'.$dashName[$i].'</label>
+                                                    </div>';
+                                            }else if($dashMode[$i] == 7){ 
+                                                echo '<div class="form-check mb-3"> 
+                                                        <input type="checkbox" class="form-check-input" name="checkbox_light[]" value="'. $dashSncanel[$i] .'" d_name="'. $dashName[$i].'" d_mode="'. $dashMode[$i] .'" onchange="checkbox_check('. count($data_count4) .' ,"light")" ';
+                                                        if($c_count1 == 0 && $c_count2 == 0 && $c_count3 == 0 && $c_count4 == 4){echo 'checked';} echo '>';
+                                                        echo '<label class="form-check-label">'.$dashName[$i].'</label>
+                                                    </div>';
+                                            } 
+                                        } 
+                                    } ?>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +286,7 @@
                                         if($dashStatus[$i] == 1){
                                             if($dashMode[$i] != 1 || $dashMode[$i] != 2 || $dashMode[$i] != 3 || $dashMode[$i] != 4 || $dashMode[$i] != 5 || $dashMode[$i] != 6 || $dashMode[$i] != 7){ ?>
                                                 <div class="form-check mb-3"> 
-                                                    <input type="checkbox" class="form-check-input" name="checkbox_other[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i] ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count1) ?> ,'other')" checked>
+                                                    <input type="checkbox" class="form-check-input" name="checkbox_other[]" value="<?= $dashSncanel[$i] ?>" d_name="<?= $dashName[$i] ?>" d_mode="<?= $dashMode[$i] ?>" onchange="checkbox_check(<?= count($data_count0) ?> ,'other')" checked>
                                                     <label class="form-check-label"><?= $dashName[$i] ?></label>
                                                 </div>
                                     <?php } } } ?>
@@ -318,7 +353,8 @@
     $('.val_end').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('YYYY/MM/DD - HH:mm'));
     });
-    ch_radio('temp');
+
+    // ch_radio('temp');
     $(".all_day").click(function() {
         $(".title_mod").html('แสดงข้อมูลย้อนหลัง 1 วัน');
         $(".mode_dwm").val('day');
@@ -454,7 +490,7 @@
         $("input[name='checkbox_"+mode+"[]']:checked").map(function (){
             count_ch.push($(this).val());
         });//
-        // alert(mode)
+        // alert(count_ch.length)
         if(count_ch.length === count){
             $("input[name='checkbox_all_"+mode+"']").prop( "checked", true );
         }else{
@@ -514,7 +550,11 @@
                 ch_value.push("ความเข้มแสง");
                 $("input[name='checkbox_light[]']:checked").map(function (){
                     checked.push($(this).val());
-                    d_name.push($(this).attr("d_name"));
+                    if($(this).attr("d_mode") == 5 || $(this).attr("d_mode") == 7){
+                        d_name.push($(this).attr("d_name")+" (µmol m^2 s^-1)");//(µmol m[baseline-shift: super; font-size: 10;]-2[baseline-shift: baseline;]s[baseline-shift: super; font-size: 10;]-1[baseline-shift: baseline;])");
+                    }else{
+                        d_name.push($(this).attr("d_name"));
+                    }
                     d_mode.push($(this).attr("d_mode"));
                 });
                 ch_value.push(checked);
@@ -619,7 +659,7 @@
                     // console.log(data_chart)
                     // return false;
                     var myChart = echarts.init(document.getElementById('report_chart'), theme);
-                    
+                    // var unt = "µmol m[baseline-shift: super; font-size: 10;]-2[baseline-shift: baseline;]s[baseline-shift: super; font-size: 10;]-1[baseline-shift: baseline;]";
                     // specify chart configuration item and data
                     var option = {
                         title: {
@@ -643,7 +683,11 @@
                             boundaryGap: false
                         },
                         yAxis: {
-                            type: 'value'
+                            type: 'value',
+                            // name: unt//'µmol m<sup>-2</sup>s<sup>-1</sup>',
+                            // axisLabel : {
+                            //     formatter: '{value} (µmol m<sup>-2</sup>s<sup>-1</sup>)'
+                            // }
                         },
                         toolbox: {
                             feature: {

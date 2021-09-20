@@ -1,6 +1,3 @@
-<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> -->
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
-<!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
 <?php
     require "connectdb.php";
     $house_master = $_POST["house_master"];
@@ -35,6 +32,8 @@
     // echo $sting_channrl;
     // echo count($ch_value[1]);
     // echo $ch_value[3][0];
+    // print_r($ch_value[3]);
+    // echo $ch_value;
     // exit();
     // echo $a;
 ?>
@@ -47,7 +46,12 @@
                 <th class="text-center">วัน</th>
                 <th class="text-center">เวลา</th>
                 <?php for($i=0; $i<count($ch_value[3]); $i++ ){
-                    echo '<th class="text-center">'.$ch_value[2][$i].'</th>';
+                    if($ch_value[3][$i] == 5 || $ch_value[3][$i] == 7){
+                        echo '<th class="text-center">'.$ch_value[2][$i].' (µmol m<sup>-2</sup>s<sup>-1</sup>)</th>';
+                    }else{
+                        echo '<th class="text-center">'.$ch_value[2][$i].'</th>';
+                    }
+                    
                 }?>
             </tr>
         </thead>
@@ -66,46 +70,46 @@
                         <td class="text-center">'.substr($row['data_timestamp'], 0 ,18).'</td>
                         <td class="text-center">'.substr($row['data_timestamp'], 0 ,10).'</td>
                         <td class="text-center">'.substr($row['data_timestamp'], 13 ,18).'</td>
-                        <td class="text-center">'.$row[3].'</td>';
-                        if($j >= 2){echo '<td class="text-center">'.$row[2].'</td>';}
-                        if($j >= 3){echo '<td class="text-center">'.$row[3].'</td>';}
-                        if($j >= 4){echo '<td class="text-center">'.$row[4].'</td>';}
-                        if($j >= 5){echo '<td class="text-center">'.$row[5].'</td>';}
-                        if($j >= 6){echo '<td class="text-center">'.$row[6].'</td>';}
-                        if($j >= 7){echo '<td class="text-center">'.$row[7].'</td>';}
-                        if($j >= 8){echo '<td class="text-center">'.$row[8].'</td>';}
-                        if($j >= 9){echo '<td class="text-center">'.$row[9].'</td>';}
-                        if($j >= 10){echo '<td class="text-center">'.$row[10].'</td>';}
-                        if($j >= 11){echo '<td class="text-center">'.$row[11].'</td>';}
-                        if($j >= 12){echo '<td class="text-center">'.$row[12].'</td>';}
-                        if($j >= 13){echo '<td class="text-center">'.$row[13].'</td>';}
-                        if($j >= 14){echo '<td class="text-center">'.$row[14].'</td>';}
-                        if($j >= 15){echo '<td class="text-center">'.$row[15].'</td>';}
-                        if($j >= 16){echo '<td class="text-center">'.$row[16].'</td>';}
-                        if($j >= 17){echo '<td class="text-center">'.$row[17].'</td>';}
-                        if($j >= 18){echo '<td class="text-center">'.$row[18].'</td>';}
-                        if($j >= 19){echo '<td class="text-center">'.$row[19].'</td>';}
-                        if($j >= 20){echo '<td class="text-center">'.$row[20].'</td>';}
-                        if($j >= 21){echo '<td class="text-center">'.$row[21].'</td>';}
-                        if($j >= 22){echo '<td class="text-center">'.$row[22].'</td>';}
-                        if($j >= 23){echo '<td class="text-center">'.$row[23].'</td>';}
-                        if($j >= 24){echo '<td class="text-center">'.$row[24].'</td>';}
-                        if($j >= 25){echo '<td class="text-center">'.$row[25].'</td>';}
-                        if($j >= 26){echo '<td class="text-center">'.$row[26].'</td>';}
-                        if($j >= 27){echo '<td class="text-center">'.$row[27].'</td>';}
-                        if($j >= 28){echo '<td class="text-center">'.$row[28].'</td>';}
-                        if($j >= 29){echo '<td class="text-center">'.$row[29].'</td>';}
-                        if($j >= 30){echo '<td class="text-center">'.$row[30].'</td>';}
-                        if($j >= 31){echo '<td class="text-center">'.$row[31].'</td>';}
-                        if($j >= 32){echo '<td class="text-center">'.$row[32].'</td>';}
-                        if($j >= 33){echo '<td class="text-center">'.$row[33].'</td>';}
-                        if($j >= 34){echo '<td class="text-center">'.$row[34].'</td>';}
-                        if($j >= 35){echo '<td class="text-center">'.$row[35].'</td>';}
-                        if($j >= 36){echo '<td class="text-center">'.$row[36].'</td>';}
-                        if($j >= 37){echo '<td class="text-center">'.$row[37].'</td>';}
-                        if($j >= 38){echo '<td class="text-center">'.$row[38].'</td>';}
-                        if($j >= 39){echo '<td class="text-center">'.$row[39].'</td>';}
-                        if($j >= 40){echo '<td class="text-center">'.$row[40].'</td>';}
+                        <td class="text-center">'.$row['data_cn1'].'</td>';
+                        if($j >= 2){echo '<td class="text-center">'.$row['data_cn2'].'</td>';}
+                        if($j >= 3){echo '<td class="text-center">'.$row['data_cn3'].'</td>';}
+                        if($j >= 4){echo '<td class="text-center">'.$row['data_cn4'].'</td>';}
+                        if($j >= 5){echo '<td class="text-center">'.$row['data_cn5'].'</td>';}
+                        if($j >= 6){echo '<td class="text-center">'.$row['data_cn6'].'</td>';}
+                        if($j >= 7){echo '<td class="text-center">'.$row['data_cn7'].'</td>';}
+                        if($j >= 8){echo '<td class="text-center">'.$row['data_cn8'].'</td>';}
+                        if($j >= 9){echo '<td class="text-center">'.$row['data_cn9'].'</td>';}
+                        if($j >= 10){echo '<td class="text-center">'.$row['data_cn10'].'</td>';}
+                        if($j >= 11){echo '<td class="text-center">'.$row['data_cn11'].'</td>';}
+                        if($j >= 12){echo '<td class="text-center">'.$row['data_cn12'].'</td>';}
+                        if($j >= 13){echo '<td class="text-center">'.$row['data_cn13'].'</td>';}
+                        if($j >= 14){echo '<td class="text-center">'.$row['data_cn14'].'</td>';}
+                        if($j >= 15){echo '<td class="text-center">'.$row['data_cn15'].'</td>';}
+                        if($j >= 16){echo '<td class="text-center">'.$row['data_cn16'].'</td>';}
+                        if($j >= 17){echo '<td class="text-center">'.$row['data_cn17'].'</td>';}
+                        if($j >= 18){echo '<td class="text-center">'.$row['data_cn18'].'</td>';}
+                        if($j >= 19){echo '<td class="text-center">'.$row['data_cn19'].'</td>';}
+                        if($j >= 20){echo '<td class="text-center">'.$row['data_cn20'].'</td>';}
+                        if($j >= 21){echo '<td class="text-center">'.$row['data_cn21'].'</td>';}
+                        if($j >= 22){echo '<td class="text-center">'.$row['data_cn22'].'</td>';}
+                        if($j >= 23){echo '<td class="text-center">'.$row['data_cn23'].'</td>';}
+                        if($j >= 24){echo '<td class="text-center">'.$row['data_cn24'].'</td>';}
+                        if($j >= 25){echo '<td class="text-center">'.$row['data_cn25'].'</td>';}
+                        if($j >= 26){echo '<td class="text-center">'.$row['data_cn26'].'</td>';}
+                        if($j >= 27){echo '<td class="text-center">'.$row['data_cn27'].'</td>';}
+                        if($j >= 28){echo '<td class="text-center">'.$row['data_cn28'].'</td>';}
+                        if($j >= 29){echo '<td class="text-center">'.$row['data_cn29'].'</td>';}
+                        if($j >= 30){echo '<td class="text-center">'.$row['data_cn30'].'</td>';}
+                        if($j >= 31){echo '<td class="text-center">'.$row['data_cn31'].'</td>';}
+                        if($j >= 32){echo '<td class="text-center">'.$row['data_cn32'].'</td>';}
+                        if($j >= 33){echo '<td class="text-center">'.$row['data_cn33'].'</td>';}
+                        if($j >= 34){echo '<td class="text-center">'.$row['data_cn34'].'</td>';}
+                        if($j >= 35){echo '<td class="text-center">'.$row['data_cn35'].'</td>';}
+                        if($j >= 36){echo '<td class="text-center">'.$row['data_cn36'].'</td>';}
+                        if($j >= 37){echo '<td class="text-center">'.$row['data_cn37'].'</td>';}
+                        if($j >= 38){echo '<td class="text-center">'.$row['data_cn38'].'</td>';}
+                        if($j >= 39){echo '<td class="text-center">'.$row['data_cn39'].'</td>';}
+                        if($j >= 40){echo '<td class="text-center">'.$row['data_cn40'].'</td>';}
                     echo '</tr>';
                 $i++;
                 }?>

@@ -607,7 +607,8 @@ if ($meter_status[7] == 1) {
     $meterImg['Img_wind_speed'] = "";
     $meterUnit['Unit_wind_speed'] = "";
 }
-
+$row_9 = $dbcon->query("SELECT `data_timestamp` FROM `tb_data_sensor` WHERE `data_sn`= '$house_master' ORDER BY `data_id` DESC LIMIT 1")->fetch();
+ 
 echo json_encode([
     's_master'=> $row_s_master,
     'dashStatus'=> $dashStatus,
@@ -637,6 +638,7 @@ echo json_encode([
     'meter_chenal' => $meter_chenal,
     'meter_mode' => $meter_mode,
     'meterImg' => $meterImg,
-    'meterUnit' => $meterUnit
+    'meterUnit' => $meterUnit,
+    'time_update' => $row_9[0]
     // 'ddd'=> 'asss'
 ]);

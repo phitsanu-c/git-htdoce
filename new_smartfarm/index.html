@@ -459,6 +459,7 @@
                     var meter_chenal = res.meter_chenal;
                     var meterImg = res.meterImg;
                     var meterUnit = res.meterUnit;
+                    var time_update = res.time_update;
 
                     function getArraySum(a) {
                         // count array
@@ -530,7 +531,7 @@
                                 light_c.push(1);
                                 array_realChL.push(dashSncanel[i] + "/54");
                                 array_realnameL.push(dashName[i]);
-                                unit_L.push("µmol m<sup>-2</sup>s<sup>-1</sup>");
+                                unit_L.push("µmol m[baseline-shift: super; font-size: 10;]-2[baseline-shift: baseline;]s[baseline-shift: super; font-size: 10;]-1[baseline-shift: baseline;]");
                             }
                         }
                     }
@@ -746,6 +747,7 @@
                                                 var data_array = p_json['data'];
                                                 // console.log(parseJSON);
                                                 console.log(p_json);
+
                                                 // console.log(loading);
                                                 // -------------------------------------------------------------
                                                 var time_t = p_json['time'];
@@ -765,6 +767,14 @@
                                                 $(".time").html(ntime);
                                                 // var data_array = parseJSON['data_update']['data'][0]['data'];
                                                 var data_array = parseJSON['data'];
+                                                let strdate = new Date();
+                                                var strNdate = moment(new Date()).add(-10, 'minutes').format('YYYY/MM/DD');
+                                                if (time_update.substring(0, 10) == strNdate || parseJSON['date'] == strNdate) {
+                                                    $(".status_timeUpdate").removeClass("text-danger").addClass("text-success").html("ออนไลน์")
+                                                } else {
+                                                    $(".status_timeUpdate").removeClass("text-success").addClass("text-danger").html("ออฟไลน์")
+                                                }
+                                                // alert(time_update.substring(0, 10) + ' ' + parseJSON['date'] + " " + strNdate)
                                             }
                                             // console.log(parseJSON);
                                             console.log(dashImg[1]);

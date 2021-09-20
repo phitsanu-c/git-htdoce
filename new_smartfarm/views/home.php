@@ -68,7 +68,7 @@
                             <div class="col-12">
                                 <div class="card-body radius-10 shadow-none">
                                     <div class="d-flex">
-                                        <h5>สถานะโรงเรือน : <b class="text-success">ออนไลน์</b></h5>
+                                        <h5>สถานะโรงเรือน : <b class="status_timeUpdate"></b></h5>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                             <div class="col-12">
                                 <div class="card-body radius-10 shadow-none">
                                     <div class="d-flex">
-                                        <h5>จุดติดตั้งเซ็ยเซอร์ : <b class="image-popups">
+                                        <h5>จุดติดตั้งเซ็นเซอร์ : <b class="image-popups">
                                         <?php if($s_master["house_img_map"] != ""){
                                                             echo '<a href="public/images/img_map/'.$s_master["house_img_map"].'"><i class="lni lni-map-marker"></i></a>';
                                                         }else{echo "-";}?>
